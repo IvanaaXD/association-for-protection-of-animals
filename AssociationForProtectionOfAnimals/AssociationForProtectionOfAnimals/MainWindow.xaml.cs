@@ -1,10 +1,10 @@
 ﻿using System.Windows;
 using System.Windows.Input;
 using AssociationForProtectionOfAnimals.Domain.Model;
-using LangLang.Controller;
-using LangLang.Domain.Model;
+using AssociationForProtectionOfAnimals.Controller;
+using AssociationForProtectionOfAnimals.Domain.Model;
 
-namespace LangLang
+namespace AssociationForProtectionOfAnimals
 {
     public partial class MainWindow : Window
     {
@@ -39,6 +39,8 @@ namespace LangLang
             {
                 if (user.Username == username && user.Password == password)
                 {
+                    MessageBox.Show("Uspesan login korisnika.");
+
                     /*RegisteredUserForm welcomePage = new RegisteredUserForm(user.Id);
                     welcomePage.Show();*/
 
@@ -66,6 +68,8 @@ namespace LangLang
             {
                 if (volunteer.Username == username && volunteer.Password == password)
                 {
+                    MessageBox.Show("Uspesan login volontera.");
+
                     /*VolunteerPage volunteerPage = new VolunteerPage(volunteer.Id);
                     volunteerPage.Show();*/
                     return true;
@@ -80,6 +84,8 @@ namespace LangLang
 
             if (director.Username == username && director.Password == password)
             {
+                MessageBox.Show("Uspesan login admina.");
+
                 /*AdministratorPage directorPage = new AdministratorPage(director.Id);
                 directorPage.Show();*/
                 return true;
@@ -89,8 +95,8 @@ namespace LangLang
 
         private void Registration_Click(object sender, RoutedEventArgs e)
         {
-            /*View.RegisteredUser.RegistrationForm registrationForm = new View.RegisteredUser.RegistrationForm(registeredUserController);
-            registrationForm.Show();*/
+            View.RegisteredUser.RegistrationForm registrationForm = new View.RegisteredUser.RegistrationForm();
+            registrationForm.Show();
         }
 
         private void Unregistered_Click(object sender, RoutedEventArgs e)

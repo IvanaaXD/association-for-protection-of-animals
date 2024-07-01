@@ -1,4 +1,4 @@
-﻿namespace LangLang.Observer
+﻿namespace AssociationForProtectionOfAnimals.Observer
 {
     public interface IObserver
     {

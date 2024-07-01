@@ -1,8 +1,8 @@
-﻿using LangLang.Domain.Model.Enums;
+﻿using AssociationForProtectionOfAnimals.Domain.Model.Enums;
 using System;
-using LangLang.Storage.Serialization;
+using AssociationForProtectionOfAnimals.Storage.Serialization;
 
-namespace LangLang.Domain.Model
+namespace AssociationForProtectionOfAnimals.Domain.Model
 {
     public abstract class Person : ISerializable
     {

@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using LangLang.Repository;
-using LangLang.Observer;
-using LangLang.Domain.Model;
-using LangLang.Domain.IRepository;
+using AssociationForProtectionOfAnimals.Repository;
+using AssociationForProtectionOfAnimals.Observer;
+using AssociationForProtectionOfAnimals.Domain.Model;
+using AssociationForProtectionOfAnimals.Domain.IRepository;
 using System;
 
-namespace LangLang.Controller
+namespace AssociationForProtectionOfAnimals.Controller
 {
     public class RegisteredUserController : Subject
     {

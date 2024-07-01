@@ -1,5 +1,5 @@
 ﻿
-namespace LangLang.Domain.Model.Enums
+namespace AssociationForProtectionOfAnimals.Domain.Model.Enums
 {
     public enum Gender
     {

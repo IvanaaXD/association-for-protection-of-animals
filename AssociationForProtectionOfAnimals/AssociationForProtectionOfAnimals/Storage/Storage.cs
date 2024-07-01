@@ -1,8 +1,8 @@
-﻿using LangLang.Storage.Serialization;
+﻿using AssociationForProtectionOfAnimals.Storage.Serialization;
 using System.Collections.Generic;
 using System.IO;
 
-namespace LangLang.Storage
+namespace AssociationForProtectionOfAnimals.Storage
 {
 
     /*
@@ -22,8 +22,6 @@ namespace LangLang.Storage
         }
         public List<T> Load()
         {
-            // If the file does not exist, create a new file i
-            // close the stream for writing to the file
             if (!File.Exists(_fileName))
             {
                 FileStream fs = File.Create(_fileName);

@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using LangLang.Domain.Model.Enums;
+using AssociationForProtectionOfAnimals.Domain.Model.Enums;
 
-namespace LangLang.Domain.Model
+namespace AssociationForProtectionOfAnimals.Domain.Model
 {
     public class RegisteredUser : Person
     {
-        public RegisteredUser() : base() { }
-        public RegisteredUser(int id, string firstName, string lastName, Gender gender, DateTime dateOfBirth, string phoneNumber, string homeAddress, string idNumber, string username, string password, AccountType type)
-            : base(id, firstName, lastName, gender, dateOfBirth, phoneNumber, homeAddress, idNumber, username, password, type) { }
+        public RegisteredUser():base() { }
+        public RegisteredUser(int id, string firstName, string lastName, Gender gender, DateTime dateOfBirth, string phoneNumber, string homeAddress, string idNumber, string username, string password)
+            : base(id, firstName, lastName, gender, dateOfBirth, phoneNumber, homeAddress, idNumber, username, password, AccountType.RegisteredUser) { }
 
-        public RegisteredUser(string firstName, string lastName, Gender gender, DateTime dateOfBirth, string phoneNumber, string homeAddress, string idNumber, string username, string password, AccountType type)
-            : base(firstName, lastName, gender, dateOfBirth, phoneNumber, homeAddress, idNumber, username, password, type) { }
+        public RegisteredUser(string firstName, string lastName, Gender gender, DateTime dateOfBirth, string phoneNumber, string homeAddress, string idNumber, string username, string password)
+            : base(firstName, lastName, gender, dateOfBirth, phoneNumber, homeAddress, idNumber, username, password, AccountType.RegisteredUser) { }
 
         public override string[] ToCSV()
         {

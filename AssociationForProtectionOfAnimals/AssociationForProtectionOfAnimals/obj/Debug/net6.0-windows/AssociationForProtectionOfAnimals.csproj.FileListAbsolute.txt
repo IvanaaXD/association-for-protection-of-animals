@@ -19,3 +19,5 @@ C:\4. SEMESTAR\SIMS\projekat sims\association-for-protection-of-animals\Associat
 C:\4. SEMESTAR\SIMS\projekat sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\AssociationForProtectionOfAnimals.pdb
 C:\4. SEMESTAR\SIMS\projekat sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\AssociationForProtectionOfAnimals.genruntimeconfig.cache
 C:\4. SEMESTAR\SIMS\projekat sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\ref\AssociationForProtectionOfAnimals.dll
+C:\4. SEMESTAR\SIMS\projekat sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\View\RegisteredUser\RegistrationForm.baml
+C:\4. SEMESTAR\SIMS\projekat sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\View\RegisteredUser\RegistrationForm.g.cs

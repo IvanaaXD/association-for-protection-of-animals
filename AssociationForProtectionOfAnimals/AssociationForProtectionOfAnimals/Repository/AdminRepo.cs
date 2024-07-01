@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using LangLang.Observer;
-using LangLang.Storage;
-using LangLang.Domain.Model;
+using AssociationForProtectionOfAnimals.Observer;
+using AssociationForProtectionOfAnimals.Storage;
 using AssociationForProtectionOfAnimals.Domain.Model;
-using LangLang.Domain.IRepository;
+using AssociationForProtectionOfAnimals.Domain.Model;
+using AssociationForProtectionOfAnimals.Domain.IRepository;
 
-namespace LangLang.Repository
+namespace AssociationForProtectionOfAnimals.Repository
 {
     public class AdminRepo : Subject, IAdminRepo
     {

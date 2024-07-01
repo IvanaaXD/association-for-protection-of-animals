@@ -1,13 +1,12 @@
-﻿using LangLang.Observer;
+﻿using AssociationForProtectionOfAnimals.Observer;
 using System;
 using System.Collections.Generic;
-using LangLang.Domain.Model;
-using LangLang.Domain.Model.Enums;
-using System.Linq;
-using LangLang.Domain.IRepository;
 using AssociationForProtectionOfAnimals.Domain.Model;
+using AssociationForProtectionOfAnimals.Domain.Model.Enums;
+using System.Linq;
+using AssociationForProtectionOfAnimals.Domain.IRepository;
 
-namespace LangLang.Controller
+namespace AssociationForProtectionOfAnimals.Controller
 {
     public class AdministratorController
     {

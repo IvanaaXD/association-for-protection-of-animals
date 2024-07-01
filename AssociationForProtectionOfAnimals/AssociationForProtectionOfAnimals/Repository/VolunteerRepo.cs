@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using AssociationForProtectionOfAnimals.Domain.Model;
-using LangLang.Domain.IRepository;
-using LangLang.Domain.Model;
-using LangLang.Observer;
-using LangLang.Storage;
+using AssociationForProtectionOfAnimals.Domain.IRepository;
+using AssociationForProtectionOfAnimals.Domain.Model;
+using AssociationForProtectionOfAnimals.Observer;
+using AssociationForProtectionOfAnimals.Storage;
 
-namespace LangLang.Repository
+namespace AssociationForProtectionOfAnimals.Repository
 {
     public class VolunteerRepo : Subject, IVolunteerRepo
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace LangLang.Observer
+namespace AssociationForProtectionOfAnimals.Observer
 {
     public class Subject
     {

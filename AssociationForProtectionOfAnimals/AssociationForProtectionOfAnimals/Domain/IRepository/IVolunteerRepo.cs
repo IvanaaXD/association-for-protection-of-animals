@@ -1,7 +1,7 @@
-﻿using LangLang.Domain.Model;
-using LangLang.Observer;
+﻿using AssociationForProtectionOfAnimals.Domain.Model;
+using AssociationForProtectionOfAnimals.Observer;
 
-namespace LangLang.Domain.IRepository
+namespace AssociationForProtectionOfAnimals.Domain.IRepository
 {
     public interface IVolunteerRepo 
     {

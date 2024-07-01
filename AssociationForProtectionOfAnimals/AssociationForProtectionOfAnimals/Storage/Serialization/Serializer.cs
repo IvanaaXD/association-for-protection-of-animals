@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LangLang.Storage.Serialization
+namespace AssociationForProtectionOfAnimals.Storage.Serialization
 {
     /*
      * Generic class for object serialization in CSV format.

@@ -1,10 +1,10 @@
-﻿using LangLang.Controller;
+﻿using AssociationForProtectionOfAnimals.Controller;
 using System;
 using System.Collections.Generic;
-using LangLang.Domain.IRepository;
-using LangLang.Repository;
+using AssociationForProtectionOfAnimals.Domain.IRepository;
+using AssociationForProtectionOfAnimals.Repository;
 
-namespace LangLang.Domain.Model
+namespace AssociationForProtectionOfAnimals.Domain.Model
 {
     public static class Injector
     {

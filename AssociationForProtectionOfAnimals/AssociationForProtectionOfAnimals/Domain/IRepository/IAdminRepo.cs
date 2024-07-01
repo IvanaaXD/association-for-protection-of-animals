@@ -1,9 +1,9 @@
-using LangLang.Observer;
+using AssociationForProtectionOfAnimals.Observer;
 using System.Collections.Generic;
-using LangLang.Domain.Model;
+using AssociationForProtectionOfAnimals.Domain.Model;
 using AssociationForProtectionOfAnimals.Domain.Model;
 
-namespace LangLang.Domain.IRepository
+namespace AssociationForProtectionOfAnimals.Domain.IRepository
 {
     public interface IAdminRepo : IObserver
     {

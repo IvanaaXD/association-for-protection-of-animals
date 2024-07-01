@@ -1,12 +1,12 @@
-﻿using LangLang.Repository;
-using LangLang.Domain.Model;
-using LangLang.Observer;
+﻿using AssociationForProtectionOfAnimals.Repository;
+using AssociationForProtectionOfAnimals.Domain.Model;
+using AssociationForProtectionOfAnimals.Observer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using LangLang.Domain.IRepository;
+using AssociationForProtectionOfAnimals.Domain.IRepository;
 
-namespace LangLang.Controller
+namespace AssociationForProtectionOfAnimals.Controller
 {
     public class VolunteerController
     {

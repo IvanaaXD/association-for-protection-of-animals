@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using LangLang.Domain.Model;
-using LangLang.Storage;
-using LangLang.Observer;
-using LangLang.Domain.IRepository;
+using AssociationForProtectionOfAnimals.Domain.Model;
+using AssociationForProtectionOfAnimals.Storage;
+using AssociationForProtectionOfAnimals.Observer;
+using AssociationForProtectionOfAnimals.Domain.IRepository;
 
-namespace LangLang.Repository
+namespace AssociationForProtectionOfAnimals.Repository
 {
     public class RegisteredUserRepo : Subject, IRegisteredUserRepo
     {
