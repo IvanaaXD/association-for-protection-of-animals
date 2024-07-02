@@ -3,6 +3,7 @@ using System.Windows.Input;
 using AssociationForProtectionOfAnimals.Domain.Model;
 using AssociationForProtectionOfAnimals.Controller;
 using AssociationForProtectionOfAnimals.View.Animal;
+using AssociationForProtectionOfAnimals.View.UnregisteredUser;
 
 namespace AssociationForProtectionOfAnimals
 {
@@ -103,8 +104,8 @@ namespace AssociationForProtectionOfAnimals
 
         private void Unregistered_Click(object sender, RoutedEventArgs e)
         {
-            /*View.RegisteredUser.RegistrationForm registrationForm = new View.RegisteredUser.RegistrationForm(registeredUserController);
-            registrationForm.Show();*/
+            UnregisteredUserPage unregisteredUserPage = new UnregisteredUserPage();
+            unregisteredUserPage.Show();
         }
 
         private void SetPlaceholders()
