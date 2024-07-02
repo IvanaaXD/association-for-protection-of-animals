@@ -44,6 +44,7 @@ D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnima
 D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\AssociationForProtectionOfAnimals.pdb
 D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\AssociationForProtectionOfAnimals.genruntimeconfig.cache
 D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\ref\AssociationForProtectionOfAnimals.dll
+<<<<<<< HEAD
 C:\Users\Milan\Documents\Github\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\View\Animal\CreateAnimal.baml
 C:\Users\Milan\Documents\Github\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\View\UnregisteredUser\RegistrationForm.baml
 C:\Users\Milan\Documents\Github\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\MainWindow.g.cs
@@ -69,3 +70,7 @@ C:\Users\Milan\Documents\Github\association-for-protection-of-animals\Associatio
 C:\Users\Milan\Documents\Github\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\AssociationForProtectionOfAnimals.sourcelink.json
 C:\Users\Milan\Documents\Github\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\AssociationForProtectionOfAnimals.genruntimeconfig.cache
 C:\Users\Milan\Documents\Github\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\ref\AssociationForProtectionOfAnimals.dll
+=======
+D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\View\UnregisteredUser\UnregisteredUserPage.g.cs
+D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\View\UnregisteredUser\UnregisteredUserPage.baml
+>>>>>>> post

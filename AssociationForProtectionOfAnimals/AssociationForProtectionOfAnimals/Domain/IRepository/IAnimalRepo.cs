@@ -10,5 +10,6 @@ namespace AssociationForProtectionOfAnimals.Domain.IRepository
         Animal? RemoveAnimal(int id);
         Animal? GetAnimalById(int id);
         List<Animal> GetAllAnimals();
+        List<Animal> GetAnimalByBreed(string breed);
     }
 }
