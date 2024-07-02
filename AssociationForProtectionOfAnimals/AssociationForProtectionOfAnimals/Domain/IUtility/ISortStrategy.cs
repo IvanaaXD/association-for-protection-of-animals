@@ -4,6 +4,6 @@ namespace AssociationForProtectionOfAnimals.Domain.IUtility
 {
     public interface ISortStrategy
     {
-        IEnumerable<Post> Sort(IEnumerable<Post> posts);
+        IEnumerable<Comment> Sort(IEnumerable<Comment> posts);
     }
 }

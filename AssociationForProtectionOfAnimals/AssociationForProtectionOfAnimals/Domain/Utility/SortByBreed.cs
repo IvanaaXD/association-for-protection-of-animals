@@ -7,7 +7,7 @@ namespace AssociationForProtectionOfAnimals.Domain.Utility
 {
     public class SortByBreed : ISortStrategy
     {
-        public IEnumerable<Post> Sort(IEnumerable<Post> posts)
+        public IEnumerable<Comment> Sort(IEnumerable<Comment> posts)
         {
             AnimalRepo _animalRepository = (AnimalRepo)Injector.CreateInstance<IAnimalRepo>();
             List<Animal> animals = _animalRepository.GetAllAnimals();

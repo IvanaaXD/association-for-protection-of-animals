@@ -11,6 +11,7 @@ namespace AssociationForProtectionOfAnimals.Domain.IRepository
         RegisteredUser? RemoveRegisteredUser(int id);
         RegisteredUser? GetRegisteredUserById(int id);
         List<RegisteredUser> GetAllRegisteredUsers();
+        RegisteredUser GetUserByEmail(string email);
         void Subscribe(IObserver observer);
     }
 }

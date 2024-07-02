@@ -23,13 +23,13 @@ namespace AssociationForProtectionOfAnimals.Repository
             return _posts.Last().Id + 1;
         }
 
-        public Post Add(Post grade)
+        public Post Add(Post post)
         {
-            grade.Id = GenerateId();
-            _posts.Add(grade);
+            post.Id = GenerateId();
+            _posts.Add(post);
             _storage.Save(_posts);
             NotifyObservers();
-            return grade;
+            return post;
         }
 
         public Post? Update(Post post)

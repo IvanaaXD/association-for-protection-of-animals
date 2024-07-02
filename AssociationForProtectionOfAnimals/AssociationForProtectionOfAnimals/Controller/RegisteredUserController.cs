@@ -61,6 +61,11 @@ namespace AssociationForProtectionOfAnimals.Controller
             return _account.GetAccountById(id);
         }
 
+        public RegisteredUser GetRegisteredUserByEmail(string email)
+        {
+            return _users.GetUserByEmail(email);
+        }
+
         public bool IsUsernameUnique(string username)
         {
             foreach (RegisteredUser user in _users.GetAllRegisteredUsers())

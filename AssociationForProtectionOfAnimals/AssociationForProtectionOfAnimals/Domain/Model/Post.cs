@@ -15,6 +15,8 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
         private string person;
         private string adopter;
 
+        private List<int> personLikedIds;
+
         public int Id
         {
             get { return id; }
@@ -63,6 +65,12 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
             set { adopter = value; }
         }
 
+        public List<int> PersonLikedIds
+        {
+            get { return personLikedIds; }
+            set { personLikedIds = value; }
+        }
+
         public Post() { }
 
         public Post(DateTime dateOfPosting, DateTime dateOfUpdating, PostStatus postStatus, bool hasCurrentAdopter, int animalId, string person, string adopter)
@@ -78,6 +86,8 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
 
         public string[] ToCSV()
         {
+            string personLikedIdsStr = string.Join(",", personLikedIds);
+
             string[] csvValues =
             {
                 Id.ToString(),
@@ -87,14 +97,15 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
                 HasCurrentAdopter.ToString(),
                 AnimalId.ToString(),
                 Person.ToString(),
-                Adopter.ToString()
+                Adopter.ToString(),
+                personLikedIdsStr
             };
             return csvValues;
         }
 
         public void FromCSV(string[] values)
         {
-            if (values.Length != 8)
+            if (values.Length != 9)
                 throw new ArgumentException("Invalid number of post values in CSV");
 
             id = int.Parse(values[0]);
@@ -105,6 +116,16 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
             animalId = int.Parse(values[5]); 
             person = values[6];
             adopter = values[7];
+            personLikedIds = ListFromCSV(values[8]);
+        }
+
+        private List<int> ListFromCSV(string listElements)
+        {
+            List<int> list = new List<int>();
+            if (!string.IsNullOrEmpty(listElements))
+                list = new List<int>(Array.ConvertAll(listElements.Split(','), int.Parse));
+
+            return list;
         }
     }
 }

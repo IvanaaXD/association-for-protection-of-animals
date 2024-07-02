@@ -99,5 +99,11 @@ namespace AssociationForProtectionOfAnimals.Controller
             _users.Subscribe(observer);
             _accounts.Subscribe(observer);
         }
+
+        public RegisteredUser GetVolunteerByEmail(string email)
+        {
+            return _volunteers.GetUserByEmail(email);
+        }
+
     }
 }

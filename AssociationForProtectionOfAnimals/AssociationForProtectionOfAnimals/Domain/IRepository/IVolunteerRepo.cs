@@ -11,6 +11,7 @@ namespace AssociationForProtectionOfAnimals.Domain.IRepository
         RegisteredUser AddUser(RegisteredUser user);
         RegisteredUser? UpdateUser(RegisteredUser? user);
         RegisteredUser? RemoveUser(int id);
+        RegisteredUser GetUserByEmail(string email);
         void Subscribe(IObserver observer);
     }
 }

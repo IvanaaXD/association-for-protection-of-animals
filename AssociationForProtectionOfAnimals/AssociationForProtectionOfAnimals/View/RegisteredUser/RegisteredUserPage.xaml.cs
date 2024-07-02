@@ -67,10 +67,10 @@ namespace AssociationForProtectionOfAnimals.View.RegisteredUser
             try
             {
                 TableViewModel.Posts.Clear();
-                List<Post> posts = GetFilteredPosts();
+                List<Comment> posts = GetFilteredPosts();
 
                 if (posts != null)
-                    foreach (Post post in posts)
+                    foreach (Comment post in posts)
                         TableViewModel.Posts.Add(new PostDTO(post));
                 else
                     MessageBox.Show("No courses found.");
@@ -181,8 +181,8 @@ namespace AssociationForProtectionOfAnimals.View.RegisteredUser
                 TableViewModel.Posts.Clear();
                 var filteredPosts = GetFilteredPosts();
 
-                List<Post> posts = _postController.GetAllPosts(currentPostPage, 4, postSortCriteria, filteredPosts);
-                List<Post> newPosts = _postController.GetAllPosts(currentPostPage + 1, 4, postSortCriteria, filteredPosts);
+                List<Comment> posts = _postController.GetAllPosts(currentPostPage, 4, postSortCriteria, filteredPosts);
+                List<Comment> newPosts = _postController.GetAllPosts(currentPostPage + 1, 4, postSortCriteria, filteredPosts);
 
                 if (newPosts.Count == 0)
                     PostNextButton.IsEnabled = false;
@@ -190,7 +190,7 @@ namespace AssociationForProtectionOfAnimals.View.RegisteredUser
                     PostNextButton.IsEnabled = true;
                 if (filteredPosts != null)
                 {
-                    foreach (Post post in posts)
+                    foreach (Comment post in posts)
                         TableViewModel.Posts.Add(new PostDTO(post));
                 }
                 else
@@ -204,7 +204,7 @@ namespace AssociationForProtectionOfAnimals.View.RegisteredUser
             }
         }
 
-        private List<Post>? GetFilteredPosts()
+        private List<Comment>? GetFilteredPosts()
         {
             PostStatus? selectedPostStatus = PostStatus.NULL;
             string? selectedBreed = null;
@@ -240,20 +240,20 @@ namespace AssociationForProtectionOfAnimals.View.RegisteredUser
             return GetPostsForDisplay(selectedPostStatus, selectedBreed, selectedStartDate, selectedMinYears, selectedMaxYears);
         }
 
-        private List<Post> GetPostsForDisplay(PostStatus? selectedPostStatus, string selectedBreed, DateTime? selectedStartDate, int selectedMinYears, int selectedMaxYears)
+        private List<Comment> GetPostsForDisplay(PostStatus? selectedPostStatus, string selectedBreed, DateTime? selectedStartDate, int selectedMinYears, int selectedMaxYears)
         {
-            List<Post> finalPosts= new();
+            List<Comment> finalPosts= new();
 
             if (isSearchButtonClicked)
             {
-                List<Post> allFilteredPosts = _postController.FindPostsByCriteria(selectedPostStatus, selectedBreed, selectedStartDate, selectedMinYears, selectedMaxYears);
+                List<Comment> allFilteredPosts = _postController.FindPostsByCriteria(selectedPostStatus, selectedBreed, selectedStartDate, selectedMinYears, selectedMaxYears);
 
-                foreach (Post post in allFilteredPosts)
+                foreach (Comment post in allFilteredPosts)
                     finalPosts.Add(post);
             }
             else
             {
-                foreach (Post post in _postController.GetAllPosts())
+                foreach (Comment post in _postController.GetAllPosts())
                     finalPosts.Add(post);
             }
 

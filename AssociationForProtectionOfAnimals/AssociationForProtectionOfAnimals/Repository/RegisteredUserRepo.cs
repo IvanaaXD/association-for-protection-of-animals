@@ -72,5 +72,10 @@ namespace AssociationForProtectionOfAnimals.Repository
         {
             return _users;
         }
+
+        public RegisteredUser GetUserByEmail(string email)
+        {
+            return _users.Find(v => v.Account.Username == email);
+        }
     }
 }

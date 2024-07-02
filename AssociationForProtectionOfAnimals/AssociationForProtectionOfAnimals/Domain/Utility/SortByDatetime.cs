@@ -10,7 +10,7 @@ namespace AssociationForProtectionOfAnimals.Domain.Utility
 {
     public class SortByDatetime : ISortStrategy
     {
-        public IEnumerable<Post> Sort(IEnumerable<Post> posts)
+        public IEnumerable<Comment> Sort(IEnumerable<Comment> posts)
         {
             return posts.OrderBy(x => x.DateOfPosting);
         }
