@@ -12,8 +12,8 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
         public DateTime AccommodationDate { get; set; }
         public DateTime ReturnDate { get; set; }
 
-        public TemporaryShelterRequest(RequestStatus status, DateTime requestSubmissionDate, DateTime accommodationDate, DateTime returnDate)
-            : base(status, requestSubmissionDate)
+        public TemporaryShelterRequest(int registeredUserId, int volunteerId, RequestStatus status, DateTime requestSubmissionDate, DateTime accommodationDate, DateTime returnDate)
+            : base(registeredUserId, volunteerId, status, requestSubmissionDate)
         {
             AccommodationDate = accommodationDate;
             ReturnDate = returnDate;
