@@ -25,6 +25,7 @@ namespace AssociationForProtectionOfAnimals.Controller
         }
         public void Update(RegisteredUser user)
         {
+            /* SEND REQUEST FOR ACCOUNT UPDATE */
             _users.UpdateRegisteredUser(user);
         }
         public void Subscribe(IObserver observer)

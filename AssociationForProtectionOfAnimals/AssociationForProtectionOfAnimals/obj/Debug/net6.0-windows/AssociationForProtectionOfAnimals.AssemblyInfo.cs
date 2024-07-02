@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AssociationForProtectionOfAnimals")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a9293224d3b81e1065f96686cec4fce9f193b24f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+35488c5cfd9f27e6edab34496637ca6138f36760")]
 [assembly: System.Reflection.AssemblyProductAttribute("AssociationForProtectionOfAnimals")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AssociationForProtectionOfAnimals")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

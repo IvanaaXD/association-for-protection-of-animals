@@ -14,7 +14,7 @@ namespace AssociationForProtectionOfAnimals.Domain.Model.Enums
         Admin
     }
 
-    public enum AnimalStatus
+    public enum PostStatus
     {
         ForAdoption,
         Adopted,
@@ -31,5 +31,19 @@ namespace AssociationForProtectionOfAnimals.Domain.Model.Enums
         TemporaryAdoptionRequest,
         AddAnimalRequest,
         UpdateAnimalRequest
+    }
+
+    public enum RequestStatus
+    {
+        WaitingForResponse,
+        Accepted,
+        Denied,
+    }
+
+    public enum TypeOfDonation
+    {
+        Individual,
+        Group,
+        General,
     }
 }

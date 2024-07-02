@@ -16,6 +16,8 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
             { typeof(VolunteerController), new Lazy<object>(() => new VolunteerController()) },
             { typeof(IAdminRepo), new Lazy<object>(() => new AdminRepo()) },
             { typeof(AdministratorController), new Lazy<object>(() => new AdministratorController()) },
+            { typeof(IAnimalRepo), new Lazy<object>(() => new AnimalRepo()) },
+
         };
 
         static Injector()

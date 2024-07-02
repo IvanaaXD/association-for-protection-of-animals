@@ -13,12 +13,14 @@ namespace AssociationForProtectionOfAnimals.Controller
         private readonly IAdminRepo _admins;
         private readonly IVolunteerRepo? _volunteers;
         private readonly IRegisteredUserRepo? _users;
+        private readonly IAnimalRepo? _animals;
 
         public AdministratorController()
         {
             _admins = Injector.CreateInstance<IAdminRepo>();
             _volunteers = Injector.CreateInstance<IVolunteerRepo>();
             _users = Injector.CreateInstance<IRegisteredUserRepo>();
+            _animals = Injector.CreateInstance<IAnimalRepo>();
         }
 
         public Administrator? GetAdministrator()
@@ -83,6 +85,57 @@ namespace AssociationForProtectionOfAnimals.Controller
         {
             return _admins.GetAllVolunteers(page, pageSize, sortStrategy, volunteers);
         }*/
+
+        public Animal AddAnimal(Animal animal)
+        {
+            return _animals.AddAnimal(animal);
+        }
+
+        public Animal? UpdateAnimal(Animal animal)
+        {
+            return _animals.UpdateAnimal(animal);
+        }
+
+        public Animal? RemoveAnimal(int id)
+        {
+            return _animals.RemoveAnimal(id);
+        }
+
+        public Animal? GetAnimalById(int id)
+        {
+            return _animals.GetAnimalById(id);
+        }
+
+        public List<Animal> GetAllAnimals()
+        {
+            return _animals.GetAllAnimals();
+        }
+
+        public List<RegisteredUser> GetAllRegisteredUsers()
+        {
+            return _volunteers.GetAllRegisteredUsers();
+        }
+        public RegisteredUser? GetUserById(int id)
+        {
+            return _volunteers.GetById(id);
+        }
+        public RegisteredUser AddUser(RegisteredUser user)
+        {
+            return _volunteers.AddUser(user);
+        }
+
+        public RegisteredUser? UpdateUser(RegisteredUser? user)
+        {
+            return _volunteers.UpdateUser(user);
+        }
+
+        public RegisteredUser? RemoveUser(int id)
+        {
+            RegisteredUser? user = GetUserById(id);
+            if (user == null) return null;
+            _volunteers.RemoveUser(id);
+            return user;
+        }
 
         public Volunteer? GetVolunteerByUsername(string username)
         {
