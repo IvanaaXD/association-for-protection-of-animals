@@ -2,7 +2,6 @@
 using System.Windows.Input;
 using AssociationForProtectionOfAnimals.Domain.Model;
 using AssociationForProtectionOfAnimals.Controller;
-using AssociationForProtectionOfAnimals.Domain.Model;
 
 namespace AssociationForProtectionOfAnimals
 {
@@ -37,7 +36,7 @@ namespace AssociationForProtectionOfAnimals
         {
             foreach (RegisteredUser user in registeredUserController.GetAllRegisteredUsers())
             {
-                if (user.Username == username && user.Password == password)
+                if (user.Account.Username == username && user.Account.Password == password)
                 {
                     MessageBox.Show("Uspesan login korisnika.");
 
@@ -66,7 +65,7 @@ namespace AssociationForProtectionOfAnimals
         {
             foreach (Volunteer volunteer in adminController.GetAllVolunteers())
             {
-                if (volunteer.Username == username && volunteer.Password == password)
+                if (volunteer.Account.Username == username && volunteer.Account.Password == password)
                 {
                     MessageBox.Show("Uspesan login volontera.");
 
@@ -82,7 +81,7 @@ namespace AssociationForProtectionOfAnimals
         {
             Administrator director = adminController.GetAdministrator();
 
-            if (director.Username == username && director.Password == password)
+            if (director.Account.Username == username && director.Account.Password == password)
             {
                 MessageBox.Show("Uspesan login admina.");
 
@@ -95,7 +94,7 @@ namespace AssociationForProtectionOfAnimals
 
         private void Registration_Click(object sender, RoutedEventArgs e)
         {
-            View.RegisteredUser.RegistrationForm registrationForm = new View.RegisteredUser.RegistrationForm();
+            View.UnregisteredUser.RegistrationForm registrationForm = new View.UnregisteredUser.RegistrationForm();
             registrationForm.Show();
         }
 

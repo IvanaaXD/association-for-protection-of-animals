@@ -175,7 +175,8 @@ namespace AssociationForProtectionOfAnimals.DTO
 
         public RegisteredUser ToRegisteredUser()
         {
-            return new RegisteredUser(firstName, lastName, gender, dateOfBirth, phoneNumber, homeAddress, idNumber, username, password);
+            Account userAccount = new(username, password, AccountType.RegisteredUser);
+            return new RegisteredUser(firstName, lastName, gender, dateOfBirth, phoneNumber, homeAddress, idNumber, userAccount);
         }
 
         public UserDTO()
@@ -184,17 +185,17 @@ namespace AssociationForProtectionOfAnimals.DTO
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        public UserDTO(RegisteredUser student)
+        public UserDTO(RegisteredUser user)
         {
-            id = student.Id;
-            FirstName = student.FirstName;
-            LastName = student.LastName;
-            Gender = student.Gender;
-            DateOfBirth = student.DateOfBirth;
-            PhoneNumber = student.PhoneNumber;
-            HomeAddress = student.HomeAddress;
-            Username = student.Username;
-            Password = student.Password;
+            id = user.Id;
+            FirstName = user.FirstName;
+            LastName = user.LastName;
+            Gender = user.Gender;
+            DateOfBirth = user.DateOfBirth;
+            PhoneNumber = user.PhoneNumber;
+            HomeAddress = user.HomeAddress;
+            Username = user.Account.Username;
+            Password = user.Account.Password;
         }
 
         protected virtual void OnPropertyChanged(string name)

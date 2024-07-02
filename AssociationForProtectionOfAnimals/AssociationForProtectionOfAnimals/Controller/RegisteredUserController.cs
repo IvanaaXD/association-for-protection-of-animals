@@ -1,9 +1,6 @@
-﻿using System.Collections.Generic;
-using AssociationForProtectionOfAnimals.Repository;
-using AssociationForProtectionOfAnimals.Observer;
+﻿using AssociationForProtectionOfAnimals.Observer;
 using AssociationForProtectionOfAnimals.Domain.Model;
 using AssociationForProtectionOfAnimals.Domain.IRepository;
-using System;
 
 namespace AssociationForProtectionOfAnimals.Controller
 {
@@ -46,7 +43,7 @@ namespace AssociationForProtectionOfAnimals.Controller
         public bool IsUsernameUnique(string username)
         {
             foreach (RegisteredUser user in _users.GetAllRegisteredUsers())
-                if (user.Username.Equals(username)) return false;
+                if (user.Account.Username.Equals(username)) return false;
 
             return true;
         }

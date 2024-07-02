@@ -124,8 +124,8 @@ namespace AssociationForProtectionOfAnimals.View.RegisteredUser {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/AssociationForProtectionOfAnimals;component/view/registereduser/registrationform" +
-                    ".xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/AssociationForProtectionOfAnimals;V1.0.0.0;component/view/registereduser/registr" +
+                    "ationform.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\View\RegisteredUser\RegistrationForm.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

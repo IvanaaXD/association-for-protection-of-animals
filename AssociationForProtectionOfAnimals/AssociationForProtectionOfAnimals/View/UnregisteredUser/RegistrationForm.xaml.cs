@@ -5,7 +5,7 @@ using AssociationForProtectionOfAnimals.DTO;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace AssociationForProtectionOfAnimals.View.RegisteredUser
+namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
 {
     public partial class RegistrationForm : Window
     {
@@ -98,17 +98,17 @@ namespace AssociationForProtectionOfAnimals.View.RegisteredUser
         }
         private void PasswordBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            passwordBox.Password = "";
+            passwordBox.Password = string.Empty;
         }
 
         private void AddressTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            addressTextBox.Text = "";
+            addressTextBox.Text = string.Empty;
         }
 
         private void IdNumberTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            IdNumberTextBox.Text = "";
+            IdNumberTextBox.Text = string.Empty;
         }
 
     }

@@ -6,11 +6,12 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
     public class Volunteer : Person
     {
         public Volunteer() : base() { }
-        public Volunteer(int id, string firstName, string lastName, Gender gender, DateTime dateOfBirth, string phoneNumber, string homeAddress, string idNumber, string username, string password)
-            : base(id, firstName, lastName, gender, dateOfBirth, phoneNumber, homeAddress, idNumber, username, password, AccountType.Volunteer) { }
 
-        public Volunteer(string firstName, string lastName, Gender gender, DateTime dateOfBirth, string phoneNumber, string homeAddress, string idNumber, string username, string password)
-            : base(firstName, lastName, gender, dateOfBirth, phoneNumber, homeAddress, idNumber, username, password, AccountType.Volunteer) { }
+        public Volunteer(int id, string firstName, string lastName, Gender gender, DateTime dateOfBirth, string phoneNumber, string homeAddress, string idNumber, Account account)
+            : base(id, firstName, lastName, gender, dateOfBirth, phoneNumber, homeAddress, idNumber, account) { }
+
+        public Volunteer(string firstName, string lastName, Gender gender, DateTime dateOfBirth, string phoneNumber, string homeAddress, string idNumber, Account account)
+            : base(firstName, lastName, gender, dateOfBirth, phoneNumber, homeAddress, idNumber, account) { }
 
         public override string[] ToCSV()
         {

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using AssociationForProtectionOfAnimals.Domain.Model;
+﻿using AssociationForProtectionOfAnimals.Domain.Model;
 using AssociationForProtectionOfAnimals.Storage;
 using AssociationForProtectionOfAnimals.Observer;
 using AssociationForProtectionOfAnimals.Domain.IRepository;
@@ -46,9 +44,9 @@ namespace AssociationForProtectionOfAnimals.Repository
             oldRegisteredUser.PhoneNumber = user.PhoneNumber;
             oldRegisteredUser.HomeAddress = user.HomeAddress;
             oldRegisteredUser.IdNumber = user.IdNumber;
-            oldRegisteredUser.Username = user.Username;
-            oldRegisteredUser.Password = user.Password;
-            oldRegisteredUser.Type = user.Type;
+            oldRegisteredUser.Account.Username = user.Account.Username;
+            oldRegisteredUser.Account.Password = user.Account.Password;
+            oldRegisteredUser.Account.Type = user.Account.Type;
 
             _storage.Save(_users);
             NotifyObservers();

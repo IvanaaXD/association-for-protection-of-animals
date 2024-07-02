@@ -1,9 +1,5 @@
-﻿using AssociationForProtectionOfAnimals.Repository;
-using AssociationForProtectionOfAnimals.Domain.Model;
+﻿using AssociationForProtectionOfAnimals.Domain.Model;
 using AssociationForProtectionOfAnimals.Observer;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using AssociationForProtectionOfAnimals.Domain.IRepository;
 
 namespace AssociationForProtectionOfAnimals.Controller

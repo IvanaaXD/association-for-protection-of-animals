@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using AssociationForProtectionOfAnimals.Observer;
+﻿using AssociationForProtectionOfAnimals.Observer;
 using AssociationForProtectionOfAnimals.Storage;
-using AssociationForProtectionOfAnimals.Domain.Model;
 using AssociationForProtectionOfAnimals.Domain.Model;
 using AssociationForProtectionOfAnimals.Domain.IRepository;
 
@@ -50,9 +46,9 @@ namespace AssociationForProtectionOfAnimals.Repository
             oldAdministrator.PhoneNumber = Administrator.PhoneNumber;
             oldAdministrator.HomeAddress = Administrator.HomeAddress;
             oldAdministrator.IdNumber = Administrator.IdNumber;
-            oldAdministrator.Username = Administrator.Username;
-            oldAdministrator.Password = Administrator.Password;
-            oldAdministrator.Type = Administrator.Type;
+            oldAdministrator.Account.Username = Administrator.Account.Username;
+            oldAdministrator.Account.Password = Administrator.Account.Password;
+            oldAdministrator.Account.Type = Administrator.Account.Type;
 
             _storageAdmins.Save(_admins);
             NotifyObservers();
@@ -79,9 +75,9 @@ namespace AssociationForProtectionOfAnimals.Repository
             oldVolunteer.PhoneNumber = Volunteer.PhoneNumber;
             oldVolunteer.HomeAddress = Volunteer.HomeAddress;
             oldVolunteer.IdNumber = Volunteer.IdNumber;
-            oldVolunteer.Username = Volunteer.Username;
-            oldVolunteer.Password = Volunteer.Password;
-            oldVolunteer.Type = Volunteer.Type;
+            oldVolunteer.Account.Username = Volunteer.Account.Username;
+            oldVolunteer.Account.Password = Volunteer.Account.Password;
+            oldVolunteer.Account.Type = Volunteer.Account.Type;
 
             _storageVolunteers.Save(_volunteers);
             NotifyObservers();

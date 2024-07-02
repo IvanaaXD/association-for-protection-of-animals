@@ -14,9 +14,7 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
         protected string homeAddress;
         protected string phoneNumber;
         protected string idNumber;
-        protected string username;
-        protected string password;
-        protected AccountType type;
+        protected Account account;
 
         public int Id
         {
@@ -65,32 +63,23 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
             set { idNumber = value; }
         }
 
-        public string Username
+        public Account Account
         {
-            get { return username; }
-            set { username = value; }
-        }
-        public string Password
-        {
-            get { return password; }
-            set { password = value; }
-        }
-        public AccountType Type
-        {
-            get { return type; }
-            set { type = value; }
+            get { return account; }
+            set { account = value; }
         }
 
-
-        protected Person() 
+        protected Person()
         {
             firstName = "";
             lastName = "";
             phoneNumber = "";
             homeAddress = "";
             idNumber = "";
+            account = new Account();
         }
-        protected Person(int id, string firstName, string lastName, Gender gender, DateTime dateOfBirth, string phoneNumber, string homeAddress, string idNumber, string username, string password, AccountType type)
+
+        protected Person(int id, string firstName, string lastName, Gender gender, DateTime dateOfBirth, string phoneNumber, string homeAddress, string idNumber, Account account)
         {
             this.id = id;
             this.firstName = firstName;
@@ -100,11 +89,10 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
             this.phoneNumber = phoneNumber;
             this.homeAddress = homeAddress;
             this.idNumber = idNumber;
-            this.username = username;
-            this.password = password;
-            this.type = type;
+            this.account = account;
         }
-        protected Person(string firstName, string lastName, Gender gender, DateTime dateOfBirth, string phoneNumber, string homeAddress, string idNumber, string username, string password, AccountType type)
+
+        protected Person(string firstName, string lastName, Gender gender, DateTime dateOfBirth, string phoneNumber, string homeAddress, string idNumber, Account account)
         {
             this.firstName = firstName;
             this.lastName = lastName;
@@ -113,31 +101,31 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
             this.phoneNumber = phoneNumber;
             this.homeAddress = homeAddress;
             this.idNumber = idNumber;
-            this.username = username;
-            this.password = password;
-            this.type = type;
+            this.account = account;
         }
 
         public override string ToString()
         {
             return $"{firstName} {lastName}";
         }
+
         public virtual string[] ToCSV()
         {
-            return new string[]
+            var accountData = account.ToCSV();
+            var personData = new string[]
             {
-            id.ToString(),
-            firstName,
-            lastName,
-            gender.ToString(),
-            dateOfBirth.ToString("yyyy-MM-dd"),
-            homeAddress,
-            phoneNumber,
-            idNumber,
-            username,
-            password,
-            type.ToString()
+                id.ToString(),
+                firstName,
+                lastName,
+                gender.ToString(),
+                dateOfBirth.ToString("yyyy-MM-dd"),
+                homeAddress,
+                phoneNumber,
+                idNumber
             };
+            var result = new List<string>(personData);
+            result.AddRange(accountData);
+            return result.ToArray();
         }
 
         public virtual void FromCSV(string[] values)
@@ -155,9 +143,8 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
             homeAddress = values[5];
             phoneNumber = values[6];
             idNumber = values[7];
-            username = values[8];
-            password = values[9];
-            type = (AccountType)Enum.Parse(typeof(AccountType), values[10]);
+            account = new Account();
+            account.FromCSV(values[8..]);
         }
     }
 }

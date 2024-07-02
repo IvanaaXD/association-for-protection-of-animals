@@ -87,7 +87,7 @@ namespace AssociationForProtectionOfAnimals.Controller
         public Volunteer? GetVolunteerByUsername(string username)
         {
             foreach (Volunteer volunteer in GetAllVolunteers())
-                if (volunteer.Username == username)
+                if (volunteer.Account.Username == username)
                     return volunteer;
             return null;
         }

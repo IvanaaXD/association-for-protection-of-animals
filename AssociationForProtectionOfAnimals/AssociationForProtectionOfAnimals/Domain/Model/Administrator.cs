@@ -7,11 +7,12 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
     public class Administrator : Person
     {
         public Administrator() : base() { }
-        public Administrator(int id, string firstName, string lastName, Gender gender, DateTime dateOfBirth, string phoneNumber, string homeAddress, string idNumber, string username, string password)
-            : base(id, firstName, lastName, gender, dateOfBirth, phoneNumber, homeAddress, idNumber, username, password, AccountType.Admin) { }
 
-        public Administrator(string firstName, string lastName, Gender gender, DateTime dateOfBirth, string phoneNumber, string homeAddress, string idNumber, string username, string password)
-            : base(firstName, lastName, gender, dateOfBirth, phoneNumber, homeAddress, idNumber, username, password, AccountType.Admin) { }
+        public Administrator(int id, string firstName, string lastName, Gender gender, DateTime dateOfBirth, string phoneNumber, string homeAddress, string idNumber, Account account)
+            : base(id, firstName, lastName, gender, dateOfBirth, phoneNumber, homeAddress, idNumber, account) { }
+
+        public Administrator(string firstName, string lastName, Gender gender, DateTime dateOfBirth, string phoneNumber, string homeAddress, string idNumber, Account account)
+            : base(firstName, lastName, gender, dateOfBirth, phoneNumber, homeAddress, idNumber, account) { }
 
         public override string[] ToCSV()
         {
