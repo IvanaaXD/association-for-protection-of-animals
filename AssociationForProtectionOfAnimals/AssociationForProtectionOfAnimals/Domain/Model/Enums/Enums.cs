@@ -16,6 +16,7 @@ namespace AssociationForProtectionOfAnimals.Domain.Model.Enums
 
     public enum PostStatus
     {
+        NULL,
         ForAdoption,
         Adopted,
         TemporarilyAdopted,

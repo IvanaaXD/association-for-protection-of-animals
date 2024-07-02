@@ -71,5 +71,10 @@ namespace AssociationForProtectionOfAnimals.Repository
         {
             return _animals;
         }
+
+        public List<Animal> GetAnimalByBreed(string breed)
+        {
+            return _animals.Where(animal => animal.Breed.Name == breed).ToList();
+        }
     }
 }

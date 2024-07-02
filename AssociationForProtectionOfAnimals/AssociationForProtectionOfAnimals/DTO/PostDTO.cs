@@ -20,8 +20,9 @@ namespace AssociationForProtectionOfAnimals.DTO
 
         private string adopterName;
         private string personName;
-        private Breed animalBreed;
+        private string animalBreed;
         private string animalName;
+        private int animalYears;
 
         public int Id
         {
@@ -83,7 +84,7 @@ namespace AssociationForProtectionOfAnimals.DTO
             set { SetProperty(ref personName, value); }
         }
 
-        public Breed AnimalBreed
+        public string AnimalBreed
         {
             get { return animalBreed; }
             set { SetProperty(ref animalBreed, value); }
@@ -93,6 +94,12 @@ namespace AssociationForProtectionOfAnimals.DTO
         {
             get { return animalName; }
             set { SetProperty(ref animalName, value); }
+        }
+
+        public int AnimalYears
+        {
+            get { return animalYears; }
+            set { SetProperty(ref animalYears, value); }
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

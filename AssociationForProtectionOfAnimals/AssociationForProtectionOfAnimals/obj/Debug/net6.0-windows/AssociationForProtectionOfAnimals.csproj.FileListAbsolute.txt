@@ -44,3 +44,5 @@ D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnima
 D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\AssociationForProtectionOfAnimals.pdb
 D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\AssociationForProtectionOfAnimals.genruntimeconfig.cache
 D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\ref\AssociationForProtectionOfAnimals.dll
+D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\View\UnregisteredUser\UnregisteredUserPage.g.cs
+D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\View\UnregisteredUser\UnregisteredUserPage.baml
