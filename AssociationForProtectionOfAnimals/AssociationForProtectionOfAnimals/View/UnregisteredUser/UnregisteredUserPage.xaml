@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AssociationForProtectionOfAnimals.View.UnregisteredUser"
         mc:Ignorable="d"
         WindowStartupLocation = "CenterScreen"
-        Title="WelcomePage" Height="450" Width="1100">
+        Title="WelcomePage" Height="620" Width="1100">
 
     <TabControl>
 
