@@ -8,26 +8,35 @@
     "net6.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Korisnik\\.nuget\\packages\\": {}
+    "C:\\Users\\Milica\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\4. SEMESTAR\\SIMS\\projekat sims\\association-for-protection-of-animals\\AssociationForProtectionOfAnimals\\AssociationForProtectionOfAnimals\\AssociationForProtectionOfAnimals.csproj",
+      "projectUniqueName": "C:\\sims\\association-for-protection-of-animals\\AssociationForProtectionOfAnimals\\AssociationForProtectionOfAnimals\\AssociationForProtectionOfAnimals.csproj",
       "projectName": "AssociationForProtectionOfAnimals",
-      "projectPath": "C:\\4. SEMESTAR\\SIMS\\projekat sims\\association-for-protection-of-animals\\AssociationForProtectionOfAnimals\\AssociationForProtectionOfAnimals\\AssociationForProtectionOfAnimals.csproj",
-      "packagesPath": "C:\\Users\\Korisnik\\.nuget\\packages\\",
-      "outputPath": "C:\\4. SEMESTAR\\SIMS\\projekat sims\\association-for-protection-of-animals\\AssociationForProtectionOfAnimals\\AssociationForProtectionOfAnimals\\obj\\",
+      "projectPath": "C:\\sims\\association-for-protection-of-animals\\AssociationForProtectionOfAnimals\\AssociationForProtectionOfAnimals\\AssociationForProtectionOfAnimals.csproj",
+      "packagesPath": "C:\\Users\\Milica\\.nuget\\packages\\",
+      "outputPath": "C:\\sims\\association-for-protection-of-animals\\AssociationForProtectionOfAnimals\\AssociationForProtectionOfAnimals\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Korisnik\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Milica\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0-windows"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -69,7 +78,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -11,8 +11,8 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
     {
         public DateTime AdoptionDate { get; set; }
 
-        public AdoptionRequest(RequestStatus status, DateTime requestSubmissionDate, DateTime adoptionDate)
-            : base(status, requestSubmissionDate)
+        public AdoptionRequest(int registeredUserId, int volunteerId, RequestStatus status, DateTime requestSubmissionDate, DateTime adoptionDate)
+            : base(registeredUserId, volunteerId, status, requestSubmissionDate)
         {
             AdoptionDate = adoptionDate;
         }

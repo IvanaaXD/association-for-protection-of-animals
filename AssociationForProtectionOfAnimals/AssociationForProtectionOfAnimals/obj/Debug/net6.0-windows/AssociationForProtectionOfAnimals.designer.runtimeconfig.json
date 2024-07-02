@@ -12,8 +12,10 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\Korisnik\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\Korisnik\\.nuget\\packages"
+      "C:\\Users\\Milica\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Milica\\.nuget\\packages",
+      "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+      "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet"
     ],
     "configProperties": {
       "Microsoft.NETCore.DotNetHostPolicy.SetAppPaths": true

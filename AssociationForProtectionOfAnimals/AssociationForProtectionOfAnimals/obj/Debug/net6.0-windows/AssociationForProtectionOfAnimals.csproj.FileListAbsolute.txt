@@ -52,3 +52,32 @@ C:\4. SEMESTAR\SIMS\projekat sims\association-for-protection-of-animals\Associat
 C:\4. SEMESTAR\SIMS\projekat sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\AssociationForProtectionOfAnimals.pdb
 C:\4. SEMESTAR\SIMS\projekat sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\AssociationForProtectionOfAnimals.genruntimeconfig.cache
 C:\4. SEMESTAR\SIMS\projekat sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\ref\AssociationForProtectionOfAnimals.dll
+C:\sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\bin\Debug\net6.0-windows\AssociationForProtectionOfAnimals.exe
+C:\sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\bin\Debug\net6.0-windows\AssociationForProtectionOfAnimals.deps.json
+C:\sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\bin\Debug\net6.0-windows\AssociationForProtectionOfAnimals.runtimeconfig.json
+C:\sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\bin\Debug\net6.0-windows\AssociationForProtectionOfAnimals.dll
+C:\sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\bin\Debug\net6.0-windows\AssociationForProtectionOfAnimals.pdb
+C:\sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\View\Animal\CreateAnimal.baml
+C:\sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\View\UnregisteredUser\RegistrationForm.baml
+C:\sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\MainWindow.g.cs
+C:\sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\View\Animal\CreateAnimal.g.cs
+C:\sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\View\UnregisteredUser\RegistrationForm.g.cs
+C:\sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\View\UnregisteredUser\UnregisteredUserPage.g.cs
+C:\sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\App.g.cs
+C:\sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\AssociationForProtectionOfAnimals_MarkupCompile.cache
+C:\sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\AssociationForProtectionOfAnimals_MarkupCompile.lref
+C:\sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\MainWindow.baml
+C:\sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\View\UnregisteredUser\UnregisteredUserPage.baml
+C:\sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\AssociationForProtectionOfAnimals.g.resources
+C:\sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\AssociationForProtectionOfAnimals.GeneratedMSBuildEditorConfig.editorconfig
+C:\sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\AssociationForProtectionOfAnimals.AssemblyInfoInputs.cache
+C:\sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\AssociationForProtectionOfAnimals.AssemblyInfo.cs
+C:\sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\AssociationForProtectionOfAnimals.csproj.CoreCompileInputs.cache
+C:\sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\AssociationForProtectionOfAnimals.sourcelink.json
+C:\sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\AssociationForProtectionOfAnimals.dll
+C:\sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\refint\AssociationForProtectionOfAnimals.dll
+C:\sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\AssociationForProtectionOfAnimals.pdb
+C:\sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\AssociationForProtectionOfAnimals.genruntimeconfig.cache
+C:\sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\ref\AssociationForProtectionOfAnimals.dll
+C:\sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\View\Adoption\RegisteredUserPage.g.cs
+C:\sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\View\Adoption\RegisteredUserPage.baml
