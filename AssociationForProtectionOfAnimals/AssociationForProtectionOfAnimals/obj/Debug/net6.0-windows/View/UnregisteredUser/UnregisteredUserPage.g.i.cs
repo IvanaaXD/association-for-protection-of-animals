@@ -133,8 +133,8 @@ namespace AssociationForProtectionOfAnimals.View.UnregisteredUser {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/AssociationForProtectionOfAnimals;V1.0.0.0;component/view/unregistereduser/unreg" +
-                    "istereduserpage.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/AssociationForProtectionOfAnimals;component/view/unregistereduser/unregisteredus" +
+                    "erpage.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\View\UnregisteredUser\UnregisteredUserPage.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

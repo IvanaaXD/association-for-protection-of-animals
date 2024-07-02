@@ -132,8 +132,7 @@ namespace AssociationForProtectionOfAnimals.View.Animal {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/AssociationForProtectionOfAnimals;V1.0.0.0;component/view/animal/createanimal.xa" +
-                    "ml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/AssociationForProtectionOfAnimals;component/view/animal/createanimal.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\View\Animal\CreateAnimal.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
