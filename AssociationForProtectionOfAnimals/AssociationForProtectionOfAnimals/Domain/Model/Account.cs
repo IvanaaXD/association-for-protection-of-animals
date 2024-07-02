@@ -1,48 +1,77 @@
 ﻿using AssociationForProtectionOfAnimals.Domain.Model.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using AssociationForProtectionOfAnimals.Storage.Serialization;
 
 namespace AssociationForProtectionOfAnimals.Domain.Model
 {
-    public class Account
+    public class Account : ISerializable
     {
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public AccountType Type { get; set; }
+        protected int id;
+        protected string username;
+        protected string password;
+        protected AccountType type;
+
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+
+        public string Username
+        {
+            get { return username; }
+            set { username = value; }
+        }
+
+        public string Password
+        {
+            get { return password; }
+            set { password = value; }
+        }
+
+        public AccountType Type
+        {
+            get { return type; }
+            set { type = value; }
+        }
 
         public Account() { }
 
+        public Account(int id, string username, string password, AccountType type)
+        {
+            this.id = id;
+            this.username = username;
+            this.password = password;
+            this.type = type;
+        }
         public Account(string username, string password, AccountType type)
         {
-            Username = username;
-            Password = password;
-            Type = type;
+            this.username = username;
+            this.password = password;
+            this.type = type;
         }
 
         public string[] ToCSV()
         {
             return new string[]
             {
-                Username,
-                Password,
-                Type.ToString()
+                id.ToString(),
+                username,
+                password,
+                type.ToString()
             };
         }
 
         public void FromCSV(string[] values)
         {
-            if (values.Length != 3)
+            if (values.Length != 4)
             {
                 throw new ArgumentException("Invalid number of values for CSV deserialization.");
             }
 
-            Username = values[0];
-            Password = values[1];
-            Type = (AccountType)Enum.Parse(typeof(AccountType), values[2]);
+            id = int.Parse(values[0]);
+            username = values[1];
+            password = values[2];
+            type = (AccountType)Enum.Parse(typeof(AccountType), values[3]);
         }
     }
 }
-

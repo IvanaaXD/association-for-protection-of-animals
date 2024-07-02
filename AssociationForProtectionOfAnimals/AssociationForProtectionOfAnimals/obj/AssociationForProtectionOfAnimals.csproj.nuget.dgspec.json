@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\PROJEKTI\\Specifikacija i modeliranje softvera\\AssociationForProtectionOfAnimals\\AssociationForProtectionOfAnimals\\AssociationForProtectionOfAnimals.csproj": {}
+    "C:\\4. SEMESTAR\\SIMS\\projekat sims\\association-for-protection-of-animals\\AssociationForProtectionOfAnimals\\AssociationForProtectionOfAnimals\\AssociationForProtectionOfAnimals.csproj": {}
   },
   "projects": {
-    "D:\\PROJEKTI\\Specifikacija i modeliranje softvera\\AssociationForProtectionOfAnimals\\AssociationForProtectionOfAnimals\\AssociationForProtectionOfAnimals.csproj": {
+    "C:\\4. SEMESTAR\\SIMS\\projekat sims\\association-for-protection-of-animals\\AssociationForProtectionOfAnimals\\AssociationForProtectionOfAnimals\\AssociationForProtectionOfAnimals.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\PROJEKTI\\Specifikacija i modeliranje softvera\\AssociationForProtectionOfAnimals\\AssociationForProtectionOfAnimals\\AssociationForProtectionOfAnimals.csproj",
+        "projectUniqueName": "C:\\4. SEMESTAR\\SIMS\\projekat sims\\association-for-protection-of-animals\\AssociationForProtectionOfAnimals\\AssociationForProtectionOfAnimals\\AssociationForProtectionOfAnimals.csproj",
         "projectName": "AssociationForProtectionOfAnimals",
-        "projectPath": "D:\\PROJEKTI\\Specifikacija i modeliranje softvera\\AssociationForProtectionOfAnimals\\AssociationForProtectionOfAnimals\\AssociationForProtectionOfAnimals.csproj",
+        "projectPath": "C:\\4. SEMESTAR\\SIMS\\projekat sims\\association-for-protection-of-animals\\AssociationForProtectionOfAnimals\\AssociationForProtectionOfAnimals\\AssociationForProtectionOfAnimals.csproj",
         "packagesPath": "C:\\Users\\Korisnik\\.nuget\\packages\\",
-        "outputPath": "D:\\PROJEKTI\\Specifikacija i modeliranje softvera\\AssociationForProtectionOfAnimals\\AssociationForProtectionOfAnimals\\obj\\",
+        "outputPath": "C:\\4. SEMESTAR\\SIMS\\projekat sims\\association-for-protection-of-animals\\AssociationForProtectionOfAnimals\\AssociationForProtectionOfAnimals\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Korisnik\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -63,7 +63,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

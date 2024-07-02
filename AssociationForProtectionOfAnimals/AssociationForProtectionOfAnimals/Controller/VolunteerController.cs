@@ -2,6 +2,7 @@
 using AssociationForProtectionOfAnimals.Observer;
 using AssociationForProtectionOfAnimals.Domain.IRepository;
 using AssociationForProtectionOfAnimals.Storage;
+using System.Security.Principal;
 
 namespace AssociationForProtectionOfAnimals.Controller
 {
@@ -11,6 +12,8 @@ namespace AssociationForProtectionOfAnimals.Controller
         private readonly IRegisteredUserRepo _users;
         private readonly IAdminRepo _admin;
         private readonly IAnimalRepo _animals;
+        private readonly IAccountRepo _accounts;
+        private readonly IPlaceRepo _places;
 
         public VolunteerController()
         {
@@ -18,6 +21,8 @@ namespace AssociationForProtectionOfAnimals.Controller
             _users = Injector.CreateInstance<IRegisteredUserRepo>();
             _admin = Injector.CreateInstance<IAdminRepo>();
             _animals = Injector.CreateInstance<IAnimalRepo>();
+            _accounts = Injector.CreateInstance<IAccountRepo>();
+            _places = Injector.CreateInstance<IPlaceRepo>();
         }
 
         public RegisteredUser? GetById(int id)
@@ -30,7 +35,16 @@ namespace AssociationForProtectionOfAnimals.Controller
         }
         public RegisteredUser AddUser(RegisteredUser user)
         {
-            return _volunteers.AddUser(user);
+            Place place = _places.GetPlaceByNameAndPostalCode(user.Place);
+            int placeId;
+            if (place == null)
+                placeId = _places.AddPlace(user.Place).Id;
+            else
+                placeId = place.Id;
+            user.Place.Id = placeId;
+            RegisteredUser ret = _volunteers.AddUser(user);
+            _accounts.AddAccount(ret.Account);
+            return ret;
         }
 
         public RegisteredUser? UpdateUser(RegisteredUser? user)
@@ -76,6 +90,7 @@ namespace AssociationForProtectionOfAnimals.Controller
         {
             _volunteers.Subscribe(observer);
             _users.Subscribe(observer);
+            _accounts.Subscribe(observer);
         }
     }
 }

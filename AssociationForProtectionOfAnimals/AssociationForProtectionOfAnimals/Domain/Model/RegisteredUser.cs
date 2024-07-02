@@ -40,14 +40,14 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
 
         public override void FromCSV(string[] values)
         {
-            if (values.Length != 14)
+            if (values.Length != 11)
             {
                 throw new ArgumentException("Invalid number of values for CSV deserialization.");
             }
 
-            base.FromCSV(values.Take(13).ToArray());
+            base.FromCSV(values.Take(10).ToArray());
 
-            this.isBlackListed = bool.Parse(values[13]);
+            this.isBlackListed = bool.Parse(values[10]);
         }
     }
 }

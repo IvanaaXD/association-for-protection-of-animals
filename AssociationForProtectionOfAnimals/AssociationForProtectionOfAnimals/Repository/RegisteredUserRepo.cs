@@ -26,6 +26,7 @@ namespace AssociationForProtectionOfAnimals.Repository
         public RegisteredUser AddRegisteredUser(RegisteredUser user)
         {
             user.Id = GenerateId();
+            user.Account.Id = user.Id;
             _users.Add(user);
             _storage.Save(_users);
             NotifyObservers();

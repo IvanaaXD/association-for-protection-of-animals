@@ -14,6 +14,8 @@ namespace AssociationForProtectionOfAnimals.Controller
         private readonly IVolunteerRepo? _volunteers;
         private readonly IRegisteredUserRepo? _users;
         private readonly IAnimalRepo? _animals;
+        private readonly IAccountRepo _accounts;
+        private readonly IPlaceRepo _places;
 
         public AdministratorController()
         {
@@ -21,6 +23,8 @@ namespace AssociationForProtectionOfAnimals.Controller
             _volunteers = Injector.CreateInstance<IVolunteerRepo>();
             _users = Injector.CreateInstance<IRegisteredUserRepo>();
             _animals = Injector.CreateInstance<IAnimalRepo>();
+            _accounts = Injector.CreateInstance<IAccountRepo>();
+            _places = Injector.CreateInstance<IPlaceRepo>();
         }
 
         public Administrator? GetAdministrator()
@@ -40,7 +44,16 @@ namespace AssociationForProtectionOfAnimals.Controller
 
         public Volunteer Add(Volunteer volunteer)
         {
-            return _admins.Add(volunteer);
+            Place place = _places.GetPlaceByNameAndPostalCode(volunteer.Place);
+            int placeId;
+            if (place == null)
+                placeId = _places.AddPlace(volunteer.Place).Id;
+            else
+                placeId = place.Id;
+            volunteer.Place.Id = placeId;    
+            Volunteer ret = _admins.Add(volunteer);
+            _accounts.AddAccount(ret.Account);
+            return ret;
         }
 
         public Volunteer Update(Volunteer volunteer)
@@ -62,6 +75,7 @@ namespace AssociationForProtectionOfAnimals.Controller
         {
             _admins.Subscribe(observer);
             _volunteers.Subscribe(observer);
+            _accounts.Subscribe(observer);
         }
 
         /*public List<Volunteer> FindVolunteersByCriteria(Language language, LanguageLevel levelOfLanguage, DateTime startedWork)
@@ -121,7 +135,16 @@ namespace AssociationForProtectionOfAnimals.Controller
         }
         public RegisteredUser AddUser(RegisteredUser user)
         {
-            return _volunteers.AddUser(user);
+            Place place = _places.GetPlaceByNameAndPostalCode(user.Place);
+            int placeId;
+            if (place == null)
+                placeId = _places.AddPlace(user.Place).Id;
+            else
+                placeId = place.Id;
+            user.Place.Id = placeId;
+            RegisteredUser ret = _volunteers.AddUser(user);
+            _accounts.AddAccount(ret.Account);
+            return ret;
         }
 
         public RegisteredUser? UpdateUser(RegisteredUser? user)

@@ -8,16 +8,29 @@ namespace AssociationForProtectionOfAnimals.Controller
     {
         private readonly IRegisteredUserRepo _users;
         private readonly IAnimalRepo _animals;
+        private readonly IAccountRepo _account;
+        private readonly IPlaceRepo _place;
 
         public RegisteredUserController()
         {
             _users = Injector.CreateInstance<IRegisteredUserRepo>();
+            _account = Injector.CreateInstance<IAccountRepo>();
+            _place = Injector.CreateInstance<IPlaceRepo>();
         }
 
         public void Add(RegisteredUser user)
         {
             /* SEND REQUEST FOR REGISTRATION */
-            _users.AddRegisteredUser(user);
+            Place place = _place.GetPlaceByNameAndPostalCode(user.Place);
+            int placeId;
+            if (place == null)
+                placeId = _place.AddPlace(user.Place).Id;
+            else
+                placeId = place.Id;
+            user.Place.Id = placeId;
+            RegisteredUser ret = _users.AddRegisteredUser(user);
+            _account.AddAccount(ret.Account);
+            NotifyObservers();
         }
         public void Delete(int userId)
         {
@@ -32,6 +45,7 @@ namespace AssociationForProtectionOfAnimals.Controller
         public void Subscribe(IObserver observer)
         {
             _users.Subscribe(observer);
+            _account.Subscribe(observer);
         }
         public RegisteredUser? GetRegisteredUserById(int id)
         {
@@ -40,6 +54,10 @@ namespace AssociationForProtectionOfAnimals.Controller
         public List<RegisteredUser> GetAllRegisteredUsers()
         {
             return _users.GetAllRegisteredUsers();
+        }
+        public Account GetAccountById(int id)
+        {
+            return _account.GetAccountById(id);
         }
 
         public bool IsUsernameUnique(string username)

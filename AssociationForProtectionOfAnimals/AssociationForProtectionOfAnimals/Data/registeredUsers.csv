@@ -1,1 +1,5 @@
-1|janko|janko|Male|2000-01-01|janko adresa|janko mesto|11111|12958891239|3499293993932|janko|janko123|RegisteredUser|False
+1|janko|janko|Male|2000-01-01|janko adresa|1|12958891239|3499293993932|1|False
+2|j|j|Male|2000-01-01|address example|2|0123456789|1234567898765|2|False
+3|jovan|jovan|Male|2000-01-01|adresanova|4|0123456789|1234567898765|3|False
+4|biljana|ivanovic|Female|2000-01-01|address example|0|0123456789|1234567898765|4|False
+5|milica|milica|Female|2000-01-01|address example|2|0123456789|1234567898765|5|False

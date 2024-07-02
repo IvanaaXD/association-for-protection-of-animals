@@ -1,6 +1,9 @@
 ﻿using AssociationForProtectionOfAnimals.Domain.Model.Enums;
 using System;
 using AssociationForProtectionOfAnimals.Storage.Serialization;
+using AssociationForProtectionOfAnimals.Controller;
+using AssociationForProtectionOfAnimals.Repository;
+using AssociationForProtectionOfAnimals.Domain.IRepository;
 
 namespace AssociationForProtectionOfAnimals.Domain.Model
 {
@@ -101,7 +104,6 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
             this.idNumber = idNumber;
             this.account = account;
         }
-
         protected Person(string firstName, string lastName, Gender gender, DateTime dateOfBirth, string phoneNumber, string homeAddress, Place place, string idNumber, Account account)
         {
             this.firstName = firstName;
@@ -130,19 +132,16 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
                 gender.ToString(),
                 dateOfBirth.ToString("yyyy-MM-dd"),
                 homeAddress,
-                place.Name,
-                place.PostalCode.ToString(),
+                place.Id.ToString(),
                 phoneNumber,
                 idNumber,
-                account.Username,
-                account.Password,
-                account.Type.ToString()
+                account.Id.ToString()
             };
         }
 
         public virtual void FromCSV(string[] values)
         {
-            if (values.Length != 13)
+            if (values.Length != 10)
             {
                 throw new ArgumentException("Invalid number of values for CSV deserialization.");
             }
@@ -153,10 +152,12 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
             gender = (Gender)Enum.Parse(typeof(Gender), values[3]);
             dateOfBirth = DateTime.Parse(values[4]);
             homeAddress = values[5];
-            place = new Place(values[6], int.Parse(values[7]));
-            phoneNumber = values[8];
-            idNumber = values[9];
-            account = new Account(values[10], values[11], (AccountType)Enum.Parse(typeof(AccountType), values[12]));
+            int placeId = int.Parse(values[6]);
+            phoneNumber = values[7];
+            idNumber = values[8];
+            int accountId = int.Parse(values[9]);
+            place = Injector.CreateInstance<IPlaceRepo>().GetPlaceById(placeId);
+            account = Injector.CreateInstance<IAccountRepo>().GetAccountById(accountId);
         }
     }
 }

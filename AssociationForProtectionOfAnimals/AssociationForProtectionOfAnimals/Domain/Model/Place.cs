@@ -4,9 +4,15 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
 {
     public class Place : ISerializable
     {
+        protected int id;
         protected string name;
         protected int postalCode;
 
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
         public string Name
         {
             get { return name; }
@@ -24,6 +30,12 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
             name = "";
             postalCode = 0;
         }
+        public Place(int id, string name, int postalCode)
+        {
+            this.id = id;
+            this.name = name;
+            this.postalCode = postalCode;
+        }
 
         public Place(string name, int postalCode)
         {
@@ -35,6 +47,7 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
         {
             return new string[]
             {
+                id.ToString(),
                 name,
                 postalCode.ToString()
             };
@@ -42,13 +55,13 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
 
         public void FromCSV(string[] values)
         {
-            if (values.Length != 2)
+            if (values.Length != 3)
             {
                 throw new ArgumentException("Invalid number of values for CSV deserialization.");
             }
-
-            name = values[0];
-            postalCode = int.Parse(values[1]);
+            id = int.Parse(values[0]);
+            name = values[1];
+            postalCode = int.Parse(values[2]);
         }
     }
 }

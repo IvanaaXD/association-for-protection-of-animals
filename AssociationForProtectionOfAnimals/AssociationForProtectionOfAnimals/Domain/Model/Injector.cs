@@ -10,6 +10,8 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
     {
         private static Dictionary<Type, Lazy<object>> _implementations = new Dictionary<Type, Lazy<object>>
         {
+            { typeof(IAccountRepo), new Lazy<object>(() => new AccountRepo()) },
+            { typeof(IPlaceRepo), new Lazy<object>(() => new PlaceRepo()) },
             { typeof(IRegisteredUserRepo), new Lazy<object>(() => new RegisteredUserRepo()) },
             { typeof(RegisteredUserController), new Lazy<object>(() => new RegisteredUserController()) },
             { typeof(IVolunteerRepo), new Lazy<object>(() => new VolunteerRepo()) },

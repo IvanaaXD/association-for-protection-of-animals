@@ -1,8 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using AssociationForProtectionOfAnimals.Domain.Model;
+﻿using AssociationForProtectionOfAnimals.Domain.Model;
 using AssociationForProtectionOfAnimals.Domain.IRepository;
-using AssociationForProtectionOfAnimals.Domain.Model;
 using AssociationForProtectionOfAnimals.Observer;
 using AssociationForProtectionOfAnimals.Storage;
 
@@ -39,6 +36,7 @@ namespace AssociationForProtectionOfAnimals.Repository
         public RegisteredUser AddUser(RegisteredUser user)
         {
             user.Id = GenerateId();
+            user.Account.Id = user.Id;
             _users.Add(user);
             _usersStorage.Save(_users);
             NotifyObservers();
