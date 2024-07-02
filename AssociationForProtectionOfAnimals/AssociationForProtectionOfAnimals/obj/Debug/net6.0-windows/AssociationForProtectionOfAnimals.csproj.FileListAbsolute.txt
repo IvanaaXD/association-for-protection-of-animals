@@ -21,3 +21,26 @@ C:\4. SEMESTAR\SIMS\projekat sims\association-for-protection-of-animals\Associat
 C:\4. SEMESTAR\SIMS\projekat sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\ref\AssociationForProtectionOfAnimals.dll
 C:\4. SEMESTAR\SIMS\projekat sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\View\UnregisteredUser\RegistrationForm.baml
 C:\4. SEMESTAR\SIMS\projekat sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\View\UnregisteredUser\RegistrationForm.g.cs
+D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\bin\Debug\net6.0-windows\AssociationForProtectionOfAnimals.exe
+D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\bin\Debug\net6.0-windows\AssociationForProtectionOfAnimals.deps.json
+D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\bin\Debug\net6.0-windows\AssociationForProtectionOfAnimals.runtimeconfig.json
+D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\bin\Debug\net6.0-windows\AssociationForProtectionOfAnimals.dll
+D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\bin\Debug\net6.0-windows\AssociationForProtectionOfAnimals.pdb
+D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\View\UnregisteredUser\RegistrationForm.baml
+D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\MainWindow.g.cs
+D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\View\UnregisteredUser\RegistrationForm.g.cs
+D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\App.g.cs
+D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\AssociationForProtectionOfAnimals_MarkupCompile.cache
+D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\AssociationForProtectionOfAnimals_MarkupCompile.lref
+D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\MainWindow.baml
+D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\AssociationForProtectionOfAnimals.g.resources
+D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\AssociationForProtectionOfAnimals.GeneratedMSBuildEditorConfig.editorconfig
+D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\AssociationForProtectionOfAnimals.AssemblyInfoInputs.cache
+D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\AssociationForProtectionOfAnimals.AssemblyInfo.cs
+D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\AssociationForProtectionOfAnimals.csproj.CoreCompileInputs.cache
+D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\AssociationForProtectionOfAnimals.sourcelink.json
+D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\AssociationForProtectionOfAnimals.dll
+D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\refint\AssociationForProtectionOfAnimals.dll
+D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\AssociationForProtectionOfAnimals.pdb
+D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\AssociationForProtectionOfAnimals.genruntimeconfig.cache
+D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\ref\AssociationForProtectionOfAnimals.dll
