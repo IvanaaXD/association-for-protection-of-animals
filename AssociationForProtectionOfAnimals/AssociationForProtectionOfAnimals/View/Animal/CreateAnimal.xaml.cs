@@ -44,18 +44,14 @@ namespace AssociationForProtectionOfAnimals.View.Animal
         private void SetPlaceholders()
         {
             animal.Name = "Animal Name";
-            animal.Species = "Species";
-            animal.Breed = "Breed";
-            animal.Age = "Age";
-            animal.Weight = "Weight";
-            animal.Height = "Height";
+            animal.Age = 2;
+            animal.Weight = 4;
+            animal.Height = 50;
             animal.FoundAddress = "Found Address";
             animal.Description = "Description";
             animal.MedicalStatus = "Medical Status";
 
             nameTextBox.GotFocus += NameTextBox_GotFocus;
-            speciesTextBox.GotFocus += SpeciesTextBox_GotFocus;
-            breedTextBox.GotFocus += BreedTextBox_GotFocus;
             ageTextBox.GotFocus += AgeTextBox_GotFocus;
             weightTextBox.GotFocus += WeightTextBox_GotFocus;
             heightTextBox.GotFocus += HeightTextBox_GotFocus;

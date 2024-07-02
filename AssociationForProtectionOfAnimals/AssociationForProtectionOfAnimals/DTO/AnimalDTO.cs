@@ -13,7 +13,7 @@ namespace AssociationForProtectionOfAnimals.DTO
         private double weight;
         private double height;
         private string description;
-        private string address;
+        private string foundAddress;
         private string medicalStatus;
         private Place place;
         private Breed breed;
@@ -84,15 +84,15 @@ namespace AssociationForProtectionOfAnimals.DTO
             }
         }
 
-        public string Address
+        public string FoundAddress
         {
-            get { return address; }
+            get { return foundAddress; }
             set
             {
-                if (value != address)
+                if (value != foundAddress)
                 {
-                    address = value;
-                    OnPropertyChanged("Address");
+                    foundAddress = value;
+                    OnPropertyChanged("FoundAddress");
                 }
             }
         }
@@ -176,8 +176,8 @@ namespace AssociationForProtectionOfAnimals.DTO
                     case "Description":
                         if (string.IsNullOrEmpty(Description)) return "Description is required";
                         break;
-                    case "Address":
-                        if (string.IsNullOrEmpty(Address)) return "Address is required";
+                    case "FoundAddress":
+                        if (string.IsNullOrEmpty(foundAddress)) return "foundAddress is required";
                         break;
                     case "MedicalStatus":
                         if (string.IsNullOrEmpty(MedicalStatus)) return "Medical Status is required";
@@ -199,7 +199,7 @@ namespace AssociationForProtectionOfAnimals.DTO
         private readonly string[] _validatedProperties =
         {
             "Name", "Age", "Weight", "Height", "Description",
-            "Address", "MedicalStatus", "Place", "Breed", "Species"
+            "FoundAddress", "MedicalStatus", "Place", "Breed", "Species"
         };
 
         public bool IsValid
@@ -218,11 +218,14 @@ namespace AssociationForProtectionOfAnimals.DTO
 
         public Animal ToAnimal()
         {
-            return new Animal(Id, Name, Age, Weight, Height, Description, Address, MedicalStatus, Place, Breed, Species);
+            return new Animal(Id, Name, Age, Weight, Height, Description, FoundAddress, MedicalStatus, Place, Breed, Species);
         }
 
         public AnimalDTO()
         {
+            place = new Place();
+            breed = new Breed();
+            species = new Species();
         }
 
         public AnimalDTO(Animal animal)
@@ -233,7 +236,7 @@ namespace AssociationForProtectionOfAnimals.DTO
             Weight = animal.Weight;
             Height = animal.Height;
             Description = animal.Description;
-            Address = animal.Address;
+            FoundAddress = animal.FoundAddress;
             MedicalStatus = animal.MedicalStatus;
             Place = animal.Place;
             Breed = animal.Breed;

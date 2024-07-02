@@ -42,7 +42,7 @@ namespace AssociationForProtectionOfAnimals.Repository
             oldAnimal.Weight = animal.Weight;
             oldAnimal.Height = animal.Height;
             oldAnimal.Description = animal.Description;
-            oldAnimal.Address = animal.Address;
+            oldAnimal.FoundAddress = animal.FoundAddress;
             oldAnimal.MedicalStatus = animal.MedicalStatus;
             oldAnimal.Breed = animal.Breed;
             oldAnimal.Species = animal.Species;

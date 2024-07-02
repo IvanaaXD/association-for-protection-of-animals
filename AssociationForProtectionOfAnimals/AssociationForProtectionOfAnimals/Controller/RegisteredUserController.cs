@@ -7,6 +7,7 @@ namespace AssociationForProtectionOfAnimals.Controller
     public class RegisteredUserController : Subject
     {
         private readonly IRegisteredUserRepo _users;
+        private readonly IAnimalRepo _animals;
 
         public RegisteredUserController()
         {
@@ -47,6 +48,18 @@ namespace AssociationForProtectionOfAnimals.Controller
                 if (user.Account.Username.Equals(username)) return false;
 
             return true;
+        }
+        public Animal AddAnimal(Animal animal)
+        {
+            return _animals.AddAnimal(animal);
+        }
+        public Animal? UpdateAnimal(Animal animal)
+        {
+            return _animals.UpdateAnimal(animal);
+        }
+        public Animal? RemoveAnimal(int id)
+        {
+            return _animals.RemoveAnimal(id);
         }
     }
 }

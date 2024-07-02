@@ -5,57 +5,52 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
 {
     public class Animal : ISerializable
     {
-        protected int id;
-        protected string name;
-        protected int age;
-        protected double weight;
-        protected double height;
-        protected string description;
-        protected string address;
-        protected string medicalStatus;
-        protected Breed breed;
-        protected Species species;
+        private int id;
+        private string name;
+        private int age;
+        private double weight;
+        private double height;
+        private string description;
+        private string foundAddress;
+        private string medicalStatus;
+        private Place place;
+        private Breed breed;
+        private Species species;
 
         public int Id
         {
             get { return id; }
             set { id = value; }
         }
-
         public string Name
         {
             get { return name; }
             set { name = value; }
         }
-
         public int Age
         {
             get { return age; }
             set { age = value; }
         }
-
         public double Weight
         {
             get { return weight; }
             set { weight = value; }
         }
-
         public double Height
         {
             get { return height; }
             set { height = value; }
         }
-
         public string Description
         {
             get { return description; }
             set { description = value; }
         }
-
-        public string Address
+        public string FoundAddress
         {
-            get { return address; }
-            set { address = value; }
+            get { return foundAddress; }
+            set { foundAddress = value; }
         }
 
         public string MedicalStatus
@@ -63,7 +58,11 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
             get { return medicalStatus; }
             set { medicalStatus = value; }
         }
-
+        public Place Place
+        {
+            get { return place; }
+            set { place = value; }
+        }
         public Breed Breed
         {
             get { return breed; }
@@ -80,13 +79,13 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
         {
             name = "";
             description = "";
-            address = "";
+            foundAddress = "";
             medicalStatus = "";
             breed = new Breed();
             species = new Species();
         }
 
-        public Animal(int id, string name, int age, double weight, double height, string description, string address, string medicalStatus, Breed breed, Species species)
+        public Animal(int id, string name, int age, double weight, double height, string description, string foundAddress, string medicalStatus, Place place, Breed breed, Species species)
         {
             this.id = id;
             this.name = name;
@@ -94,8 +93,9 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
             this.weight = weight;
             this.height = height;
             this.description = description;
-            this.address = address;
+            this.foundAddress = foundAddress;
             this.medicalStatus = medicalStatus;
+            this.place = place;
             this.breed = breed;
             this.species = species;
         }
@@ -115,8 +115,10 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
                 weight.ToString(),
                 height.ToString(),
                 description,
-                address,
+                foundAddress,
                 medicalStatus,
+                place.Name,
+                place.PostalCode.ToString(),
                 breed.Name,
                 breed.Description,
                 species.Name,
@@ -126,7 +128,7 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
 
         public virtual void FromCSV(string[] values)
         {
-            if (values.Length != 12)
+            if (values.Length != 14)
             {
                 throw new ArgumentException("Invalid number of values for CSV deserialization.");
             }
@@ -137,10 +139,11 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
             weight = double.Parse(values[3]);
             height = double.Parse(values[4]);
             description = values[5];
-            address = values[6];
+            foundAddress = values[6];
             medicalStatus = values[7];
-            breed = new Breed(values[8], values[9]);
-            species = new Species(values[10], values[11]);
+            place = new Place(values[8], int.Parse(values[9]));
+            breed = new Breed(values[10], values[11]);
+            species = new Species(values[12], values[13]);
         }
     }
 }

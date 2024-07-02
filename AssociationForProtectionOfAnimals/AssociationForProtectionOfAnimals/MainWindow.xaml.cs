@@ -2,6 +2,7 @@
 using System.Windows.Input;
 using AssociationForProtectionOfAnimals.Domain.Model;
 using AssociationForProtectionOfAnimals.Controller;
+using AssociationForProtectionOfAnimals.View.Animal;
 
 namespace AssociationForProtectionOfAnimals
 {
@@ -20,7 +21,7 @@ namespace AssociationForProtectionOfAnimals
         }
         private void Login_Click(object sender, RoutedEventArgs e)
         {
-            string username = Username.Text;
+            /*string username = Username.Text;
             string password = Password.Password;
 
             if (HasUserLoggedIn(username, password) || HasVolunteerLoggedIn(username, password) || HasAdminLoggedIn(username, password))
@@ -29,7 +30,9 @@ namespace AssociationForProtectionOfAnimals
                 return;
             }
             
-             MessageBox.Show("User does not exist.");
+             MessageBox.Show("User does not exist.");*/
+            CreateAnimal ca = new CreateAnimal();
+            ca.Show();
         } 
 
         private bool HasUserLoggedIn(string username, string password)
