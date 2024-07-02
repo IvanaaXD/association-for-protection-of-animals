@@ -18,6 +18,8 @@ namespace AssociationForProtectionOfAnimals.DTO
         private string username;
         private string password;
         private string idNumber;
+        private string placeName;
+        private string placeZipCode;
 
         public string FirstName
         {
@@ -111,6 +113,26 @@ namespace AssociationForProtectionOfAnimals.DTO
             }
         }
 
+        public string PlaceName
+        {
+            get { return placeName; }
+            set
+            {
+                placeName = value;
+                OnPropertyChanged("PlaceName");
+            }
+        }
+
+        public string PlacePostalCode
+        {
+            get { return placeZipCode; }
+            set
+            {
+                placeZipCode = value;
+                OnPropertyChanged("PlacePostalCode");
+            }
+        }
+
         public string? Error => null;
 
         private Regex _FirstNameRegex = new Regex(@"^[A-Za-z]+$");
@@ -118,6 +140,8 @@ namespace AssociationForProtectionOfAnimals.DTO
         private Regex _PhoneNumberRegex = new Regex(@"^\d{9,15}$");
         private Regex _UsernameRegex = new Regex(@"^[a-zA-Z][a-zA-Z0-9._-]{1,14}[a-zA-Z0-9]$");
         private Regex _IdNumberRegex = new Regex(@"^\d{13}$");
+        private Regex _PostalNumberRegex = new Regex(@"^\d{5}$");
+
         public string this[string columnName]
         {
             get
@@ -125,38 +149,42 @@ namespace AssociationForProtectionOfAnimals.DTO
                 switch (columnName)
                 {
                     case "FirstName":
-                        if (string.IsNullOrEmpty(FirstName))           return "First name is required";
+                        if (string.IsNullOrEmpty(FirstName)) return "First name is required";
                         if (!_FirstNameRegex.Match(FirstName).Success) return "Format not good. Try again.";
                         break;
                     case "LastName":
-                        if (string.IsNullOrEmpty(LastName))           return "Last name is required";
-                        if (!_LastNameRegex.Match(LastName).Success)  return "Format not good. Try again.";
+                        if (string.IsNullOrEmpty(LastName)) return "Last name is required";
+                        if (!_LastNameRegex.Match(LastName).Success) return "Format not good. Try again.";
                         break;
                     case "PhoneNumber":
-                        if (string.IsNullOrEmpty(PhoneNumber))              return "Phone number is required";
-                        if (!_PhoneNumberRegex.Match(PhoneNumber).Success)  return "Format not good. Try again.";
+                        if (string.IsNullOrEmpty(PhoneNumber)) return "Phone number is required";
+                        if (!_PhoneNumberRegex.Match(PhoneNumber).Success) return "Format not good. Try again.";
                         break;
                     case "Username":
-                        if (string.IsNullOrEmpty(Username))       return "Username is required";
+                        if (string.IsNullOrEmpty(Username)) return "Username is required";
                         if (!_UsernameRegex.Match(Username).Success) return "Format not good. Try again.";
                         break;
                     case "IdNumber":
-                        if (string.IsNullOrEmpty(IdNumber))             return "IdNumber is required";
+                        if (string.IsNullOrEmpty(IdNumber)) return "IdNumber is required";
                         if (!_IdNumberRegex.Match(IdNumber).Success) return "Format not good. Try again.";
-                            break;
+                        break;
                     case "Password":
-                        if (string.IsNullOrEmpty(Password))  return "Password is required";
+                        if (string.IsNullOrEmpty(Password)) return "Password is required";
                         break;
                     case "DateOfBirth":
-                        if (DateOfBirth < new DateTime(1900, 1, 1) || DateOfBirth > DateTime.Today)  
+                        if (DateOfBirth < new DateTime(1900, 1, 1) || DateOfBirth > DateTime.Today)
                             return "Invalid Date of birth.";
+                        break;
+                    case "PlacePostalCode":
+                        if (string.IsNullOrEmpty(PlacePostalCode)) return "PostalCode is required";
+                        if (!_PostalNumberRegex.Match(PlacePostalCode).Success) return "Format not good. Try again.";
                         break;
                 }
                 return null;
             }
         }
 
-        private readonly string[] _validatedProperties = { "FirstName", "LastName", "PhoneNumber", "Username", "Password", "DateOfBirth" ,"IdNumber" };
+        private readonly string[] _validatedProperties = { "FirstName", "LastName", "PhoneNumber", "Username", "Password", "DateOfBirth", "IdNumber", "PlacePostalCode" };
 
         public bool IsValid
         {
@@ -164,7 +192,6 @@ namespace AssociationForProtectionOfAnimals.DTO
             {
                 foreach (var property in _validatedProperties)
                 {
-                    Console.WriteLine(property.ToString());
                     if (this[property] != null)
                         return false;
                 }
@@ -176,7 +203,8 @@ namespace AssociationForProtectionOfAnimals.DTO
         public RegisteredUser ToRegisteredUser()
         {
             Account userAccount = new(username, password, AccountType.RegisteredUser);
-            return new RegisteredUser(firstName, lastName, gender, dateOfBirth, phoneNumber, homeAddress, idNumber, userAccount);
+            Place userPlace = new(placeName, int.Parse(placeZipCode));
+            return new RegisteredUser(firstName, lastName, gender, dateOfBirth, phoneNumber, homeAddress, userPlace, idNumber, userAccount, false);
         }
 
         public UserDTO()
@@ -196,6 +224,8 @@ namespace AssociationForProtectionOfAnimals.DTO
             HomeAddress = user.HomeAddress;
             Username = user.Account.Username;
             Password = user.Account.Password;
+            PlaceName = user.Place.Name;
+            PlacePostalCode = user.Place.PostalCode.ToString();
         }
 
         protected virtual void OnPropertyChanged(string name)

@@ -1,33 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using AssociationForProtectionOfAnimals.Domain.Model.Enums;
+﻿using AssociationForProtectionOfAnimals.Domain.Model.Enums;
 
 namespace AssociationForProtectionOfAnimals.Domain.Model
 {
     public class RegisteredUser : Person
     {
-        protected bool isBlackListed { get; set; }
+        protected bool isBlackListed;
 
-        public RegisteredUser() : base()
-        {
-            isBlackListed = false;
-        }
         public bool IsBlackListed
         {
             get { return isBlackListed; }
             set { isBlackListed = value; }
         }
 
-        public RegisteredUser(int id, string firstName, string lastName, Gender gender, DateTime dateOfBirth, string phoneNumber, string homeAddress, string idNumber, Account account)
-            : base(id, firstName, lastName, gender, dateOfBirth, phoneNumber, homeAddress, idNumber, account)
+        public RegisteredUser() : base()
         {
-            this.isBlackListed = false;
+            isBlackListed = false;
         }
 
-        public RegisteredUser(string firstName, string lastName, Gender gender, DateTime dateOfBirth, string phoneNumber, string homeAddress, string idNumber, Account account)
-            : base(firstName, lastName, gender, dateOfBirth, phoneNumber, homeAddress, idNumber, account)
+        public RegisteredUser(int id, string firstName, string lastName, Gender gender, DateTime dateOfBirth, string phoneNumber, string homeAddress, Place place, string idNumber, Account account, bool isBlackListed)
+            : base(id, firstName, lastName, gender, dateOfBirth, phoneNumber, homeAddress, place, idNumber, account)
         {
-            this.isBlackListed = false;
+            this.isBlackListed = isBlackListed;
+        }
+
+        public RegisteredUser(string firstName, string lastName, Gender gender, DateTime dateOfBirth, string phoneNumber, string homeAddress, Place place, string idNumber, Account account, bool isBlackListed)
+            : base(firstName, lastName, gender, dateOfBirth, phoneNumber, homeAddress, place, idNumber, account)
+        {
+            this.isBlackListed = isBlackListed;
         }
 
         public override string[] ToCSV()
@@ -41,13 +40,14 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
 
         public override void FromCSV(string[] values)
         {
-            if (values.Length != 12)
+            if (values.Length != 14)
             {
                 throw new ArgumentException("Invalid number of values for CSV deserialization.");
             }
 
-            base.FromCSV(values[0..11]);
-            this.isBlackListed = bool.Parse(values[11]);
+            base.FromCSV(values.Take(13).ToArray());
+
+            this.isBlackListed = bool.Parse(values[13]);
         }
     }
 }

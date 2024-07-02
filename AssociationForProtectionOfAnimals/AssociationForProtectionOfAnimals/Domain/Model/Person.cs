@@ -12,6 +12,7 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
         protected Gender gender;
         protected DateTime dateOfBirth;
         protected string homeAddress;
+        protected Place place;
         protected string phoneNumber;
         protected string idNumber;
         protected Account account;
@@ -21,6 +22,7 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
             get { return id; }
             set { id = value; }
         }
+
         public string FirstName
         {
             get { return firstName; }
@@ -57,6 +59,12 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
             set { homeAddress = value; }
         }
 
+        public Place Place
+        {
+            get { return place; }
+            set { place = value; }
+        }
+
         public string IdNumber
         {
             get { return idNumber; }
@@ -77,9 +85,10 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
             homeAddress = "";
             idNumber = "";
             account = new Account();
+            place = new Place();
         }
 
-        protected Person(int id, string firstName, string lastName, Gender gender, DateTime dateOfBirth, string phoneNumber, string homeAddress, string idNumber, Account account)
+        protected Person(int id, string firstName, string lastName, Gender gender, DateTime dateOfBirth, string phoneNumber, string homeAddress, Place place, string idNumber, Account account)
         {
             this.id = id;
             this.firstName = firstName;
@@ -88,11 +97,12 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
             this.dateOfBirth = dateOfBirth;
             this.phoneNumber = phoneNumber;
             this.homeAddress = homeAddress;
+            this.place = place;
             this.idNumber = idNumber;
             this.account = account;
         }
 
-        protected Person(string firstName, string lastName, Gender gender, DateTime dateOfBirth, string phoneNumber, string homeAddress, string idNumber, Account account)
+        protected Person(string firstName, string lastName, Gender gender, DateTime dateOfBirth, string phoneNumber, string homeAddress, Place place, string idNumber, Account account)
         {
             this.firstName = firstName;
             this.lastName = lastName;
@@ -100,6 +110,7 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
             this.dateOfBirth = dateOfBirth;
             this.phoneNumber = phoneNumber;
             this.homeAddress = homeAddress;
+            this.place = place;
             this.idNumber = idNumber;
             this.account = account;
         }
@@ -111,8 +122,7 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
 
         public virtual string[] ToCSV()
         {
-            var accountData = account.ToCSV();
-            var personData = new string[]
+            return new string[]
             {
                 id.ToString(),
                 firstName,
@@ -120,17 +130,19 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
                 gender.ToString(),
                 dateOfBirth.ToString("yyyy-MM-dd"),
                 homeAddress,
+                place.Name,
+                place.PostalCode.ToString(),
                 phoneNumber,
-                idNumber
+                idNumber,
+                account.Username,
+                account.Password,
+                account.Type.ToString()
             };
-            var result = new List<string>(personData);
-            result.AddRange(accountData);
-            return result.ToArray();
         }
 
         public virtual void FromCSV(string[] values)
         {
-            if (values.Length != 11)
+            if (values.Length != 13)
             {
                 throw new ArgumentException("Invalid number of values for CSV deserialization.");
             }
@@ -141,10 +153,10 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
             gender = (Gender)Enum.Parse(typeof(Gender), values[3]);
             dateOfBirth = DateTime.Parse(values[4]);
             homeAddress = values[5];
-            phoneNumber = values[6];
-            idNumber = values[7];
-            account = new Account();
-            account.FromCSV(values[8..]);
+            place = new Place(values[6], int.Parse(values[7]));
+            phoneNumber = values[8];
+            idNumber = values[9];
+            account = new Account(values[10], values[11], (AccountType)Enum.Parse(typeof(AccountType), values[12]));
         }
     }
 }

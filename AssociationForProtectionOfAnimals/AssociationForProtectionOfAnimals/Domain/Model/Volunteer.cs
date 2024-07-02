@@ -7,11 +7,11 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
     {
         public Volunteer() : base() { }
 
-        public Volunteer(int id, string firstName, string lastName, Gender gender, DateTime dateOfBirth, string phoneNumber, string homeAddress, string idNumber, Account account)
-            : base(id, firstName, lastName, gender, dateOfBirth, phoneNumber, homeAddress, idNumber, account) { }
+        public Volunteer(int id, string firstName, string lastName, Gender gender, DateTime dateOfBirth, string phoneNumber, string homeAddress, Place place, string idNumber, Account account)
+            : base(id, firstName, lastName, gender, dateOfBirth, phoneNumber, homeAddress, place, idNumber, account) { }
 
-        public Volunteer(string firstName, string lastName, Gender gender, DateTime dateOfBirth, string phoneNumber, string homeAddress, string idNumber, Account account)
-            : base(firstName, lastName, gender, dateOfBirth, phoneNumber, homeAddress, idNumber, account) { }
+        public Volunteer(string firstName, string lastName, Gender gender, DateTime dateOfBirth, string phoneNumber, string homeAddress, Place place, string idNumber, Account account)
+            : base(firstName, lastName, gender, dateOfBirth, phoneNumber, homeAddress, place, idNumber, account) { }
 
         public override string[] ToCSV()
         {
@@ -23,5 +23,4 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
             base.FromCSV(values);
         }
     }
-
 }

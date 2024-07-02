@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         WindowStartupLocation = "CenterScreen"
         mc:Ignorable="d"
-        Title="RegistrationForm" Height="480" Width="441">
+        Title="RegistrationForm" Height="520" Width="441">
 
     <Window.Resources>
         <ControlTemplate x:Key="ValidationTemplate">
@@ -29,7 +29,9 @@
                 <RowDefinition Height="45"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="45"/>
-            <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="45"/>
+                <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -66,32 +68,44 @@
                  Validation.ErrorTemplate="{StaticResource ValidationTemplate}"
                  GotFocus="PhoneNumberTextBox_GotFocus"/>
 
-        <TextBlock Grid.Row="5" Grid.Column="1" Text="Home Address:" HorizontalAlignment="Center" Margin="0,0,0,5"/>
-        <TextBox x:Name="addressTextBox" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Center" Margin="0,0,0,10" Height="20" Width="160"
+        <TextBlock Grid.Row="7" Grid.Column="0" Text="Home Address:" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+        <TextBox x:Name="addressTextBox" Grid.Row="8" Grid.Column="0" HorizontalAlignment="Center" Margin="0,0,0,10" Height="20" Width="160"
                  Text="{Binding Path=user.HomeAddress, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                  Validation.ErrorTemplate="{StaticResource ValidationTemplate}"
                  GotFocus="AddressTextBox_GotFocus"/>
+        
+        <TextBlock Grid.Row="7" Grid.Column="1" Text="Place Name:" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+        <TextBox x:Name="placeNameTextBox" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Center" Margin="0,0,0,10" Height="20" Width="160"
+         Text="{Binding Path=user.PlaceName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+         Validation.ErrorTemplate="{StaticResource ValidationTemplate}"
+         GotFocus="PlaceNameTextBox_GotFocus"/>
 
-        <TextBlock Grid.Row="7" Text="Id Number:" HorizontalAlignment="Center" Margin="0,0,0,5"/>
-        <TextBox x:Name="IdNumberTextBox" Grid.Row="8" HorizontalAlignment="Center" Margin="0,0,0,10" Height="20" Width="160"
+         <TextBlock Grid.Row="9" Grid.Column="0" Text="Place Postal Code:" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+         <TextBox x:Name="placePostalCodeTextBox" Grid.Row="10" Grid.Column="0" HorizontalAlignment="Center" Margin="0,0,0,10" Height="20" Width="160"
+         Text="{Binding Path=user.PlacePostalCode, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+         Validation.ErrorTemplate="{StaticResource ValidationTemplate}"
+         GotFocus="PlacePostalCodeTextBox_GotFocus"/>
+
+        <TextBlock Grid.Row="5" Grid.Column="1" Text="Id Number:" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+        <TextBox x:Name="IdNumberTextBox" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Center" Margin="0,0,0,10" Height="20" Width="160"
          Text="{Binding Path=user.IdNumber, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
          Validation.ErrorTemplate="{StaticResource ValidationTemplate}"
          GotFocus="IdNumberTextBox_GotFocus"/>
 
-        <TextBlock Grid.Row="9" Grid.Column="1" Text="Password:" HorizontalAlignment="Center" Margin="0,0,0,5"/>
-        <PasswordBox x:Name="passwordBox" Grid.Row="10" Grid.Column="1" HorizontalAlignment="Center" Margin="0,0,0,10" Height="20" Width="160"
+        <TextBlock Grid.Row="11" Grid.Column="1" Text="Password:" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+        <PasswordBox x:Name="passwordBox" Grid.Row="12" Grid.Column="1" HorizontalAlignment="Center" Margin="0,0,0,10" Height="20" Width="160"
                      PasswordChanged="PasswordBox_PasswordChanged" 
                      Validation.ErrorTemplate="{StaticResource ValidationTemplate}"
                      GotFocus="PasswordBox_GotFocus"/>
 
-        <TextBlock Grid.Row="9" Grid.Column="0" Text="Username:" HorizontalAlignment="Center" Margin="0,0,0,5"/>
-        <TextBox x:Name="usernameTextBox" Grid.Row="10" Grid.Column="0" HorizontalAlignment="Center" Margin="0,0,0,10" Height="20" Width="160"
+        <TextBlock Grid.Row="11" Grid.Column="0" Text="Username:" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+        <TextBox x:Name="usernameTextBox" Grid.Row="12" Grid.Column="0" HorizontalAlignment="Center" Margin="0,0,0,10" Height="20" Width="160"
             Text="{Binding Path=user.Username, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
             Validation.ErrorTemplate="{StaticResource ValidationTemplate}"
             GotFocus="UsernameTextBox_GotFocus"/>
-        <TextBlock Text="Minimum 5 characters with numbers" Grid.Row="10" Grid.Column="1" VerticalAlignment="Bottom" Foreground="#7e8082"></TextBlock>
+        <TextBlock Text="Minimum 5 characters with numbers" Grid.Row="12" Grid.Column="1" VerticalAlignment="Bottom" Foreground="#7e8082"></TextBlock>
 
-        <StackPanel Grid.Row="11" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="15">
+        <StackPanel Grid.Row="13" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="15">
             <Button Content="Sing up" Click="btnRegistration_Click" Width="100"  Margin="0,0,10,0" Foreground="White" Background="#4F519A"/>
             <Button Content="Cancel" Click="btnCancel_Click" Width="100"/>
         </StackPanel>

@@ -65,6 +65,8 @@ namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
             user.PhoneNumber = "0123456789";
             user.Password = "password123";
             user.HomeAddress = "address example";
+            user.PlaceName = "place name example";
+            user.PlacePostalCode = "12345";
             user.IdNumber = "1234567898765";
             passwordBox.Password = user.Password;
 
@@ -74,7 +76,19 @@ namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
             phoneNumberTextBox.GotFocus += PhoneNumberTextBox_GotFocus;
             passwordBox.GotFocus += PasswordBox_GotFocus;
             addressTextBox.GotFocus += AddressTextBox_GotFocus;
+            placeNameTextBox.GotFocus += PlaceNameTextBox_GotFocus;
+            placePostalCodeTextBox.GotFocus += PlacePostalCodeTextBox_GotFocus;
             IdNumberTextBox.GotFocus += IdNumberTextBox_GotFocus;
+        }
+
+        private void PlacePostalCodeTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            placePostalCodeTextBox.Text = string.Empty;
+        }
+
+        private void PlaceNameTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            placeNameTextBox.Text = string.Empty;
         }
 
         private void FirstNameTextBox_GotFocus(object sender, RoutedEventArgs e)
