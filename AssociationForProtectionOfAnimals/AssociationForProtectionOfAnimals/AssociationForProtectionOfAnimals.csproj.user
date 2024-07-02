@@ -10,6 +10,9 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="View\RegisteredUser\RegisteredUserPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\UnregisteredUser\RegistrationForm.xaml">
       <SubType>Designer</SubType>
     </Page>

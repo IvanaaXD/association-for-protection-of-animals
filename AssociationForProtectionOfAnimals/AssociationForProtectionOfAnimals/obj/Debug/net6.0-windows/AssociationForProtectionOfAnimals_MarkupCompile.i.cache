@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\4. SEMESTAR\SIMS\projekat sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\
+D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\
 AssociationForProtectionOfAnimals
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\4. SEMESTAR\SIMS\projekat sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\App.xaml
-463998726
+D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\App.xaml
+51911853323
 
-552101818907
-194-2005446070
-MainWindow.xaml;View\Animal\CreateAnimal.xaml;View\UnregisteredUser\RegistrationForm.xaml;View\UnregisteredUser\UnregisteredUserPage.xaml;
+561726235719
+194750953030
+MainWindow.xaml;View\Animal\CreateAnimal.xaml;View\RegisteredUser\RegisteredUserPage.xaml;View\UnregisteredUser\RegistrationForm.xaml;View\UnregisteredUser\UnregisteredUserPage.xaml;
 
-False
+True
 
