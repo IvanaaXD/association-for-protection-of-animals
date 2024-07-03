@@ -1060,3 +1060,7 @@ coverage*[.json, .xml, .info]
 # Additional files built by Visual Studio
 
 # End of https://www.toptal.com/developers/gitignore/api/dotnetcore,csharp,visualstudio,visualstudiocode,vs,vim,rider,intellij+all,intellij+iml,intellij
+
+# Ignoriši bin i obj direktorijume za sve build konfiguracije
+AssociationForProtectionOfAnimals/AssociationForProtectionOfAnimals/bin/
+AssociationForProtectionOfAnimals/AssociationForProtectionOfAnimals/obj/

@@ -16,6 +16,7 @@ namespace AssociationForProtectionOfAnimals.Controller
             _users = Injector.CreateInstance<IRegisteredUserRepo>();
             _account = Injector.CreateInstance<IAccountRepo>();
             _place = Injector.CreateInstance<IPlaceRepo>();
+            _animals = Injector.CreateInstance<IAnimalRepo>();
         }
 
         public void Add(RegisteredUser user)
@@ -58,6 +59,11 @@ namespace AssociationForProtectionOfAnimals.Controller
         public Account GetAccountById(int id)
         {
             return _account.GetAccountById(id);
+        }
+
+        public RegisteredUser GetRegisteredUserByEmail(string email)
+        {
+            return _users.GetUserByEmail(email);
         }
 
         public bool IsUsernameUnique(string username)

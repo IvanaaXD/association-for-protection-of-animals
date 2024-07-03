@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\App.xaml
-51911853323
+71464066891
 
-54247560926
+61445836811
 194750953030
-MainWindow.xaml;View\Animal\CreateAnimal.xaml;View\RegisteredUser\RegisteredUserPage.xaml;View\UnregisteredUser\RegistrationForm.xaml;View\UnregisteredUser\UnregisteredUserPage.xaml;
+MainWindow.xaml;View\Adoption\RegisteredUserPage.xaml;View\Animal\CreateAnimal.xaml;View\RegisteredUser\RegisteredUserPage.xaml;View\UnregisteredUser\PostView.xaml;View\UnregisteredUser\RegistrationForm.xaml;View\UnregisteredUser\UnregisteredUserPage.xaml;
 
-False
+True
 

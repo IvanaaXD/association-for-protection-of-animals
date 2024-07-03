@@ -54,3 +54,5 @@ C:\4. SEMESTAR\SIMS\projekat sims\association-for-protection-of-animals\Associat
 C:\4. SEMESTAR\SIMS\projekat sims\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\ref\AssociationForProtectionOfAnimals.dll
 D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\View\RegisteredUser\RegisteredUserPage.g.cs
 D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\View\RegisteredUser\RegisteredUserPage.baml
+D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\View\UnregisteredUser\PostView.g.cs
+D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\View\Adoption\RegisteredUserPage.g.cs

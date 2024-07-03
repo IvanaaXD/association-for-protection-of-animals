@@ -70,5 +70,12 @@ namespace AssociationForProtectionOfAnimals.Controller
         {
             return _posts.GetAllPosts(page, pageSize, sortCriteria, posts);
         }
+
+        public void LikePost(RegisteredUser user, Post post)
+        {
+            Post newPost = GetById(post.Id);
+            newPost.PersonLikedIds.Add(user.Id);
+            Update(newPost);
+        }
     }
 }

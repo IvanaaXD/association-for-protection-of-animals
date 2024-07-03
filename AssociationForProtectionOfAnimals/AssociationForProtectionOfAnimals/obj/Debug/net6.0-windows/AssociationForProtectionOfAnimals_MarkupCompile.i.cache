@@ -4,26 +4,17 @@
 winexe
 C#
 .cs
-<<<<<<< Updated upstream
 D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\
-=======
-C:\Users\Milan\Documents\Github\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\obj\Debug\net6.0-windows\
->>>>>>> Stashed changes
 AssociationForProtectionOfAnimals
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-<<<<<<< Updated upstream
 D:\PROJEKTI\Specifikacija i modeliranje softvera\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\App.xaml
-51911853323
-=======
-C:\Users\Milan\Documents\Github\association-for-protection-of-animals\AssociationForProtectionOfAnimals\AssociationForProtectionOfAnimals\App.xaml
-463998726
->>>>>>> Stashed changes
+71464066891
 
-561726235719
+631924511604
 194750953030
-MainWindow.xaml;View\Animal\CreateAnimal.xaml;View\RegisteredUser\RegisteredUserPage.xaml;View\UnregisteredUser\RegistrationForm.xaml;View\UnregisteredUser\UnregisteredUserPage.xaml;
+MainWindow.xaml;View\Adoption\RegisteredUserPage.xaml;View\Animal\CreateAnimal.xaml;View\RegisteredUser\RegisteredUserPage.xaml;View\UnregisteredUser\PostView.xaml;View\UnregisteredUser\RegistrationForm.xaml;View\UnregisteredUser\UnregisteredUserPage.xaml;
 
-True
+False
 
