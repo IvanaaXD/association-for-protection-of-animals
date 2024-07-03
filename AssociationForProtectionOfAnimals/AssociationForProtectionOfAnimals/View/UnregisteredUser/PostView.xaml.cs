@@ -5,9 +5,7 @@ using AssociationForProtectionOfAnimals.Observer;
 using AssociationForProtectionOfAnimals.View.RegisteredUser;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics.Eventing.Reader;
 using System.Windows;
-using System.Windows.Shapes;
 
 namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
 {
@@ -154,7 +152,7 @@ namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
                 AdoptVolunteer.Visibility = Visibility.Collapsed;
                 TemporarilyAdoptVolunteer.Visibility = Visibility.Collapsed;
             }
-            else if (IsVolunteerPage())
+            else if (IsVolunteerPage() || IsAdministratorPage())
             {
                 AdoptRegisteredUser.Visibility = Visibility.Collapsed;
                 TemporarilyAdoptRegisteredUser.Visibility = Visibility.Collapsed;
@@ -190,6 +188,11 @@ namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
         private bool IsUnregisteredUserPage()
         {
             return window is AssociationForProtectionOfAnimals.View.UnregisteredUser.UnregisteredUserPage;
+        }
+
+        private bool IsAdministratorPage()
+        {
+            return window is AssociationForProtectionOfAnimals.View.Administrator.AdminPage;
         }
 
         private void AdoptRegisteredUser_Click(object sender, RoutedEventArgs e)

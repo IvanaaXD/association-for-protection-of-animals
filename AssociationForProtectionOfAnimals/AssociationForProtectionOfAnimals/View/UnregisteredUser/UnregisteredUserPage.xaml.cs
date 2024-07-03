@@ -47,14 +47,14 @@ namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
             _postController.Subscribe(this);
 
             Update();
-            UpdatePagination();
+            UpdatePostPagination();
         }
 
         public void Update()
         {
             try
             {
-                UpdatePagination();
+                UpdatePostPagination();
             }
             catch (Exception ex)
             {
@@ -62,7 +62,7 @@ namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
             }
         }
 
-        public void UpdateSearch()
+        public void UpdatePostSearch()
         {
             try
             {
@@ -116,8 +116,8 @@ namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
 
         private void SearchPosts_Click(object sender, RoutedEventArgs e)
         {
-            UpdateSearch();
-            UpdatePagination();
+            UpdatePostSearch();
+            UpdatePostPagination();
             isSearchButtonClicked = true;
         }
 
@@ -126,7 +126,7 @@ namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
             isSearchButtonClicked = false;
             Update();
             ResetSearchElements();
-            UpdatePagination();
+            UpdatePostPagination();
         }
 
         private void ResetSearchElements()
@@ -145,7 +145,7 @@ namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
 
             currentPostPage++;
             PostPreviousButton.IsEnabled = true;
-            UpdatePagination();
+            UpdatePostPagination();
 
         }
 
@@ -155,7 +155,7 @@ namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
             {
                 currentPostPage--;
                 PostNextButton.IsEnabled = true;
-                UpdatePagination();
+                UpdatePostPagination();
             }
             else if (currentPostPage == 1)
             {
@@ -163,7 +163,7 @@ namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
             }
         }
 
-        public void UpdatePagination()
+        public void UpdatePostPagination()
         {
             if (currentPostPage == 1)
             {
@@ -279,7 +279,7 @@ namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
                         sortStrategy = new SortByAge();
                         break;
                 }
-                UpdatePagination();
+                UpdatePostPagination();
             }
         }
     }

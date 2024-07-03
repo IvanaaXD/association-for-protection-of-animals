@@ -8,33 +8,40 @@ using AssociationForProtectionOfAnimals.Observer;
 using AssociationForProtectionOfAnimals.Domain.IUtility;
 using AssociationForProtectionOfAnimals.Domain.Utility;
 using AssociationForProtectionOfAnimals.Domain.IRepository;
+using AssociationForProtectionOfAnimals.Domain.Model.Enums;
+using AssociationForProtectionOfAnimals.View.UnregisteredUser;
 
 namespace AssociationForProtectionOfAnimals.View.Administrator
 {
     public partial class AdminPage : Window, IObserver
     {
+        public ObservableCollection<PostDTO>? Posts { get; set; }
+
         public ObservableCollection<RegisteredUserDTO>? Users { get; set; }
         public ObservableCollection<RegisteredUserDTO>? Volunteers { get; set; }
 
         public class ViewModel
         {
+            public ObservableCollection<PostDTO> Posts { get; set; }
             public ObservableCollection<RegisteredUserDTO> Users { get; set; }
             public ObservableCollection<RegisteredUserDTO>? Volunteers { get; set; }
-
 
             public ViewModel()
             {
                 Users = new ObservableCollection<RegisteredUserDTO>();
                 Volunteers = new ObservableCollection<RegisteredUserDTO>();
+                Posts = new ObservableCollection<PostDTO>();
             }
         }
 
         private readonly VolunteerController _volunteerController;
         private readonly AdministratorController _adminController;
+        private readonly PostController _postController;
         private readonly IPlaceRepo _placeRepo;
 
         public RegisteredUserDTO? SelectedUser { get; set; }
         public RegisteredUserDTO? SelectedVolunteer { get; set; }
+        public PostDTO? SelectedPost { get; set; }
         public ViewModel TableViewModel { get; set; }
 
         private bool isSearchButtonClicked = false;
@@ -47,12 +54,17 @@ namespace AssociationForProtectionOfAnimals.View.Administrator
         private IUserSortStrategy sortStrategy = new SortByDatetime();
         private IUserSortStrategy sortVolunteerStrategy = new SortByDatetime();
 
+        private int currentPostPage = 1;
+        private string postSortCriteria = "AnimalBreed";
+        private ISortStrategy sortPostStrategy = new SortByBreed();
+
         public AdminPage()
         {
             InitializeComponent();
             _volunteerController = Injector.CreateInstance<VolunteerController>();
             _placeRepo = Injector.CreateInstance<IPlaceRepo>();
             _adminController = Injector.CreateInstance<AdministratorController>();
+            _postController = Injector.CreateInstance<PostController>();
 
             TableViewModel = new ViewModel();
             DataContext = this;
@@ -61,6 +73,7 @@ namespace AssociationForProtectionOfAnimals.View.Administrator
 
             Update();
             UpdatePagination();
+            UpdatePostPagination();
         }
 
         public void Update()
@@ -71,6 +84,7 @@ namespace AssociationForProtectionOfAnimals.View.Administrator
                 SetVolunteers();
                 UpdatePagination();
                 UpdateVolunteerPagination();
+                UpdatePostPagination();
             }
             catch (Exception ex)
             {
@@ -171,7 +185,7 @@ namespace AssociationForProtectionOfAnimals.View.Administrator
         {
             isSearchButtonClicked = false;
             Update();
-            ResetSearchElements();
+            ResetUserSearchElements();
             UpdatePagination();
         }
         private void ResetVolunteers_Click(object sender, RoutedEventArgs e)
@@ -182,7 +196,7 @@ namespace AssociationForProtectionOfAnimals.View.Administrator
             UpdateVolunteerPagination();
         }
 
-        private void ResetSearchElements()
+        private void ResetUserSearchElements()
         {
             firstNameTextBox.Text = string.Empty;
             lastNameTextBox.Text = string.Empty;
@@ -411,6 +425,229 @@ namespace AssociationForProtectionOfAnimals.View.Administrator
         private void CreateVolunteer_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        // --------------------------------------------- POST ------------------------------------------------
+
+        public void UpdatePostSearch()
+        {
+            try
+            {
+                TableViewModel.Posts.Clear();
+                List<Post> posts = GetFilteredPosts();
+
+                if (posts != null)
+                    foreach (Post post in posts)
+                        TableViewModel.Posts.Add(new PostDTO(post));
+                else
+                    MessageBox.Show("No courses found.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+        }
+
+        private void CreatePost_Click(object sender, RoutedEventArgs e)
+        {
+            /*CreateTeacherFrom createTeacherFrom = new CreateTeacherFrom();
+            createTeacherFrom.Show();*/
+            Update();
+        }
+
+        private void UpdatePost_Click(object sender, RoutedEventArgs e)
+        {
+            if (SelectedPost == null)
+                MessageBox.Show("Please choose a post to update!");
+            else
+            {
+                /*UpdateTeacherForm updateTeacherForm = new UpdateTeacherForm(SelectedTeacher.Id);
+                updateTeacherForm.Show();
+                updateTeacherForm.Activate();*/
+                Update();
+            }
+        }
+
+        private void ViewPost_Click(object sender, RoutedEventArgs e)
+        {
+            if (SelectedPost == null)
+                MessageBox.Show("Please choose a post to view!");
+            else
+            {
+                PostView postView = new PostView(SelectedPost.ToPost(), new Domain.Model.RegisteredUser(), this);
+                postView.Show();
+                postView.Activate();
+                Update();
+            }
+        }
+
+        private void SearchPosts_Click(object sender, RoutedEventArgs e)
+        {
+            UpdatePostSearch();
+            UpdatePostPagination();
+            isSearchButtonClicked = true;
+        }
+
+        private void ResetPosts_Click(object sender, EventArgs e)
+        {
+            isSearchButtonClicked = false;
+            Update();
+            ResetPostSearchElements();
+            UpdatePostPagination();
+        }
+
+        private void ResetPostSearchElements()
+        {
+            postStatusComboBox.SelectedItem = null;
+            animalBreedComboBox.SelectedItem = null;
+            postStartDateDatePicker.SelectedDate = null;
+            minAnimalYearsTextBox.Text = "";
+            maxAnimalYearsTextBox.Text = "";
+        }
+
+        // ------------------------- PAGINATION -----------------------
+
+        private void PostNextPage_Click(object sender, RoutedEventArgs e)
+        {
+
+            currentPostPage++;
+            PostPreviousButton.IsEnabled = true;
+            UpdatePostPagination();
+
+        }
+
+        private void PostPreviousPage_Click(object sender, RoutedEventArgs e)
+        {
+            if (currentPostPage > 1)
+            {
+                currentPostPage--;
+                PostNextButton.IsEnabled = true;
+                UpdatePostPagination();
+            }
+            else if (currentPostPage == 1)
+            {
+                PostPreviousButton.IsEnabled = false;
+            }
+        }
+
+        public void UpdatePostPagination()
+        {
+            if (currentPostPage == 1)
+            {
+                PostPreviousButton.IsEnabled = false;
+            }
+            PostPageNumberTextBlock.Text = $"{currentPostPage}";
+
+            try
+            {
+                TableViewModel.Posts.Clear();
+                var filteredPosts = GetFilteredPosts();
+
+                List<Post> posts = _postController.GetAllPosts(currentPostPage, 4, postSortCriteria, filteredPosts);
+                List<Post> newPosts = _postController.GetAllPosts(currentPostPage + 1, 4, postSortCriteria, filteredPosts);
+
+                if (newPosts.Count == 0)
+                    PostNextButton.IsEnabled = false;
+                else
+                    PostNextButton.IsEnabled = true;
+                if (filteredPosts != null)
+                {
+                    foreach (Post post in posts)
+                        TableViewModel.Posts.Add(new PostDTO(post));
+                }
+                else
+                {
+                    MessageBox.Show("No exam terms found.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+        }
+
+        private List<Post>? GetFilteredPosts()
+        {
+            PostStatus? selectedPostStatus = PostStatus.NULL;
+            string? selectedBreed = null;
+            DateTime? selectedStartDate = DateTime.MinValue;
+            int selectedMinYears = 0;
+            int selectedMaxYears = 0;
+
+            if (!string.IsNullOrEmpty(minAnimalYearsTextBox.Text))
+            {
+                if (int.TryParse(minAnimalYearsTextBox.Text, out int duration))
+                {
+                    selectedMinYears = duration;
+                }
+            }
+
+            if (!string.IsNullOrEmpty(maxAnimalYearsTextBox.Text))
+            {
+                if (int.TryParse(maxAnimalYearsTextBox.Text, out int duration))
+                {
+                    selectedMaxYears = duration;
+                }
+            }
+
+            if (postStatusComboBox.SelectedItem != null)
+                selectedPostStatus = (PostStatus)postStatusComboBox.SelectedItem;
+
+            if (animalBreedComboBox.SelectedItem != null)
+                selectedBreed = animalBreedComboBox.SelectedItem.ToString();
+
+            if (postStartDateDatePicker.SelectedDate.HasValue)
+                selectedStartDate = (DateTime)postStartDateDatePicker.SelectedDate;
+
+            return GetPostsForDisplay(selectedPostStatus, selectedBreed, selectedStartDate, selectedMinYears, selectedMaxYears);
+        }
+
+        private List<Post> GetPostsForDisplay(PostStatus? selectedPostStatus, string selectedBreed, DateTime? selectedStartDate, int selectedMinYears, int selectedMaxYears)
+        {
+            List<Post> finalPosts = new();
+
+            if (isSearchButtonClicked)
+            {
+                List<Post> allFilteredPosts = _postController.FindPostsByCriteria(selectedPostStatus, selectedBreed, selectedStartDate, selectedMinYears, selectedMaxYears);
+
+                foreach (Post post in allFilteredPosts)
+                    finalPosts.Add(post);
+            }
+            else
+            {
+                foreach (Post post in _postController.GetAllPosts())
+                    finalPosts.Add(post);
+            }
+
+            return finalPosts;
+        }
+
+        private void PostSortCriteriaComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (postSortCriteriaComboBox.SelectedItem is ComboBoxItem selectedItem)
+            {
+                string selectedContent = selectedItem.Content.ToString();
+                switch (selectedContent)
+                {
+                    case "DateOfPosting":
+                        postSortCriteria = "DateOfPosting";
+                        sortPostStrategy = new SortByDatetime();
+                        break;
+                    case "PostStatus":
+                        postSortCriteria = "PostStatus";
+                        sortPostStrategy = new SortByPostStatus();
+                        break;
+                    case "AnimalBreed":
+                        postSortCriteria = "AnimalBreed";
+                        sortPostStrategy = new SortByBreed();
+                        break;
+                    case "AnimalYears":
+                        postSortCriteria = "AnimalYears";
+                        sortPostStrategy = new SortByAge();
+                        break;
+                }
+                UpdatePostPagination();
+            }
         }
     }
 }
