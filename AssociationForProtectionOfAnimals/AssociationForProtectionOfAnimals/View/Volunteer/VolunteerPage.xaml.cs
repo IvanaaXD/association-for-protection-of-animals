@@ -36,7 +36,7 @@ namespace AssociationForProtectionOfAnimals.View.Volunteer
             }
         }
 
-        private readonly int userId;
+        private readonly Domain.Model.RegisteredUser user;
         private readonly VolunteerController _volunteerController;
         private readonly PostController _postController;
 
@@ -57,10 +57,10 @@ namespace AssociationForProtectionOfAnimals.View.Volunteer
         private string postSortCriteria = "AnimalBreed";
         private ISortStrategy postSortStrategy = new SortByBreed();
 
-        public VolunteerPage(int UserId)
+        public VolunteerPage(Domain.Model.RegisteredUser user)
         {
             InitializeComponent();
-            this.userId = UserId;
+            this.user = user;
             _volunteerController = Injector.CreateInstance<VolunteerController>();
             _postController = Injector.CreateInstance<PostController>();
             _placeRepo = Injector.CreateInstance<IPlaceRepo>();
@@ -68,6 +68,8 @@ namespace AssociationForProtectionOfAnimals.View.Volunteer
             TableViewModel = new ViewModel();
             DataContext = this;
             _volunteerController.Subscribe(this);
+
+            firstAndLastName.Text = user.FirstName + " " + user.LastName;
 
             Update();
             UpdatePagination();
@@ -271,7 +273,7 @@ namespace AssociationForProtectionOfAnimals.View.Volunteer
 
         private void CreatePost_Click(object sender, RoutedEventArgs e)
         {
-            Animal.CreateAnimal createAnimal = new CreateAnimal(userId);
+            Animal.CreateAnimal createAnimal = new CreateAnimal(user.Id);
             createAnimal.Show();
             Update();
         }

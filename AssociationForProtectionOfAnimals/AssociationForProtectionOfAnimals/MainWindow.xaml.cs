@@ -43,7 +43,7 @@ namespace AssociationForProtectionOfAnimals
             {
                 if (user.Account.Username == username && user.Account.Password == password)
                 {
-                    RegisteredUserPage welcomePage = new RegisteredUserPage(user.Id);
+                    RegisteredUserPage welcomePage = new RegisteredUserPage(user);
                     welcomePage.Show();
 
                     // IF USER IS DELETED FROM THE APP (KICKED OUT)
@@ -70,7 +70,7 @@ namespace AssociationForProtectionOfAnimals
             {
                 if (volunteer.Account.Username == username && volunteer.Account.Password == password)
                 {
-                    VolunteerPage volunteerPage = new VolunteerPage(volunteer.Id);
+                    VolunteerPage volunteerPage = new VolunteerPage(volunteer);
                     volunteerPage.Show();
                     return true;
                 }

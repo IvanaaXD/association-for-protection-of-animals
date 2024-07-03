@@ -77,6 +77,8 @@ namespace AssociationForProtectionOfAnimals.View.Administrator
 
             administrator = _adminController.GetAdministrator();
 
+            firstAndLastName.Text = administrator.FirstName + " " + administrator.LastName;
+
             Update();
             UpdatePagination();
             UpdatePostPagination();

@@ -33,20 +33,22 @@ namespace AssociationForProtectionOfAnimals.View.RegisteredUser
         public ViewModel TableViewModel { get; set; }
 
 
-        private int userId;
+        private Domain.Model.RegisteredUser user;
         private bool isSearchButtonClicked = false;
         private int currentPostPage= 1;
         private string postSortCriteria = "AnimalBreed";
         private ISortStrategy sortStrategy = new SortByBreed();
 
-        public RegisteredUserPage(int userId)
+        public RegisteredUserPage(Domain.Model.RegisteredUser user)
         {
             InitializeComponent();
             _postController = Injector.CreateInstance<PostController>();
             TableViewModel = new ViewModel();
             DataContext = this;
-            this.userId = userId;
+            this.user = user;
             _postController.Subscribe(this);
+
+            firstAndLastName.Text = user.FirstName + " " + user.LastName;
 
             Update();
             UpdatePagination();
@@ -96,7 +98,7 @@ namespace AssociationForProtectionOfAnimals.View.RegisteredUser
 
         private void CreatePost_Click(object sender, RoutedEventArgs e)
         {
-            Animal.CreateAnimal createAnimal = new CreateAnimal(userId);
+            Animal.CreateAnimal createAnimal = new CreateAnimal(user.Id);
             createAnimal.Show();
             Update();
         }
