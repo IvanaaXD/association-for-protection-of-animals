@@ -43,7 +43,7 @@ namespace AssociationForProtectionOfAnimals.Repository
             oldPost.PostStatus = post.PostStatus;
             oldPost.HasCurrentAdopter = post.HasCurrentAdopter;
             oldPost.AnimalId = post.AnimalId;
-            oldPost.Person = post.Person;
+            oldPost.Author = post.Author;
             oldPost.Adopter = post.Adopter;
 
             _storage.Save(_posts);
@@ -58,7 +58,7 @@ namespace AssociationForProtectionOfAnimals.Repository
 
         public List<Post>? GetPostByPersonPosted(string personPostedEmail)
         {
-            return _posts.Where(post => post.Person == personPostedEmail).ToList();
+            return _posts.Where(post => post.Author == personPostedEmail).ToList();
         }
 
         public List<Post> GetAllPosts()

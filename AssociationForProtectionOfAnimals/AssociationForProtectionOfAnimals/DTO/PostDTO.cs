@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using AssociationForProtectionOfAnimals.Controller;
+using AssociationForProtectionOfAnimals.Domain.IRepository;
 using AssociationForProtectionOfAnimals.Domain.Model;
 using AssociationForProtectionOfAnimals.Domain.Model.Enums;
+using AssociationForProtectionOfAnimals.Repository;
 
 namespace AssociationForProtectionOfAnimals.DTO
 {
@@ -15,7 +18,7 @@ namespace AssociationForProtectionOfAnimals.DTO
         private PostStatus postStatus;
         private bool hasCurrentAdopter;
         private int animalId;
-        private string person;
+        private string author;
         private string adopter;
 
         private string adopterName;
@@ -60,10 +63,10 @@ namespace AssociationForProtectionOfAnimals.DTO
             set { SetProperty(ref animalId, value); }
         }
 
-        public string Person
+        public string Author
         {
-            get { return person; }
-            set { SetProperty(ref person, value); }
+            get { return author; }
+            set { SetProperty(ref author, value); }
         }
 
         public string Adopter
@@ -151,7 +154,7 @@ namespace AssociationForProtectionOfAnimals.DTO
                 PostStatus = postStatus,
                 HasCurrentAdopter = hasCurrentAdopter,
                 AnimalId = animalId,
-                Person = person,
+                Author = author,
                 Adopter = adopter
             };
         }
@@ -166,13 +169,35 @@ namespace AssociationForProtectionOfAnimals.DTO
             postStatus = post.PostStatus;
             hasCurrentAdopter = post.HasCurrentAdopter;
             animalId = post.AnimalId;
-            person = post.Person;
+            author = post.Author;
             adopter = post.Adopter;
 
-            /*adopterName = post.AdopterName;
-            personName = post.PersonName;
-            animalBreed = post.AnimalBreed;
-            animalName = post.AnimalName;*/
+            Person person = GetAdopter(adopter);
+            adopterName = person.FirstName + " " + person.LastName;
+            person = GetAdopter(author);
+            personName = person.FirstName + " " + person.LastName;
+            Animal animal = GetAnimal(animalId);
+            animalBreed = animal.Breed.Name;
+            animalName = animal.Name;
+        }
+
+        public Person GetAdopter(string email)
+        {
+            RegisteredUserController registeredUserController = Injector.CreateInstance<RegisteredUserController>();
+            VolunteerController volunteerController = Injector.CreateInstance<VolunteerController>();
+            Person person = registeredUserController.GetRegisteredUserByEmail(email);
+            if (person == null)
+                person = volunteerController.GetVolunteerByEmail(email);
+
+            return person;
+        }
+
+        public Animal GetAnimal(int animalId)
+        {
+            AnimalRepo animalRepository = (AnimalRepo)Injector.CreateInstance<IAnimalRepo>();
+            Animal animal = animalRepository.GetAnimalById(animalId);
+
+            return animal;
         }
     }
 }

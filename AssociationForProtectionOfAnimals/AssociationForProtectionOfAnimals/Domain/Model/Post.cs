@@ -12,7 +12,7 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
         private PostStatus postStatus;
         private bool hasCurrentAdopter;
         private int animalId;
-        private string person;
+        private string author;
         private string adopter;
 
         private List<int> personLikedIds;
@@ -53,10 +53,10 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
             set { animalId = value; }
         }
 
-        public string Person
+        public string Author
         {
-            get { return person; }
-            set { person = value; }
+            get { return author; }
+            set { author = value; }
         }
 
         public string Adopter
@@ -73,14 +73,14 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
 
         public Post() { }
 
-        public Post(DateTime dateOfPosting, DateTime dateOfUpdating, PostStatus postStatus, bool hasCurrentAdopter, int animalId, string person, string adopter)
+        public Post(DateTime dateOfPosting, DateTime dateOfUpdating, PostStatus postStatus, bool hasCurrentAdopter, int animalId, string author, string adopter)
         {
             this.dateOfPosting = dateOfPosting;
             this.dateOfUpdating = dateOfUpdating;
             this.postStatus = postStatus;
             this.hasCurrentAdopter = hasCurrentAdopter;
             this.animalId = animalId;
-            this.person = person;
+            this.author = author;
             this.adopter = adopter;
         }
 
@@ -96,7 +96,7 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
                 PostStatus.ToString(),
                 HasCurrentAdopter.ToString(),
                 AnimalId.ToString(),
-                Person.ToString(),
+                Author.ToString(),
                 Adopter.ToString(),
                 personLikedIdsStr
             };
@@ -113,8 +113,8 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
             dateOfUpdating = DateTime.ParseExact(values[2], "yyyy-MM-dd", null);
             postStatus = (PostStatus)Enum.Parse(typeof(PostStatus), values[3]);
             hasCurrentAdopter = bool.Parse(values[4]);
-            animalId = int.Parse(values[5]); 
-            person = values[6];
+            animalId = int.Parse(values[5]);
+            author = values[6];
             adopter = values[7];
             personLikedIds = ListFromCSV(values[8]);
         }

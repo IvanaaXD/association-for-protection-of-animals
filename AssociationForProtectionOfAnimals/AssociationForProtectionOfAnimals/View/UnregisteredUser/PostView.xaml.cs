@@ -112,7 +112,7 @@ namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
             postDateOfUpdatingTextBlock.Text = post.DateOfUpdating.ToString("yyyy-MM-dd HH:mm");
             postStatusTextBlock.Text = $"{post?.PostStatus}";
             postHasCurrentAdopterTextBlock.Text = post?.HasCurrentAdopter.ToString();
-            postAuthorTextBlock.Text = GetName(post.Person);
+            postAuthorTextBlock.Text = GetName(post.Author);
             postAdopterTextBlock.Text = GetName(post.Adopter);
             postNumberOfLikesTextBlock.Text = post.PersonLikedIds.Count.ToString();
         }
