@@ -6,6 +6,7 @@ using AssociationForProtectionOfAnimals.View.Animal;
 using AssociationForProtectionOfAnimals.View.UnregisteredUser;
 using AssociationForProtectionOfAnimals.View.Volunteer;
 using AssociationForProtectionOfAnimals.View.RegisteredUser;
+using AssociationForProtectionOfAnimals.View.Administrator;
 
 namespace AssociationForProtectionOfAnimals
 {
@@ -87,10 +88,8 @@ namespace AssociationForProtectionOfAnimals
 
             if (director.Account.Username == username && director.Account.Password == password)
             {
-                MessageBox.Show("Uspesan login admina.");
-
-                /*AdministratorPage directorPage = new AdministratorPage(director.Id);
-                directorPage.Show();*/
+                AdminPage directorPage = new AdminPage();
+                directorPage.Show();
                 return true;
             }
             return false;

@@ -5,6 +5,7 @@ using AssociationForProtectionOfAnimals.Domain.Model;
 using AssociationForProtectionOfAnimals.Domain.Model.Enums;
 using System.Linq;
 using AssociationForProtectionOfAnimals.Domain.IRepository;
+using AssociationForProtectionOfAnimals.Domain.IUtility;
 
 namespace AssociationForProtectionOfAnimals.Controller
 {
@@ -77,29 +78,6 @@ namespace AssociationForProtectionOfAnimals.Controller
             _volunteers.Subscribe(observer);
             _accounts.Subscribe(observer);
         }
-
-        /*public List<Volunteer> FindVolunteersByCriteria(Language language, LanguageLevel levelOfLanguage, DateTime startedWork)
-        {
-            List<Volunteer> volunteers = GetAllVolunteers();
-
-            var filteredVolunteers = volunteers.Where(volunteer =>
-                (language == Language.NULL || (volunteer.Languages != null && volunteer.Languages.Contains(language))) &&
-                (levelOfLanguage == LanguageLevel.NULL || (volunteer.LevelOfLanguages != null && volunteer.LevelOfLanguages.Contains(levelOfLanguage))) &&
-                (startedWork == DateTime.MinValue || (volunteer.StartedWork.Date >= startedWork.Date))
-            ).ToList();
-
-            return filteredVolunteers;
-        }*/
-
-        public List<Volunteer> GetAllVolunteers(int page, int pageSize, string sortCriteria, List<Volunteer> volunteers)
-        {
-            return _admins.GetAllVolunteers(page, pageSize, sortCriteria, volunteers);
-        }
-        /*public List<Volunteer> GetAllVolunteers(int page, int pageSize, ISortStrategy sortStrategy, List<Volunteer> volunteers)
-        {
-            return _admins.GetAllVolunteers(page, pageSize, sortStrategy, volunteers);
-        }*/
-
         public Animal AddAnimal(Animal animal)
         {
             return _animals.AddAnimal(animal);
@@ -166,6 +144,23 @@ namespace AssociationForProtectionOfAnimals.Controller
                 if (volunteer.Account.Username == username)
                     return volunteer;
             return null;
+        }
+        public List<Volunteer> GetAllVolunteers(int page, int pageSize, IUserSortStrategy sortStrategy, List<Volunteer> RegisteredUsers)
+        {
+            return _admins.GetAllVolunteers(page, pageSize, sortStrategy, RegisteredUsers);
+        }
+        public List<Volunteer> FindVolunteersByCriteria(string firstName, string lastName, Place? place, DateTime? datetime)
+        {
+            List<Volunteer> volunteers = GetAllVolunteers();
+
+            var filteredVolunteers = volunteers.Where(volunteer =>
+                (string.IsNullOrEmpty(firstName) || volunteer.FirstName.Equals(firstName, StringComparison.OrdinalIgnoreCase)) &&
+                (string.IsNullOrEmpty(lastName) || volunteer.LastName.Equals(lastName, StringComparison.OrdinalIgnoreCase)) &&
+                (place == null || volunteer.Place?.Id == place.Id) &&
+                (!datetime.HasValue || volunteer.DateOfBirth.Date == datetime.Value.Date)
+            ).ToList();
+
+            return filteredVolunteers;
         }
     }
 }

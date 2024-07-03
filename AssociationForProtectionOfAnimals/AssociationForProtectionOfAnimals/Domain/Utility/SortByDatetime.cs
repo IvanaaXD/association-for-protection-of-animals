@@ -12,5 +12,10 @@ namespace AssociationForProtectionOfAnimals.Domain.Utility
         {
             return registeredUsers.OrderBy(x => x.DateOfBirth);
         }
+        public IEnumerable<Volunteer> Sort(IEnumerable<Volunteer> volunteers)
+        {
+            return volunteers.OrderBy(x => x.DateOfBirth);
+
+        }
     }
 }

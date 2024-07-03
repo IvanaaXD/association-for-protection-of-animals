@@ -3,15 +3,15 @@ using AssociationForProtectionOfAnimals.Domain.Model;
 
 namespace AssociationForProtectionOfAnimals.Domain.Model
 {
-    public class Volunteer : Person
+    public class Volunteer : RegisteredUser
     {
         public Volunteer() : base() { }
 
         public Volunteer(int id, string firstName, string lastName, Gender gender, DateTime dateOfBirth, string phoneNumber, string homeAddress, Place place, string idNumber, Account account)
-            : base(id, firstName, lastName, gender, dateOfBirth, phoneNumber, homeAddress, place, idNumber, account) { }
+            : base(id, firstName, lastName, gender, dateOfBirth, phoneNumber, homeAddress, place, idNumber, account, false) { }
 
         public Volunteer(string firstName, string lastName, Gender gender, DateTime dateOfBirth, string phoneNumber, string homeAddress, Place place, string idNumber, Account account)
-            : base(firstName, lastName, gender, dateOfBirth, phoneNumber, homeAddress, place, idNumber, account) { }
+            : base(firstName, lastName, gender, dateOfBirth, phoneNumber, homeAddress, place, idNumber, account, false) { }
 
         public override string[] ToCSV()
         {

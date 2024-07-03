@@ -2,6 +2,7 @@
 using AssociationForProtectionOfAnimals.Storage;
 using AssociationForProtectionOfAnimals.Domain.Model;
 using AssociationForProtectionOfAnimals.Domain.IRepository;
+using AssociationForProtectionOfAnimals.Domain.IUtility;
 
 namespace AssociationForProtectionOfAnimals.Repository
 {
@@ -111,29 +112,11 @@ namespace AssociationForProtectionOfAnimals.Repository
             throw new NotImplementedException();
         }
 
-        public List<Volunteer> GetAllVolunteers(int page, int pageSize, string sortCriteria, List<Volunteer> VolunteersToPaginate)
-        {
-            IEnumerable<Volunteer> Volunteers = VolunteersToPaginate;
-
-            switch (sortCriteria)
-            {
-                case "FirstName":
-                    Volunteers = Volunteers.OrderBy(x => x.FirstName);
-                    break;
-                case "LastName":
-                    Volunteers = Volunteers.OrderBy(x => x.LastName);
-                    break;
-            }
-
-            Volunteers = Volunteers.Skip((page - 1) * pageSize).Take(pageSize);
-
-            return Volunteers.ToList();
-        }
-        /*public List<Volunteer> GetAllVolunteers(int page, int pageSize, ISortStrategy sortStrategy, List<Volunteer> VolunteersToPaginate)
+        public List<Volunteer> GetAllVolunteers(int page, int pageSize, IUserSortStrategy sortStrategy, List<Volunteer> VolunteersToPaginate)
         {
             IEnumerable<Volunteer> Volunteers = sortStrategy.Sort(VolunteersToPaginate);
             Volunteers = Volunteers.Skip((page - 1) * pageSize).Take(pageSize);
             return Volunteers.ToList();
-        }*/
+        }
     }
 }
