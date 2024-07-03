@@ -23,7 +23,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Border Background="#225810" Grid.RowSpan="4" Grid.Column="0">
-                    <Image Source="https://cdn-icons-png.flaticon.com/512/201/201818.png" Width="150"></Image>
+                    <Image Source="https://cdn2.iconfinder.com/data/icons/circle-avatars-1/128/032_girl_avatar_profile_woman_blouse-1024.png" Width="150"></Image>
                 </Border>
 
                 <TextBlock Grid.Row="1" Grid.Column="1"  VerticalAlignment="Center" HorizontalAlignment="Left"
