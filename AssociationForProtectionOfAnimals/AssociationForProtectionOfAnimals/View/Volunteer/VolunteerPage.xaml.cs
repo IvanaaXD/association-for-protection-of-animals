@@ -68,6 +68,13 @@ namespace AssociationForProtectionOfAnimals.View.Volunteer
             }
         }
 
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new();
+            mainWindow.Show();
+            this.Close();
+        }
+
         private void SetUsers()
         {
             TableViewModel.Users.Clear();
