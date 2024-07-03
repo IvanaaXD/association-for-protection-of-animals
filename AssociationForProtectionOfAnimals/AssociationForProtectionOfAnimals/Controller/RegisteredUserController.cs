@@ -84,7 +84,7 @@ namespace AssociationForProtectionOfAnimals.Controller
             if (newAnimal == null) return null;
 
             RegisteredUser user = _users.GetRegisteredUserById(userId);
-            Post post = new Post(DateTime.Now, DateTime.Now, PostStatus.Unpublished, false, newAnimal.Id, user.Account.Username, null);
+            Post post = new Post(DateTime.Now, DateTime.Now, PostStatus.Unpublished, false, newAnimal.Id, user.Account.Username, "");
             return _posts.Add(post);
         }
         public Animal? UpdateAnimal(Animal animal)

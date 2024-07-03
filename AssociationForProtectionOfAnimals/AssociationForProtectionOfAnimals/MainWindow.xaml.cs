@@ -43,8 +43,6 @@ namespace AssociationForProtectionOfAnimals
             {
                 if (user.Account.Username == username && user.Account.Password == password)
                 {
-                    MessageBox.Show("Uspesan login korisnika.");
-
                     RegisteredUserPage welcomePage = new RegisteredUserPage(user.Id);
                     welcomePage.Show();
 
@@ -72,10 +70,8 @@ namespace AssociationForProtectionOfAnimals
             {
                 if (volunteer.Account.Username == username && volunteer.Account.Password == password)
                 {
-                    MessageBox.Show("Uspesan login volontera.");
-
-                    /*VolunteerPage volunteerPage = new VolunteerPage(volunteer.Id);
-                    volunteerPage.Show();*/
+                    VolunteerPage volunteerPage = new VolunteerPage(volunteer.Id);
+                    volunteerPage.Show();
                     return true;
                 }
             }

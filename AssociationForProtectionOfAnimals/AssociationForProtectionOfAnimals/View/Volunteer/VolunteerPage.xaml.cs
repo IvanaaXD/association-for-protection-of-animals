@@ -370,12 +370,24 @@ namespace AssociationForProtectionOfAnimals.View.Volunteer
 
         private void AcceptRequest_Click(object sender, RoutedEventArgs e)
         {
-
+            if (SelectedUnpublishedPost == null)
+                MessageBox.Show("Please choose a post to update!");
+            else
+            {
+                _volunteerController.AcceptPostRequest(SelectedUnpublishedPost.ToPost());
+                Update();
+            }
         }
 
         private void RejectRequest_Click(object sender, RoutedEventArgs e)
         {
-
+            if (SelectedUnpublishedPost == null)
+                MessageBox.Show("Please choose a post to update!");
+            else
+            {
+                _volunteerController.RejectPostRequest(SelectedUnpublishedPost.ToPost());
+                Update();
+            }
         }
 
         public void UpdatePostPagination()

@@ -69,7 +69,7 @@ namespace AssociationForProtectionOfAnimals.Controller
             if (newAnimal == null) return null;
 
             Volunteer user = _admin.GetById(userId);
-            Post post = new Post(DateTime.Now, DateTime.Now, PostStatus.ForAdoption, false, newAnimal.Id, user.Account.Username, null);
+            Post post = new Post(DateTime.Now, DateTime.Now, PostStatus.ForAdoption, false, newAnimal.Id, user.Account.Username, "");
             return _posts.Add(post);
         }
         public Post? AcceptPostRequest(Post post)

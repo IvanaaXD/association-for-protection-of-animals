@@ -15,7 +15,7 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
         private string author;
         private string adopter;
 
-        private List<int> personLikedIds;
+        private List<int> personLikedIds = new List<int>();
 
         public int Id
         {
