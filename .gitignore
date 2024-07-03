@@ -984,6 +984,10 @@ coverage*[.json, .xml, .info]
 # to a newer Visual Studio version. Backup files are not needed,
 # because we have git ;-)
 
+# Ignore bin and obj folders in the specified project directory
+AssociationForProtectionOfAnimals/AssociationForProtectionOfAnimals/bin/
+AssociationForProtectionOfAnimals/AssociationForProtectionOfAnimals/obj/
+
 # SQL Server files
 
 # Business Intelligence projects
@@ -1060,7 +1064,3 @@ coverage*[.json, .xml, .info]
 # Additional files built by Visual Studio
 
 # End of https://www.toptal.com/developers/gitignore/api/dotnetcore,csharp,visualstudio,visualstudiocode,vs,vim,rider,intellij+all,intellij+iml,intellij
-
-# Ignoriši bin i obj direktorijume za sve build konfiguracije
-AssociationForProtectionOfAnimals/AssociationForProtectionOfAnimals/bin/
-AssociationForProtectionOfAnimals/AssociationForProtectionOfAnimals/obj/

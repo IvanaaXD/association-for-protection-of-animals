@@ -1,18 +1,16 @@
 ﻿using AssociationForProtectionOfAnimals.Domain.IUtility;
 using AssociationForProtectionOfAnimals.Domain.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace AssociationForProtectionOfAnimals.Domain.Utility
 {
-    public class SortByDatetime : ISortStrategy
+    public class SortByDatetime : ISortStrategy, IUserSortStrategy
     {
         public IEnumerable<Post> Sort(IEnumerable<Post> posts)
         {
             return posts.OrderBy(x => x.DateOfPosting);
+        }
+        public IEnumerable<RegisteredUser> Sort(IEnumerable<RegisteredUser> registeredUsers)
+        {
+            return registeredUsers.OrderBy(x => x.DateOfBirth);
         }
     }
 }

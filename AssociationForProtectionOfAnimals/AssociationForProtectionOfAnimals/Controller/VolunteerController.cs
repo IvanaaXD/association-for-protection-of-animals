@@ -2,6 +2,8 @@
 using AssociationForProtectionOfAnimals.Observer;
 using AssociationForProtectionOfAnimals.Domain.IRepository;
 using AssociationForProtectionOfAnimals.Domain.Model.Enums;
+using AssociationForProtectionOfAnimals.Domain.IUtility;
+using System.IO;
 
 namespace AssociationForProtectionOfAnimals.Controller
 {
@@ -104,6 +106,26 @@ namespace AssociationForProtectionOfAnimals.Controller
         {
             return _volunteers.GetUserByEmail(email);
         }
+        public List<RegisteredUser> GetAllRegisteredUsers(int page, int pageSize, string sortCriteria, List<RegisteredUser> RegisteredUsers)
+        {
+            return _volunteers.GetAllRegisteredUsers(page, pageSize, sortCriteria, RegisteredUsers);
+        }
+        public List<RegisteredUser> GetAllRegisteredUsers(int page, int pageSize, IUserSortStrategy sortStrategy, List<RegisteredUser> RegisteredUsers)
+        {
+            return _volunteers.GetAllRegisteredUsers(page, pageSize, sortStrategy, RegisteredUsers);
+        }
+        public List<RegisteredUser> FindRegisteredUsersByCriteria(string firstName, string lastName, Place? place, DateTime? datetime)
+        {
+            List<RegisteredUser> registeredUsers = GetAllRegisteredUsers();
 
+            var filteredRegisteredUsers = registeredUsers.Where(registeredUser =>
+                (string.IsNullOrEmpty(firstName) || registeredUser.FirstName.Equals(firstName, StringComparison.OrdinalIgnoreCase)) &&
+                (string.IsNullOrEmpty(lastName) || registeredUser.LastName.Equals(lastName, StringComparison.OrdinalIgnoreCase)) &&
+                (place == null || registeredUser.Place?.Id == place.Id) &&
+                (!datetime.HasValue || registeredUser.DateOfBirth.Date == datetime.Value.Date)
+            ).ToList();
+
+            return filteredRegisteredUsers;
+        }
     }
 }

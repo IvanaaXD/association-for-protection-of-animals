@@ -39,5 +39,10 @@ namespace AssociationForProtectionOfAnimals.Repository
             NotifyObservers();
             return place;
         }
+
+        public Place? GetPlaceByName(string placeName)
+        {
+            return _places.FirstOrDefault(p => p.Name.Equals(placeName, StringComparison.OrdinalIgnoreCase));
+        }
     }
 }

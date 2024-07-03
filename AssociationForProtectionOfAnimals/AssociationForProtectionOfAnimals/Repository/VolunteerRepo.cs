@@ -2,6 +2,7 @@
 using AssociationForProtectionOfAnimals.Domain.IRepository;
 using AssociationForProtectionOfAnimals.Observer;
 using AssociationForProtectionOfAnimals.Storage;
+using AssociationForProtectionOfAnimals.Domain.IUtility;
 
 namespace AssociationForProtectionOfAnimals.Repository
 {
@@ -78,6 +79,27 @@ namespace AssociationForProtectionOfAnimals.Repository
         public RegisteredUser GetUserByEmail(string email)
         {
             return _users.Find(v => v.Account.Username == email);
+        }
+        public List<RegisteredUser> GetAllRegisteredUsers(int page, int pageSize, string sortCriteria, List<RegisteredUser> registeredUsersToPaginate)
+        {
+            IEnumerable<RegisteredUser> registeredUsers = registeredUsersToPaginate;
+
+            switch (sortCriteria)
+            {
+                case "DateOfBirth":
+                    registeredUsers = registeredUsers.OrderBy(x => x.DateOfBirth);
+                    break;
+            }
+
+            registeredUsers = registeredUsers.Skip((page - 1) * pageSize).Take(pageSize);
+
+            return registeredUsers.ToList();
+        }
+        public List<RegisteredUser> GetAllRegisteredUsers(int page, int pageSize, IUserSortStrategy sortStrategy, List<RegisteredUser> registeredUsersToPaginate)
+        {
+            IEnumerable<RegisteredUser> RegisteredUsers = sortStrategy.Sort(registeredUsersToPaginate);
+            RegisteredUsers = RegisteredUsers.Skip((page - 1) * pageSize).Take(pageSize);
+            return RegisteredUsers.ToList();
         }
     }
 }
