@@ -65,9 +65,8 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
 
         public Post() { }
 
-        public Post(int id, DateTime dateOfPosting, DateTime dateOfUpdating, PostStatus postStatus, bool hasCurrentAdopter, int animalId, string person, string adopter)
+        public Post(DateTime dateOfPosting, DateTime dateOfUpdating, PostStatus postStatus, bool hasCurrentAdopter, int animalId, string person, string adopter)
         {
-            this.id = id;
             this.dateOfPosting = dateOfPosting;
             this.dateOfUpdating = dateOfUpdating;
             this.postStatus = postStatus;

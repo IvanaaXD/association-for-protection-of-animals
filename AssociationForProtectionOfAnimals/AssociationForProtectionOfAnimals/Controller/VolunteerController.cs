@@ -1,8 +1,7 @@
 ﻿using AssociationForProtectionOfAnimals.Domain.Model;
 using AssociationForProtectionOfAnimals.Observer;
 using AssociationForProtectionOfAnimals.Domain.IRepository;
-using AssociationForProtectionOfAnimals.Storage;
-using System.Security.Principal;
+using AssociationForProtectionOfAnimals.Domain.Model.Enums;
 
 namespace AssociationForProtectionOfAnimals.Controller
 {
@@ -14,6 +13,7 @@ namespace AssociationForProtectionOfAnimals.Controller
         private readonly IAnimalRepo _animals;
         private readonly IAccountRepo _accounts;
         private readonly IPlaceRepo _places;
+        private readonly PostController _posts;
 
         public VolunteerController()
         {
@@ -23,6 +23,7 @@ namespace AssociationForProtectionOfAnimals.Controller
             _animals = Injector.CreateInstance<IAnimalRepo>();
             _accounts = Injector.CreateInstance<IAccountRepo>();
             _places = Injector.CreateInstance<IPlaceRepo>();
+            _posts = Injector.CreateInstance<PostController>();
         }
 
         public RegisteredUser? GetById(int id)
@@ -60,9 +61,15 @@ namespace AssociationForProtectionOfAnimals.Controller
             return user;
         }
 
-        public Animal AddAnimal(Animal animal)
+        // Napravljena je funkcija samo za kreiranje posta ako zivotinja nema vlasnika
+        public bool AddAnimal(Animal animal, string publisherEmail)
         {
-            return _animals.AddAnimal(animal);
+            Post post = new Post(DateTime.Now,DateTime.Now,PostStatus.ForAdoption,false,animal.Id,publisherEmail,null);
+            post = _posts.Add(post);
+            if (post == null)
+                return false;
+
+            return true;
         }
 
         public Animal? UpdateAnimal(Animal animal)

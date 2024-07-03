@@ -16,6 +16,7 @@ namespace AssociationForProtectionOfAnimals.Controller
             _users = Injector.CreateInstance<IRegisteredUserRepo>();
             _account = Injector.CreateInstance<IAccountRepo>();
             _place = Injector.CreateInstance<IPlaceRepo>();
+            _animals = Injector.CreateInstance<IAnimalRepo>();
         }
 
         public void Add(RegisteredUser user)
