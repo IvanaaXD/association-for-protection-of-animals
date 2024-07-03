@@ -1,4 +1,5 @@
-﻿using AssociationForProtectionOfAnimals.Domain.Model;
+﻿using AssociationForProtectionOfAnimals.Domain.IUtility;
+using AssociationForProtectionOfAnimals.Domain.Model;
 using AssociationForProtectionOfAnimals.Observer;
 
 namespace AssociationForProtectionOfAnimals.Domain.IRepository
@@ -13,5 +14,7 @@ namespace AssociationForProtectionOfAnimals.Domain.IRepository
         RegisteredUser? RemoveUser(int id);
         RegisteredUser GetUserByEmail(string email);
         void Subscribe(IObserver observer);
+        List<RegisteredUser> GetAllRegisteredUsers(int page, int pageSize, string sortCriteria, List<RegisteredUser> RegisteredUsers);
+        List<RegisteredUser> GetAllRegisteredUsers(int page, int pageSize, IUserSortStrategy sortStrategy, List<RegisteredUser> RegisteredUsers);
     }
 }
