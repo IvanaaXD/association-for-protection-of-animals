@@ -12,14 +12,19 @@ namespace AssociationForProtectionOfAnimals.View.Animal
         public AnimalDTO animal { get; set; }
 
         private RegisteredUserController RegisteredUserController;
+        private VolunteerController VolunteerController;
         private int userId;
+        private Window window;
 
-        public CreateAnimal(int userId)
+        public CreateAnimal(int userId, Window window)
         {
             InitializeComponent();
             animal = new AnimalDTO();
             RegisteredUserController = Injector.CreateInstance<RegisteredUserController>();
+            VolunteerController = Injector.CreateInstance<VolunteerController>();
             this.userId = userId;
+            this.window = window;
+
             DataContext = this;
 
             SetPlaceholders();
@@ -29,13 +34,21 @@ namespace AssociationForProtectionOfAnimals.View.Animal
         {
             if (animal.IsValid)
             {
-                RegisteredUserController.AddAnimal(animal.ToAnimal(),userId);
+                if (IsRegisteredUserPage())
+                    RegisteredUserController.AddAnimal(animal.ToAnimal(), userId);
+                else
+                    VolunteerController.AddAnimal(animal.ToAnimal(), userId);
                 Close();
             }
             else
             {
                 MessageBox.Show("Animal can not be added. Not all fields are valid.");
             }
+        }
+
+        private bool IsRegisteredUserPage()
+        {
+            return window is AssociationForProtectionOfAnimals.View.RegisteredUser.RegisteredUserPage;
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
@@ -52,8 +65,8 @@ namespace AssociationForProtectionOfAnimals.View.Animal
             animal.FoundAddress = "Found Address";
             animal.Description = "Description";
             animal.MedicalStatus = "Medical Status";
-            animal.Species = new Species("Dog","Some description");
-            animal.Breed = new Breed("Bulldog", "Some description");
+            animal.Species = new Species("Bulldog", "Some description");
+            animal.Breed = new Breed("Dog", "Some description");
             animal.Place = new Place("Zajecar", 19000);
             
 

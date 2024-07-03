@@ -98,7 +98,7 @@ namespace AssociationForProtectionOfAnimals.View.RegisteredUser
 
         private void CreatePost_Click(object sender, RoutedEventArgs e)
         {
-            Animal.CreateAnimal createAnimal = new CreateAnimal(user.Id);
+            Animal.CreateAnimal createAnimal = new CreateAnimal(user.Id, this);
             createAnimal.Show();
             Update();
         }
@@ -123,8 +123,9 @@ namespace AssociationForProtectionOfAnimals.View.RegisteredUser
             else
             {
                 PostView postView = new PostView(SelectedPost.ToPost(), new Domain.Model.RegisteredUser(), this);
+                postView.Owner = this;
+                this.Visibility = Visibility.Collapsed;
                 postView.Show();
-                postView.Activate();
                 Update();
             }
         }

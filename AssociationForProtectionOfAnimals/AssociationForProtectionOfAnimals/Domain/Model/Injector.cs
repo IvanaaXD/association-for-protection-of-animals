@@ -22,6 +22,9 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
             { typeof(PostController), new Lazy<object>(() => new PostController()) },
             { typeof(IPostRepository), new Lazy<object>(() => new PostRepository()) },
             { typeof(IRequestRepo), new Lazy<object>(() => new RequestRepo()) },
+            { typeof(ICommentRepository), new Lazy<object>(() => new CommentRepository()) },
+            { typeof(CommentController), new Lazy<object>(() => new CommentController()) },
+            { typeof(RequestController), new Lazy<object>(() => new RequestController()) },
 
         };
 

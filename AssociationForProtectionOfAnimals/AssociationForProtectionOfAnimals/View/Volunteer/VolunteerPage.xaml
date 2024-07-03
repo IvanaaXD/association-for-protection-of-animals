@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AssociationForProtectionOfAnimals.View.Volunteer"
         mc:Ignorable="d"
         WindowStartupLocation = "CenterScreen"
-        Title="VolunteerPage" Height="620" Width="900">
+        Title="VolunteerPage" Height="620" Width="1100">
     <TabControl>
 
         <TabItem Header="Account">

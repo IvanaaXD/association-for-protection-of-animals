@@ -88,6 +88,11 @@ namespace AssociationForProtectionOfAnimals.View.Administrator
             UpdatePostPagination();
         }
 
+        private void RefreshPage(object? sender, EventArgs e)
+        {
+            Update();
+        }
+
         public void Update()
         {
             try
@@ -476,7 +481,8 @@ namespace AssociationForProtectionOfAnimals.View.Administrator
 
         private void CreatePost_Click(object sender, RoutedEventArgs e)
         {
-            Animal.CreateAnimal createAnimal = new CreateAnimal(administrator.Id);
+            Animal.CreateAnimal createAnimal = new CreateAnimal(administrator.Id, this);
+            createAnimal.Closed += RefreshPage;
             createAnimal.Show();
             Update();
         }
@@ -501,8 +507,9 @@ namespace AssociationForProtectionOfAnimals.View.Administrator
             else
             {
                 PostView postView = new PostView(SelectedPost.ToPost(), new Domain.Model.RegisteredUser(), this);
+                postView.Owner = this;
+                this.Visibility = Visibility.Collapsed;
                 postView.Show();
-                postView.Activate();
                 Update();
             }
         }

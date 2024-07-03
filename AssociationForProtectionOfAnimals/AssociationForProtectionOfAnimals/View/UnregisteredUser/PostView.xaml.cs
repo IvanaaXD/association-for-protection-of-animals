@@ -1,7 +1,9 @@
 ﻿using AssociationForProtectionOfAnimals.Controller;
+using AssociationForProtectionOfAnimals.Domain.IRepository;
 using AssociationForProtectionOfAnimals.Domain.Model;
 using AssociationForProtectionOfAnimals.DTO;
 using AssociationForProtectionOfAnimals.Observer;
+using AssociationForProtectionOfAnimals.Repository;
 using AssociationForProtectionOfAnimals.View.RegisteredUser;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -36,6 +38,7 @@ namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
         private readonly Post post;
         private readonly PostController _postController;
         private readonly CommentController _commentController;
+        private readonly IAnimalRepo _animalRepository;
 
         private readonly Window window;
 
@@ -44,6 +47,7 @@ namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
             InitializeComponent();
             _postController = Injector.CreateInstance<PostController>();
             _commentController = Injector.CreateInstance<CommentController>();
+            _animalRepository = Injector.CreateInstance<IAnimalRepo>();
 
             this.user = user;
             this.post = post;
@@ -53,6 +57,8 @@ namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
 
             DataContext = this;
             _postController.Subscribe(this);
+
+            animal = _animalRepository.GetAnimalById(post.AnimalId);
 
             Update();
 
@@ -124,6 +130,9 @@ namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
             Person person = registeredUserController.GetRegisteredUserByEmail(post.Adopter);
             if (person == null)
                 person = volunteerController.GetVolunteerByEmail(post.Adopter);
+
+            if (person == null)
+                return "";
 
             return person.FirstName + " " + person.LastName;
         }

@@ -17,7 +17,7 @@ namespace AssociationForProtectionOfAnimals.Repository
 
         public VolunteerRepo()
         {
-            _usersStorage = new Storage<RegisteredUser>("registeredUsers.csv");
+            _usersStorage = new Storage<RegisteredUser>("volunteers.csv");
             _users = _usersStorage.Load();
         }
         public RegisteredUser? GetById(int id)

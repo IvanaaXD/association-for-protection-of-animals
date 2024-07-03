@@ -37,14 +37,14 @@
 
         <TextBlock HorizontalAlignment="Center" Grid.ColumnSpan="2" Height="40" VerticalAlignment="Center" FontSize="20">Create Animal</TextBlock>
 
-        <TextBlock Grid.Row="1" Text="Species:" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+        <TextBlock Grid.Row="1" Text="Breed:" HorizontalAlignment="Center" Margin="0,0,0,5"/>
         <TextBox x:Name="speciesTextBox" Grid.Row="2" HorizontalAlignment="Center" Margin="0,0,0,10" Height="20" Width="160"
-         Text="{Binding Path=animal.Species.Name, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+         Text="{Binding Path=animal.Breed.Name, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
          Validation.ErrorTemplate="{StaticResource ValidationTemplate}"/>
 
-        <TextBlock Grid.Row="1" Grid.Column="1" Text="Breed:" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="Species:" HorizontalAlignment="Center" Margin="0,0,0,5"/>
         <TextBox x:Name="breedTextBox" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Margin="0,0,0,10" Height="20" Width="160"
-         Text="{Binding Path=animal.Breed.Name, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+         Text="{Binding Path=animal.Species.Name, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
          Validation.ErrorTemplate="{StaticResource ValidationTemplate}"/>
         
         <TextBlock Grid.Row="3"  Text="Name:" HorizontalAlignment="Center" Margin="0,0,0,5"/>

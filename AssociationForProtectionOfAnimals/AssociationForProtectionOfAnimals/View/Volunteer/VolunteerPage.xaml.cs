@@ -11,6 +11,7 @@ using AssociationForProtectionOfAnimals.Domain.Utility;
 using AssociationForProtectionOfAnimals.Domain.IRepository;
 using AssociationForProtectionOfAnimals.View.UnregisteredUser;
 using AssociationForProtectionOfAnimals.View.Animal;
+using AssociationForProtectionOfAnimals.View.RegisteredUser;
 
 namespace AssociationForProtectionOfAnimals.View.Volunteer
 {
@@ -73,6 +74,11 @@ namespace AssociationForProtectionOfAnimals.View.Volunteer
 
             Update();
             UpdatePagination();
+        }
+
+        private void RefreshPage(object? sender, EventArgs e)
+        {
+            Update();
         }
 
         public void Update()
@@ -273,7 +279,8 @@ namespace AssociationForProtectionOfAnimals.View.Volunteer
 
         private void CreatePost_Click(object sender, RoutedEventArgs e)
         {
-            Animal.CreateAnimal createAnimal = new CreateAnimal(user.Id);
+            Animal.CreateAnimal createAnimal = new CreateAnimal(user.Id, this);
+            createAnimal.Closed += RefreshPage;
             createAnimal.Show();
             Update();
         }
@@ -298,8 +305,9 @@ namespace AssociationForProtectionOfAnimals.View.Volunteer
             else
             {
                 PostView postView = new PostView(SelectedPublishedPost.ToPost(), new Domain.Model.RegisteredUser(), this);
+                postView.Owner = this;
+                this.Visibility = Visibility.Collapsed;
                 postView.Show();
-                postView.Activate();
                 Update();
             }
         }

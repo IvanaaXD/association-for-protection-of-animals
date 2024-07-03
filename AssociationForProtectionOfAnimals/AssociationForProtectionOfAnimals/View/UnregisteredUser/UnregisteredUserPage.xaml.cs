@@ -97,8 +97,9 @@ namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
             else
             {
                 PostView postView = new PostView(SelectedPost.ToPost(), new Domain.Model.RegisteredUser(), this);
+                postView.Owner = this;
+                this.Visibility = Visibility.Collapsed;
                 postView.Show();
-                postView.Activate();
                 Update();
             }
         }

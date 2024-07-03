@@ -56,6 +56,8 @@ namespace AssociationForProtectionOfAnimals.Repository
             if (post == null) return null;
 
             _posts.Remove(post);
+            _storage.Save(_posts);
+            NotifyObservers();
             return post;
         }
 

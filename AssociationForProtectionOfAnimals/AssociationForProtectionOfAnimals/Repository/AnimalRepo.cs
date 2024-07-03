@@ -59,6 +59,8 @@ namespace AssociationForProtectionOfAnimals.Repository
             if (animal == null) return null;
 
             _animals.Remove(animal);
+            _storage.Save(_animals);
+            NotifyObservers();
             return animal;
         }
 
