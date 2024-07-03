@@ -2,8 +2,10 @@
 using AssociationForProtectionOfAnimals.Domain.Model;
 using AssociationForProtectionOfAnimals.DTO;
 using AssociationForProtectionOfAnimals.Observer;
+using AssociationForProtectionOfAnimals.View.RegisteredUser;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics.Eventing.Reader;
 using System.Windows;
 using System.Windows.Shapes;
 
@@ -23,6 +25,7 @@ namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
         }
         public ViewModel CommentsTableViewModel { get; set; }
         public AnimalDTO? SelectedAnimal{ get; set; }
+        public CommentDTO? SelectedComment{ get; set; }
 
         public event PropertyChangedEventHandler? PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
@@ -143,7 +146,7 @@ namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
 
         private void CheckButtons()
         {
-            if (post.PersonLikedIds.Contains(user.Id))
+            if (post.PersonLikedIds.Contains(user.Id)) 
                 Like.Visibility = Visibility.Collapsed;
 
             if (IsRegisteredUserPage())
@@ -151,18 +154,19 @@ namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
                 AdoptVolunteer.Visibility = Visibility.Collapsed;
                 TemporarilyAdoptVolunteer.Visibility = Visibility.Collapsed;
             }
-            else if (IsVolunteerRegistered())
+            else if (IsVolunteerPage())
             {
                 AdoptRegisteredUser.Visibility = Visibility.Collapsed;
                 TemporarilyAdoptRegisteredUser.Visibility = Visibility.Collapsed;
             }
-            else
+            else if (IsUnregisteredUserPage())
             {
                 AdoptRegisteredUser.Visibility = Visibility.Collapsed;
                 TemporarilyAdoptRegisteredUser.Visibility = Visibility.Collapsed;
                 AdoptVolunteer.Visibility = Visibility.Collapsed;
                 TemporarilyAdoptVolunteer.Visibility = Visibility.Collapsed;
                 Like.Visibility = Visibility.Collapsed;
+                CommentPost.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -178,9 +182,14 @@ namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
         }
 
 
-        private bool IsVolunteerRegistered()
+        private bool IsVolunteerPage()
         {
-            return false; //window is AssociationForProtectionOfAnimals.View.Volunteer.VolunteerPage;
+            return window is AssociationForProtectionOfAnimals.View.Volunteer.VolunteerPage;
+        }
+
+        private bool IsUnregisteredUserPage()
+        {
+            return window is AssociationForProtectionOfAnimals.View.UnregisteredUser.UnregisteredUserPage;
         }
 
         private void AdoptRegisteredUser_Click(object sender, RoutedEventArgs e)
@@ -212,12 +221,20 @@ namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
 
         private void CommentPost_Click(object sender, RoutedEventArgs e)
         {
-
+            CommentForm commentForm = new CommentForm(post, user);
+            commentForm.Show();
+            commentForm.Activate();
         }
 
         private void ReadComment_Click(object sender, RoutedEventArgs e)
         {
-
+            if (SelectedComment != null)
+                MessageBox.Show("Please choose comment to view!");
+            else
+            {
+                ReadCommentView readCommentView = new ReadCommentView(post, user, SelectedComment.ToComment());
+                readCommentView.Show();
+            }
         }
 
         private void RefreshPage(object? sender, EventArgs e)

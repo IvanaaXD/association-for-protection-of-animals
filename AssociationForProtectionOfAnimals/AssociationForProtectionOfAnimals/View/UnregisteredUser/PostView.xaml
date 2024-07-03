@@ -178,8 +178,8 @@
                     </Grid>
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,5,0,7">
-                        <Button Name="Comment" Content="Comment" Click="CommentPost_Click" Margin="10,0,0,0" Foreground="White" Background="#399142" Width="80"/>
-                        <Button Name="Read" Content="Read" Click="ReadComment_Click" Margin="10,0,0,0" Foreground="White" Background="#4a93b0" Width="80"/>
+                        <Button Name="CommentPost" Content="Comment" Click="CommentPost_Click" Margin="10,0,0,0" Foreground="White" Background="#399142" Width="80"/>
+                        <Button Name="ReadPost" Content="Read" Click="ReadComment_Click" Margin="10,0,0,0" Foreground="White" Background="#4a93b0" Width="80"/>
                     </StackPanel>
 
                 </Grid>

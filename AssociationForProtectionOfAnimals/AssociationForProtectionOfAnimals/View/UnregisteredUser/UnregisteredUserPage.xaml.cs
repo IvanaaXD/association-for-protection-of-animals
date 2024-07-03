@@ -8,7 +8,6 @@ using System.Windows;
 using AssociationForProtectionOfAnimals.Domain.Model;
 using AssociationForProtectionOfAnimals.Domain.Model.Enums;
 using System.Windows.Controls;
-using System.Windows.Input;
 
 namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
 {
@@ -108,9 +107,10 @@ namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
                 MessageBox.Show("Please choose a post to view!");
             else
             {
-                /*Course course = teacherController.GetCourseById(SelectedCourse.Id);
-                CourseView courseView = new CourseView(course, directorController.GetById(this.teacherId));
-                courseView.Show();*/
+                PostView postView = new PostView(SelectedPost.ToPost(), new Domain.Model.RegisteredUser(), this);
+                postView.Show();
+                postView.Activate();
+                Update();
             }
         }
 
