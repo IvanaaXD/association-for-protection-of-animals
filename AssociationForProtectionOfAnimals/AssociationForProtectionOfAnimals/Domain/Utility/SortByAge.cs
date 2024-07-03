@@ -8,7 +8,7 @@ namespace AssociationForProtectionOfAnimals.Domain.Utility
 {
     public class SortByAge : ISortStrategy
     {
-        public IEnumerable<Comment> Sort(IEnumerable<Comment> posts)
+        public IEnumerable<Post> Sort(IEnumerable<Post> posts)
         {
             AnimalRepo _animalRepository = (AnimalRepo)Injector.CreateInstance<IAnimalRepo>();
             List<Animal> animals = _animalRepository.GetAllAnimals();

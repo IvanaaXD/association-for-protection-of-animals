@@ -141,9 +141,9 @@ namespace AssociationForProtectionOfAnimals.DTO
             }
         }
 
-        public Comment ToPost()
+        public Post ToPost()
         {
-            return new Comment
+            return new Post
             {
                 Id = id,
                 DateOfPosting = dateOfPosting,
@@ -158,7 +158,7 @@ namespace AssociationForProtectionOfAnimals.DTO
 
         public PostDTO() { }
 
-        public PostDTO(Comment post)
+        public PostDTO(Post post)
         {
             id = post.Id;
             dateOfPosting = post.DateOfPosting;

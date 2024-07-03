@@ -110,7 +110,7 @@ namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
             postDateOfPostingTextBlock.Text = post.DateOfPosting.ToString("yyyy-MM-dd HH:mm");
             postDateOfUpdatingTextBlock.Text = post.DateOfUpdating.ToString("yyyy-MM-dd HH:mm");
             postStatusTextBlock.Text = $"{post?.PostStatus}";
-            postHasCurrentAdopterTextBlock.Text = post.HasCurrentAdopter.ToString();
+            postHasCurrentAdopterTextBlock.Text = post?.HasCurrentAdopter.ToString();
             postAuthorTextBlock.Text = GetName(post.Person);
             postAdopterTextBlock.Text = GetName(post.Adopter);
             postNumberOfLikesTextBlock.Text = post.PersonLikedIds.Count.ToString();
@@ -177,9 +177,10 @@ namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
             return window is AssociationForProtectionOfAnimals.View.RegisteredUser.RegisteredUserPage;
         }
 
+
         private bool IsVolunteerRegistered()
         {
-            return window is AssociationForProtectionOfAnimals.View.Volunteer.VolunteerPage;
+            return false; //window is AssociationForProtectionOfAnimals.View.Volunteer.VolunteerPage;
         }
 
         private void AdoptRegisteredUser_Click(object sender, RoutedEventArgs e)
@@ -205,6 +206,16 @@ namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
         }
 
         private void TemporarilyAdoptVolunteer_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CommentPost_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ReadComment_Click(object sender, RoutedEventArgs e)
         {
 
         }
