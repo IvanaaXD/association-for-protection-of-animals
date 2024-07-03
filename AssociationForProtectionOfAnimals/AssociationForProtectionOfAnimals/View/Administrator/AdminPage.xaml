@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AssociationForProtectionOfAnimals.View.Volunteer"
         mc:Ignorable="d"
-        Title="VolunteerPage" Height="620" Width="1100">
+        Title="Admin Page" Height="620" Width="1100">
     
     <TabControl>
 
@@ -186,7 +186,7 @@
                             <Button Content="&gt;" x:Name ="VolunteerNextButton" Click="VolunteerNextPage_Click" Foreground="White" Background="#555555" Width="80"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,10,0,7">
-                            <Button Content="Create Volunteer" Click="CreateVolunteer_Click" Margin="0,0,0,0" Foreground="White" Background="#399142" Width="170" Height="25"/>
+                            <Button  x:Name="CreateVolunteerBtn" Content="Create Volunteer" Click="CreateVolunteer_Click" Margin="0,0,0,0" Foreground="White" Background="#399142" Width="170" Height="25"/>
                         </StackPanel>
                     </StackPanel>
                 </Grid>

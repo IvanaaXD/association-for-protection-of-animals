@@ -34,8 +34,9 @@ namespace AssociationForProtectionOfAnimals.Controller
             else
                 placeId = place.Id;
             user.Place.Id = placeId;
-            RegisteredUser ret = _users.AddRegisteredUser(user);
-            _account.AddAccount(ret.Account);
+            Account acc = _account.AddAccount(user.Account);
+            user.Account = acc;
+            _users.AddRegisteredUser(user);
             NotifyObservers();
         }
         public void Delete(int userId)

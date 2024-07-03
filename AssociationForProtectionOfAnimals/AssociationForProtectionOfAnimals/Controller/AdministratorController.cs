@@ -51,9 +51,10 @@ namespace AssociationForProtectionOfAnimals.Controller
                 placeId = _places.AddPlace(volunteer.Place).Id;
             else
                 placeId = place.Id;
-            volunteer.Place.Id = placeId;    
+            volunteer.Place.Id = placeId;
+            Account acc = _accounts.AddAccount(volunteer.Account);
+            volunteer.Account = acc;
             Volunteer ret = _admins.Add(volunteer);
-            _accounts.AddAccount(ret.Account);
             return ret;
         }
 

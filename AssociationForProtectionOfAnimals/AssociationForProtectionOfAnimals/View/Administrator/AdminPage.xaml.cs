@@ -76,6 +76,10 @@ namespace AssociationForProtectionOfAnimals.View.Administrator
             _adminController.Subscribe(this);
 
             administrator = _adminController.GetAdministrator();
+            /*if (_adminController.GetAllVolunteers().Count != 0)
+            {
+                CreateVolunteerBtn.Visibility = Visibility.Collapsed;
+            }*/
 
             Update();
             UpdatePagination();
@@ -274,7 +278,7 @@ namespace AssociationForProtectionOfAnimals.View.Administrator
             {
                 currentVolunteerPage--;
                 VolunteerNextButton.IsEnabled = true;
-                UpdatePagination();
+                UpdateVolunteerPagination();
             }
             else if (currentVolunteerPage == 1)
             {
@@ -335,8 +339,8 @@ namespace AssociationForProtectionOfAnimals.View.Administrator
             {
                 TableViewModel.Volunteers.Clear();
                 var filteredVolunteers = GetFilteredVolunteers();
-                List<Domain.Model.Volunteer> volunteers = _adminController.GetAllVolunteers(currentUserPage, 2, sortVolunteerStrategy, filteredVolunteers);
-                List<Domain.Model.Volunteer> newVolunteers = _adminController.GetAllVolunteers(currentUserPage + 1, 2, sortVolunteerStrategy, filteredVolunteers);
+                List<Domain.Model.Volunteer> volunteers = _adminController.GetAllVolunteers(currentVolunteerPage, 2, sortVolunteerStrategy, filteredVolunteers);
+                List<Domain.Model.Volunteer> newVolunteers = _adminController.GetAllVolunteers(currentVolunteerPage + 1, 2, sortVolunteerStrategy, filteredVolunteers);
 
                 if (newVolunteers.Count == 0)
                 {
@@ -433,7 +437,8 @@ namespace AssociationForProtectionOfAnimals.View.Administrator
 
         private void CreateVolunteer_Click(object sender, RoutedEventArgs e)
         {
-
+            RegisterVolunteerForm form = new RegisterVolunteerForm();
+            form.Show();
         }
 
         // --------------------------------------------- POST ------------------------------------------------

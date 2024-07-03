@@ -15,6 +15,12 @@ namespace AssociationForProtectionOfAnimals.Repository
             _storage = new Storage<Account>("accounts.csv");
             _accounts = _storage.Load();
         }
+
+        private int GenerateId()
+        {
+            if (_accounts.Count == 0) return 0;
+            return _accounts.Last().Id + 1;
+        }
         public Account GetAccountById(int id)
         {
             return _accounts.Find(v => v.Id == id);
@@ -22,6 +28,7 @@ namespace AssociationForProtectionOfAnimals.Repository
 
         public Account AddAccount(Account account)
         {
+            account.Id = GenerateId();
             _accounts.Add(account);
             _storage.Save(_accounts);
             NotifyObservers();

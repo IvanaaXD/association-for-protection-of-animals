@@ -206,6 +206,12 @@ namespace AssociationForProtectionOfAnimals.DTO
             Place userPlace = new(placeName, int.Parse(placeZipCode));
             return new RegisteredUser(firstName, lastName, gender, dateOfBirth, phoneNumber, homeAddress, userPlace, idNumber, userAccount, false);
         }
+        public Volunteer ToVolunteer()
+        {
+            Account userAccount = new(username, password, AccountType.Volunteer);
+            Place userPlace = new(placeName, int.Parse(placeZipCode));
+            return new Volunteer(firstName, lastName, gender, dateOfBirth, phoneNumber, homeAddress, userPlace, idNumber, userAccount);
+        }
 
         public UserDTO()
         {
