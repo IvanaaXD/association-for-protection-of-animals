@@ -225,6 +225,7 @@ namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
         private void CommentPost_Click(object sender, RoutedEventArgs e)
         {
             CommentForm commentForm = new CommentForm(post, user);
+            commentForm.Closed += RefreshPage;
             commentForm.Show();
             commentForm.Activate();
         }
