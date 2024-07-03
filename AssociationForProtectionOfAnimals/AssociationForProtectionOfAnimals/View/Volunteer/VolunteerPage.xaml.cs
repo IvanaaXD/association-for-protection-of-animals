@@ -304,7 +304,7 @@ namespace AssociationForProtectionOfAnimals.View.Volunteer
                 MessageBox.Show("Please choose a post to view!");
             else
             {
-                PostView postView = new PostView(SelectedPublishedPost.ToPost(), new Domain.Model.RegisteredUser(), this);
+                PostView postView = new PostView(SelectedPublishedPost.ToPost(), user, this);
                 postView.Owner = this;
                 this.Visibility = Visibility.Collapsed;
                 postView.Show();

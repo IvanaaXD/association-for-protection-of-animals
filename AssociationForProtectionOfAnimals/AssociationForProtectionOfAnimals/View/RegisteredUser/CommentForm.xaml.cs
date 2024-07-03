@@ -3,7 +3,6 @@ using AssociationForProtectionOfAnimals.Domain.Model;
 using AssociationForProtectionOfAnimals.DTO;
 using System.ComponentModel;
 using System.Windows;
-using System.Windows.Shapes;
 
 namespace AssociationForProtectionOfAnimals.View.RegisteredUser
 {
@@ -48,28 +47,31 @@ namespace AssociationForProtectionOfAnimals.View.RegisteredUser
             InitializeComponent();
             DataContext = this;
 
-            Comment = new CommentDTO();
+            Comment = new CommentDTO { Content = string.Empty };
             User = new RegisteredUserDTO(user);
 
             _commentController = Injector.CreateInstance<CommentController>();
-            _postController = Injector.CreateInstance<PostController>(); 
+            _postController = Injector.CreateInstance<PostController>();
 
             this.user = user;
             this.post = post;
 
-            firstNameTextBlock.Text = user.FirstName;
-            lastNameTextBlock.Text = user.LastName;
-            emailTextBlock.Text = user.Account.Username;
-            dateOfCommentTextBlock.Text = DateTime.Now.Date.ToString("yyyy-MM-dd");
+            OnPropertyChanged(nameof(User));
+            OnPropertyChanged(nameof(Comment));
+            OnPropertyChanged(nameof(DateOfComment));
         }
+
+        public string DateOfComment => DateTime.Now.Date.ToString("yyyy-MM-dd");
 
         public void CommentPost_Click(object sender, RoutedEventArgs e)
         {
-            Comment comment = new Comment();
-            comment.PostId = post.Id;
-            comment.PersonEmail = user.Account.Username;
-            comment.Content = contentTextBox.Text;
-            comment.DateOfComment = DateTime.ParseExact(dateOfCommentTextBlock.Text, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+            Comment comment = new Comment
+            {
+                PostId = post.Id,
+                PersonEmail = user.Account.Username,
+                Content = Comment.Content,
+                DateOfComment = DateTime.ParseExact(DateOfComment, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture)
+            };
             _commentController.Add(comment);
             this.Close();
         }

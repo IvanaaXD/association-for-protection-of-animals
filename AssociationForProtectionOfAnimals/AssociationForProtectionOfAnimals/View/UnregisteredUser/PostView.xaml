@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AssociationForProtectionOfAnimals.View.UnregisteredUser"
         mc:Ignorable="d"
         WindowStartupLocation = "CenterScreen"
-        Title="ExamTerm" Height="450" Width="800">
+        Title="ExamTerm" Height="500" Width="800">
 
     <Window.Resources>
         <ControlTemplate x:Key="ValidationTemplate">
@@ -103,10 +103,10 @@
 
                 <TextBlock Grid.Row="1" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="30" Margin="0,17,0,0" Height="40" Width="92">Animal</TextBlock>
 
-                <Grid Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="282" Width="480">
+                <Grid Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="260" Width="480">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="229"></ColumnDefinition>
-                        <ColumnDefinition Width="250"/>
+                        <ColumnDefinition Width="240"/>
                         <ColumnDefinition Width="0*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>

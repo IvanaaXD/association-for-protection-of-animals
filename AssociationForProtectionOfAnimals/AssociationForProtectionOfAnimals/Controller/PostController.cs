@@ -92,7 +92,7 @@ namespace AssociationForProtectionOfAnimals.Controller
         public void LikePost(RegisteredUser user, Post post)
         {
             Post newPost = GetById(post.Id);
-            newPost.PersonLikedIds.Add(user.Id);
+            newPost.PersonLikedIds.Add(user.Account.Username);
             Update(newPost);
         }
     }

@@ -20,6 +20,7 @@ namespace AssociationForProtectionOfAnimals.DTO
         private int animalId;
         private string author;
         private string adopter;
+        private List<string> personLikedIds;
 
         private string adopterName;
         private string personName;
@@ -73,6 +74,12 @@ namespace AssociationForProtectionOfAnimals.DTO
         {
             get { return adopter; }
             set { SetProperty(ref adopter, value); }
+        }
+
+        public List<string> PersonLikedIds
+        {
+            get { return personLikedIds; }
+            set { SetProperty(ref personLikedIds, value); }
         }
 
         public string AdopterName
@@ -155,7 +162,8 @@ namespace AssociationForProtectionOfAnimals.DTO
                 HasCurrentAdopter = hasCurrentAdopter,
                 AnimalId = animalId,
                 Author = author,
-                Adopter = adopter
+                Adopter = adopter,
+                PersonLikedIds = personLikedIds
             };
         }
 
@@ -171,6 +179,7 @@ namespace AssociationForProtectionOfAnimals.DTO
             animalId = post.AnimalId;
             author = post.Author;
             adopter = post.Adopter;
+            personLikedIds = post.PersonLikedIds;
 
             Person person;
             if (!string.IsNullOrEmpty(adopter))

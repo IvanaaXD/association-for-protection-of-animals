@@ -153,7 +153,7 @@ namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
 
         private void CheckButtons()
         {
-            if (post.PersonLikedIds.Contains(user.Id)) 
+            if (post.PersonLikedIds.Contains(user.Account.Username)) 
                 Like.Visibility = Visibility.Collapsed;
 
             if (IsRegisteredUserPage())
@@ -187,7 +187,6 @@ namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
         {
             return window is AssociationForProtectionOfAnimals.View.RegisteredUser.RegisteredUserPage;
         }
-
 
         private bool IsVolunteerPage()
         {
@@ -241,7 +240,7 @@ namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
 
         private void ReadComment_Click(object sender, RoutedEventArgs e)
         {
-            if (SelectedComment != null)
+            if (SelectedComment == null)
                 MessageBox.Show("Please choose comment to view!");
             else
             {

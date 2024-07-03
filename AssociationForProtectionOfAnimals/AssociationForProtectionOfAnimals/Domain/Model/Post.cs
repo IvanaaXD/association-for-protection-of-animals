@@ -15,7 +15,7 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
         private string author;
         private string adopter;
 
-        private List<int> personLikedIds = new List<int>();
+        private List<string> personLikedIds = new List<string>();
 
         public int Id
         {
@@ -65,7 +65,7 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
             set { adopter = value; }
         }
 
-        public List<int> PersonLikedIds
+        public List<string> PersonLikedIds
         {
             get { return personLikedIds; }
             set { personLikedIds = value; }
@@ -119,13 +119,15 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
             personLikedIds = ListFromCSV(values[8]);
         }
 
-        private List<int> ListFromCSV(string listElements)
+        private List<string> ListFromCSV(string listElements)
         {
-            List<int> list = new List<int>();
+            List<string> list = new List<string>();
+
             if (!string.IsNullOrEmpty(listElements))
-                list = new List<int>(Array.ConvertAll(listElements.Split(','), int.Parse));
+                list = new List<string>(listElements.Split(',').Select(element => element.Trim()));
 
             return list;
         }
+
     }
 }
