@@ -4,6 +4,8 @@ using AssociationForProtectionOfAnimals.Domain.Model;
 using AssociationForProtectionOfAnimals.Controller;
 using AssociationForProtectionOfAnimals.View.Animal;
 using AssociationForProtectionOfAnimals.View.UnregisteredUser;
+using AssociationForProtectionOfAnimals.View.Volunteer;
+using AssociationForProtectionOfAnimals.View.RegisteredUser;
 
 namespace AssociationForProtectionOfAnimals
 {
@@ -22,7 +24,7 @@ namespace AssociationForProtectionOfAnimals
         }
         private void Login_Click(object sender, RoutedEventArgs e)
         {
-            /*string username = Username.Text;
+            string username = Username.Text;
             string password = Password.Password;
 
             if (HasUserLoggedIn(username, password) || HasVolunteerLoggedIn(username, password) || HasAdminLoggedIn(username, password))
@@ -31,9 +33,7 @@ namespace AssociationForProtectionOfAnimals
                 return;
             }
             
-             MessageBox.Show("User does not exist.");*/
-            CreateAnimal ca = new CreateAnimal();
-            ca.Show();
+             MessageBox.Show("User does not exist.");
         } 
 
         private bool HasUserLoggedIn(string username, string password)
@@ -44,8 +44,8 @@ namespace AssociationForProtectionOfAnimals
                 {
                     MessageBox.Show("Uspesan login korisnika.");
 
-                    /*RegisteredUserForm welcomePage = new RegisteredUserForm(user.Id);
-                    welcomePage.Show();*/
+                    RegisteredUserPage welcomePage = new RegisteredUserPage(user.Id);
+                    welcomePage.Show();
 
                     // IF USER IS DELETED FROM THE APP (KICKED OUT)
                     /*if (user.ActiveCourseId != -10)

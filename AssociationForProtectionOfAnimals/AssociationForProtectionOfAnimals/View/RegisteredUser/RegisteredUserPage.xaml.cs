@@ -8,6 +8,7 @@ using System.Windows;
 using AssociationForProtectionOfAnimals.Domain.Model;
 using AssociationForProtectionOfAnimals.Domain.Model.Enums;
 using System.Windows.Controls;
+using AssociationForProtectionOfAnimals.View.Animal;
 
 namespace AssociationForProtectionOfAnimals.View.RegisteredUser
 {
@@ -31,19 +32,19 @@ namespace AssociationForProtectionOfAnimals.View.RegisteredUser
         public ViewModel TableViewModel { get; set; }
 
 
-
+        private int userId;
         private bool isSearchButtonClicked = false;
         private int currentPostPage= 1;
         private string postSortCriteria = "AnimalBreed";
         private ISortStrategy sortStrategy = new SortByBreed();
 
-        public RegisteredUserPage()
+        public RegisteredUserPage(int userId)
         {
             InitializeComponent();
             _postController = Injector.CreateInstance<PostController>();
-
             TableViewModel = new ViewModel();
             DataContext = this;
+            this.userId = userId;
             _postController.Subscribe(this);
 
             Update();
@@ -83,8 +84,8 @@ namespace AssociationForProtectionOfAnimals.View.RegisteredUser
 
         private void CreatePost_Click(object sender, RoutedEventArgs e)
         {
-            /*CreateTeacherFrom createTeacherFrom = new CreateTeacherFrom();
-            createTeacherFrom.Show();*/
+            Animal.CreateAnimal createAnimal = new CreateAnimal(userId);
+            createAnimal.Show();
             Update();
         }
 

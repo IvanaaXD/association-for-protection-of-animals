@@ -12,12 +12,14 @@ namespace AssociationForProtectionOfAnimals.View.Animal
         public AnimalDTO animal { get; set; }
 
         private RegisteredUserController RegisteredUserController;
+        private int userId;
 
-        public CreateAnimal()
+        public CreateAnimal(int userId)
         {
             InitializeComponent();
             animal = new AnimalDTO();
             RegisteredUserController = Injector.CreateInstance<RegisteredUserController>();
+            this.userId = userId;
             DataContext = this;
 
             SetPlaceholders();
@@ -27,7 +29,7 @@ namespace AssociationForProtectionOfAnimals.View.Animal
         {
             if (animal.IsValid)
             {
-                RegisteredUserController.AddAnimal(animal.ToAnimal());
+                RegisteredUserController.AddAnimal(animal.ToAnimal(),userId);
                 Close();
             }
             else
@@ -43,13 +45,17 @@ namespace AssociationForProtectionOfAnimals.View.Animal
 
         private void SetPlaceholders()
         {
-            animal.Name = "Animal Name";
+            animal.Name = "Rex";
             animal.Age = 2;
             animal.Weight = 4;
             animal.Height = 50;
             animal.FoundAddress = "Found Address";
             animal.Description = "Description";
             animal.MedicalStatus = "Medical Status";
+            animal.Species = new Species("Dog","Some description");
+            animal.Breed = new Breed("Bulldog", "Some description");
+            animal.Place = new Place("Zajecar", 19000);
+            
 
             nameTextBox.GotFocus += NameTextBox_GotFocus;
             ageTextBox.GotFocus += AgeTextBox_GotFocus;
@@ -58,8 +64,15 @@ namespace AssociationForProtectionOfAnimals.View.Animal
             foundAddressTextBox.GotFocus += FoundAddressTextBox_GotFocus;
             descriptionTextBox.GotFocus += DescriptionTextBox_GotFocus;
             medicalStatusTextBox.GotFocus += MedicalStatusTextBox_GotFocus;
+            speciesTextBox.GotFocus += SpeciesTextBox_GotFocus;
+            breedTextBox.GotFocus += BreedTextBox_GotFocus;
+            placeTextBox.GotFocus += PlaceTextBox_GotFocus;
         }
 
+        private void PlaceTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            placeTextBox.Text = string.Empty;
+        }
         private void NameTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             nameTextBox.Text = string.Empty;

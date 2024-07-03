@@ -10,6 +10,7 @@ namespace AssociationForProtectionOfAnimals.Controller
         private readonly IAnimalRepo _animals;
         private readonly IAccountRepo _account;
         private readonly IPlaceRepo _place;
+        private readonly IRequestRepo _request;
 
         public RegisteredUserController()
         {
@@ -17,6 +18,7 @@ namespace AssociationForProtectionOfAnimals.Controller
             _account = Injector.CreateInstance<IAccountRepo>();
             _place = Injector.CreateInstance<IPlaceRepo>();
             _animals = Injector.CreateInstance<IAnimalRepo>();
+            _request = Injector.CreateInstance<IRequestRepo>();
         }
 
         public void Add(RegisteredUser user)
@@ -73,9 +75,14 @@ namespace AssociationForProtectionOfAnimals.Controller
 
             return true;
         }
-        public Animal AddAnimal(Animal animal)
+        public Animal AddAnimal(Animal animal, int userId)
         {
-            return _animals.AddAnimal(animal);
+            Animal newAnimal = _animals.AddAnimal(animal);
+            if (newAnimal == null)
+                return null;
+            Request adoptionRequest = new Request(userId, 0, Domain.Model.Enums.RequestStatus.WaitingForResponse, DateTime.Now);
+            _request.AddRequest(adoptionRequest);
+            return newAnimal;
         }
         public Animal? UpdateAnimal(Animal animal)
         {
