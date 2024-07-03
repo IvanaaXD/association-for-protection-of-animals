@@ -20,7 +20,8 @@ namespace AssociationForProtectionOfAnimals.Domain.Model.Enums
         ForAdoption,
         Adopted,
         TemporarilyAdopted,
-        UnderTreatment
+        UnderTreatment,
+        Unpublished
     }
 
 

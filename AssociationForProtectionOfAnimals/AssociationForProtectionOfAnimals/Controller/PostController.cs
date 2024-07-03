@@ -24,6 +24,24 @@ namespace AssociationForProtectionOfAnimals.Controller
             return _posts.GetAllPosts();
         }
 
+        public List<Post> GetAllPublishedPosts()
+        {
+            List<Post> posts = new List<Post>();
+            foreach (Post post in GetAllPosts())
+                if (post.PostStatus!=PostStatus.Unpublished)
+                    posts.Add(post);
+            return posts;
+        }
+
+        public List<Post> GetAllUnpublishedPosts()
+        {
+            List<Post> posts = new List<Post>();
+            foreach (Post post in GetAllPosts())
+                if (post.PostStatus == PostStatus.Unpublished)
+                    posts.Add(post);
+            return posts;
+        }
+
         public Post? GetById(int postId)
         {
             return _posts.GetById(postId);
