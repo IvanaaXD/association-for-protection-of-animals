@@ -63,7 +63,7 @@
 
                         </TabControl>
                     </Grid>
-                    
+
                     <StackPanel  Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,5,0,80">
                         <ComboBox x:Name="postSortCriteriaComboBox" SelectionChanged="PostSortCriteriaComboBox_SelectionChanged"  Width="150" Margin="0,0,10,0">
                             <ComboBoxItem Content="DateOfPosting"/>
@@ -74,17 +74,14 @@
 
                     </StackPanel>
 
-
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,5,0,7">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,7">
                             <Button Content="&lt;" x:Name ="PostPreviousButton" Click="PostPreviousPage_Click" Margin="10,0,0,0" Foreground="White" Background="#555555" Width="80"/>
                             <TextBlock x:Name="PostPageNumberTextBlock" Text="Page 1" Margin="10,0,10,0" VerticalAlignment="Center" FontWeight="SemiBold"/>
                             <Button Content="&gt;" x:Name ="PostNextButton" Click="PostNextPage_Click" Margin="10,0,0,0" Foreground="White" Background="#555555" Width="80"/>
                         </StackPanel>
+                        
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,5,0,7">
-
-                            <Button Content="Create" Click="CreatePost_Click" Margin="10,0,0,0" Foreground="White" Background="#399142" Width="80"/>
-                            <Button Content="Update" Click="UpdatePost_Click" Margin="10,0,0,0" Foreground="White" Background="#4a93b0" Width="80"/>
                             <Button Content="View" Click="ViewPost_Click" Margin="10,0,0,0" Foreground="White" Background="#9e9e9e" Width="80"/>
                         </StackPanel>
                     </StackPanel>

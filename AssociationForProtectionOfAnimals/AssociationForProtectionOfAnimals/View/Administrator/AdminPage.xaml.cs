@@ -10,6 +10,7 @@ using AssociationForProtectionOfAnimals.Domain.Utility;
 using AssociationForProtectionOfAnimals.Domain.IRepository;
 using AssociationForProtectionOfAnimals.Domain.Model.Enums;
 using AssociationForProtectionOfAnimals.View.UnregisteredUser;
+using AssociationForProtectionOfAnimals.View.Animal;
 
 namespace AssociationForProtectionOfAnimals.View.Administrator
 {
@@ -58,6 +59,9 @@ namespace AssociationForProtectionOfAnimals.View.Administrator
         private string postSortCriteria = "AnimalBreed";
         private ISortStrategy sortPostStrategy = new SortByBreed();
 
+        Domain.Model.Administrator administrator;
+
+
         public AdminPage()
         {
             InitializeComponent();
@@ -70,6 +74,8 @@ namespace AssociationForProtectionOfAnimals.View.Administrator
             DataContext = this;
             _volunteerController.Subscribe(this);
             _adminController.Subscribe(this);
+
+            administrator = _adminController.GetAdministrator();
 
             Update();
             UpdatePagination();
@@ -450,8 +456,8 @@ namespace AssociationForProtectionOfAnimals.View.Administrator
 
         private void CreatePost_Click(object sender, RoutedEventArgs e)
         {
-            /*CreateTeacherFrom createTeacherFrom = new CreateTeacherFrom();
-            createTeacherFrom.Show();*/
+            Animal.CreateAnimal createAnimal = new CreateAnimal(administrator.Id);
+            createAnimal.Show();
             Update();
         }
 

@@ -81,26 +81,6 @@ namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
             }
         }
 
-        private void CreatePost_Click(object sender, RoutedEventArgs e)
-        {
-            /*CreateTeacherFrom createTeacherFrom = new CreateTeacherFrom();
-            createTeacherFrom.Show();*/
-            Update();
-        }
-
-        private void UpdatePost_Click(object sender, RoutedEventArgs e)
-        {
-            if (SelectedPost == null)
-                MessageBox.Show("Please choose a post to update!");
-            else
-            {
-                /*UpdateTeacherForm updateTeacherForm = new UpdateTeacherForm(SelectedTeacher.Id);
-                updateTeacherForm.Show();
-                updateTeacherForm.Activate();*/
-                Update();
-            }
-        }
-
         private void ViewPost_Click(object sender, RoutedEventArgs e)
         {
             if (SelectedPost == null)
