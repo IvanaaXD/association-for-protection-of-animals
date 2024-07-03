@@ -52,10 +52,21 @@ namespace AssociationForProtectionOfAnimals.View.RegisteredUser
             UpdatePagination();
         }
 
+        private void SetPosts()
+        {
+            TableViewModel.Posts.Clear();
+            var posts = _postController.GetAllPublishedPosts();
+
+            if (posts != null)
+                foreach (Post post in posts)
+                    TableViewModel.Posts.Add(new PostDTO(post));
+        }
+
         public void Update()
         {
             try
             {
+                SetPosts();
                 UpdatePagination();
             }
             catch (Exception ex)
@@ -256,7 +267,7 @@ namespace AssociationForProtectionOfAnimals.View.RegisteredUser
             }
             else
             {
-                foreach (Post post in _postController.GetAllPosts())
+                foreach (Post post in _postController.GetAllPublishedPosts())
                     finalPosts.Add(post);
             }
 

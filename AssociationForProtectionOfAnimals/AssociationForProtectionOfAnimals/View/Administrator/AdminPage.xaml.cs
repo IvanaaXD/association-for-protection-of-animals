@@ -91,6 +91,7 @@ namespace AssociationForProtectionOfAnimals.View.Administrator
                 UpdatePagination();
                 UpdateVolunteerPagination();
                 UpdatePostPagination();
+                SetPosts();
             }
             catch (Exception ex)
             {
@@ -111,6 +112,7 @@ namespace AssociationForProtectionOfAnimals.View.Administrator
                 }
             }
         }
+
         private void SetVolunteers()
         {
             TableViewModel.Volunteers.Clear();
@@ -131,6 +133,7 @@ namespace AssociationForProtectionOfAnimals.View.Administrator
             UpdatePagination();
             isSearchButtonClicked = true;
         }
+
         private void SearchVolunteers_Click(object sender, RoutedEventArgs e)
         {
             UpdateVolunteerSearch();
@@ -435,6 +438,16 @@ namespace AssociationForProtectionOfAnimals.View.Administrator
 
         // --------------------------------------------- POST ------------------------------------------------
 
+        private void SetPosts()
+        {
+            TableViewModel.Posts.Clear();
+            var posts = _postController.GetAllPublishedPosts();
+
+            if (posts != null)
+                foreach (Post post in posts)
+                    TableViewModel.Posts.Add(new PostDTO(post));
+        }
+
         public void UpdatePostSearch()
         {
             try
@@ -621,7 +634,7 @@ namespace AssociationForProtectionOfAnimals.View.Administrator
             }
             else
             {
-                foreach (Post post in _postController.GetAllPosts())
+                foreach (Post post in _postController.GetAllPublishedPosts())
                     finalPosts.Add(post);
             }
 

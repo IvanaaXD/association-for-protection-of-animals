@@ -30,8 +30,6 @@ namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
         public PostDTO? SelectedPost{ get; set; }
         public ViewModel TableViewModel { get; set; }
 
-
-
         private bool isSearchButtonClicked = false;
         private int currentPostPage= 1;
         private string postSortCriteria = "AnimalBreed";
@@ -50,10 +48,21 @@ namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
             UpdatePostPagination();
         }
 
+        private void SetPosts()
+        {
+            TableViewModel.Posts.Clear();
+            var posts = _postController.GetAllPublishedPosts();
+
+            if (posts != null)
+                foreach (Post post in posts)
+                    TableViewModel.Posts.Add(new PostDTO(post));
+        }
+
         public void Update()
         {
             try
             {
+                SetPosts();
                 UpdatePostPagination();
             }
             catch (Exception ex)
@@ -228,7 +237,7 @@ namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
             }
             else
             {
-                foreach (Post post in _postController.GetAllPosts())
+                foreach (Post post in _postController.GetAllPublishedPosts())
                     finalPosts.Add(post);
             }
 
