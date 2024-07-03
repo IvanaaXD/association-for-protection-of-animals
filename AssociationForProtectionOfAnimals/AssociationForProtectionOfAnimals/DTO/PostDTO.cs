@@ -172,8 +172,15 @@ namespace AssociationForProtectionOfAnimals.DTO
             author = post.Author;
             adopter = post.Adopter;
 
-            Person person = GetAdopter(adopter);
-            adopterName = person.FirstName + " " + person.LastName;
+            Person person;
+            if (!string.IsNullOrEmpty(adopter))
+            {
+                person = GetAdopter(adopter);
+                adopterName = person.FirstName + " " + person.LastName;
+            }
+            else
+                adopterName = "";
+
             person = GetAdopter(author);
             personName = person.FirstName + " " + person.LastName;
             Animal animal = GetAnimal(animalId);

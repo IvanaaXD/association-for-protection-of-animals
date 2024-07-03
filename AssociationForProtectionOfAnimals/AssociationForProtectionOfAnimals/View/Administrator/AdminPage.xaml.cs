@@ -81,6 +81,8 @@ namespace AssociationForProtectionOfAnimals.View.Administrator
                 CreateVolunteerBtn.Visibility = Visibility.Collapsed;
             }*/
 
+            firstAndLastName.Text = administrator.FirstName + " " + administrator.LastName;
+
             Update();
             UpdatePagination();
             UpdatePostPagination();

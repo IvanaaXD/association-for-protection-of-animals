@@ -36,7 +36,7 @@ namespace AssociationForProtectionOfAnimals.View.Volunteer
             }
         }
 
-        private readonly int userId;
+        private readonly Domain.Model.RegisteredUser user;
         private readonly VolunteerController _volunteerController;
         private readonly PostController _postController;
 
@@ -57,10 +57,10 @@ namespace AssociationForProtectionOfAnimals.View.Volunteer
         private string postSortCriteria = "AnimalBreed";
         private ISortStrategy postSortStrategy = new SortByBreed();
 
-        public VolunteerPage(int UserId)
+        public VolunteerPage(Domain.Model.RegisteredUser user)
         {
             InitializeComponent();
-            this.userId = UserId;
+            this.user = user;
             _volunteerController = Injector.CreateInstance<VolunteerController>();
             _postController = Injector.CreateInstance<PostController>();
             _placeRepo = Injector.CreateInstance<IPlaceRepo>();
@@ -68,6 +68,8 @@ namespace AssociationForProtectionOfAnimals.View.Volunteer
             TableViewModel = new ViewModel();
             DataContext = this;
             _volunteerController.Subscribe(this);
+
+            firstAndLastName.Text = user.FirstName + " " + user.LastName;
 
             Update();
             UpdatePagination();
@@ -114,7 +116,7 @@ namespace AssociationForProtectionOfAnimals.View.Volunteer
             TableViewModel.UnpublishedPosts.Clear();
             TableViewModel.PublishedPosts.Clear();
             var publishedPosts = _postController.GetAllPublishedPosts();
-            var unpublishedPosts = _postController.GetAllPublishedPosts();
+            var unpublishedPosts = _postController.GetAllUnpublishedPosts();
 
             if (publishedPosts != null)
                 foreach (Post post in publishedPosts)
@@ -271,7 +273,7 @@ namespace AssociationForProtectionOfAnimals.View.Volunteer
 
         private void CreatePost_Click(object sender, RoutedEventArgs e)
         {
-            Animal.CreateAnimal createAnimal = new CreateAnimal(userId);
+            Animal.CreateAnimal createAnimal = new CreateAnimal(user.Id);
             createAnimal.Show();
             Update();
         }
@@ -378,7 +380,6 @@ namespace AssociationForProtectionOfAnimals.View.Volunteer
                 Update();
             }
         }
-
         private void RejectRequest_Click(object sender, RoutedEventArgs e)
         {
             if (SelectedUnpublishedPost == null)
