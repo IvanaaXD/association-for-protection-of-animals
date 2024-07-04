@@ -4,6 +4,7 @@ using AssociationForProtectionOfAnimals.Domain.Model;
 using AssociationForProtectionOfAnimals.DTO;
 using AssociationForProtectionOfAnimals.Observer;
 using AssociationForProtectionOfAnimals.Repository;
+using AssociationForProtectionOfAnimals.View.Adoption;
 using AssociationForProtectionOfAnimals.View.RegisteredUser;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -205,6 +206,8 @@ namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
 
         private void AdoptRegisteredUser_Click(object sender, RoutedEventArgs e)
         {
+            AdoptForm adoptForm = new AdoptForm(user, post);
+            adoptForm.Show();
             /*Domain.Model.Student? student = _studentController.GetStudentById(SelectedStudent.id);
             GradeStudentForm gradeStudentForm = new GradeStudentForm(examTerm, teacher, student);
 
@@ -216,18 +219,22 @@ namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
 
         private void AdoptVolunteer_Click(object sender, RoutedEventArgs e)
         {
-
+            post.PostStatus = Domain.Model.Enums.PostStatus.Adopted;
+            _postController.Update(post);   
+            
         }
 
 
         private void TemporarilyAdoptRegisteredUser_Click(object sender, RoutedEventArgs e)
         {
-
+            TemporarilyAdoptForm tempAdoptForm = new TemporarilyAdoptForm(user, post);
+            tempAdoptForm.Show();
         }
 
         private void TemporarilyAdoptVolunteer_Click(object sender, RoutedEventArgs e)
         {
-
+            post.PostStatus = Domain.Model.Enums.PostStatus.TemporarilyAdopted;
+            _postController.Update(post);
         }
 
         private void CommentPost_Click(object sender, RoutedEventArgs e)

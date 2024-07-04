@@ -30,18 +30,19 @@
                     <RowDefinition Height="auto"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="131.533"></ColumnDefinition>
+                    <ColumnDefinition Width="10.611"></ColumnDefinition>
+                    <ColumnDefinition Width="120.922"/>
                     <ColumnDefinition Width="68.467"/>
                     <ColumnDefinition Width="600"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <Border Background="#225810" Grid.RowSpan="4" Grid.Column="0" Grid.ColumnSpan="2">
+                <Border Background="#225810" Grid.RowSpan="4" Grid.Column="0" Grid.ColumnSpan="3">
                     <Image Source="https://cdn0.iconfinder.com/data/icons/unigrid-flat-nature/90/009_049_animal_dog_friend_free_homeless-1024.png" Width="150"></Image>
                 </Border>
 
-                <TextBlock Grid.Row="1" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="30" Margin="0,17,0,0">Welcome</TextBlock>
+                <TextBlock Grid.Row="1" Grid.Column="3" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="30" Margin="0,17,0,0">Welcome</TextBlock>
 
-                <Grid Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid Grid.Row="2" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="229"></ColumnDefinition>
                         <ColumnDefinition Width="250"/>
@@ -74,7 +75,7 @@
                     <TextBlock x:Name="postNumberOfLikesTextBlock" FontSize="16" Grid.Column="1" Grid.Row="6" Margin="0,26,0,0" Grid.RowSpan="2"/>
                 </Grid>
 
-                <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,7">
+                <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,5,0,0">
                     <Button x:Name="ViewPostsButton" Content="View Posts" Click="ViewPosts_Click" Margin="10,0,0,0" Foreground="White" Background="DarkGray" BorderBrush="DarkGray" Width="150" Height="30" FontSize="16"/>
                     <Button x:Name="Like" Content="Like ❤️" Click="LikePost_Click" Margin="10,0,0,0" Foreground="White" Background="#ba3e38" BorderBrush="DarkGray" Width="150" Height="30" FontSize="16"/>
                 </StackPanel>
@@ -185,6 +186,6 @@
                 </Grid>
             </DockPanel>
         </TabItem>
-        
+
     </TabControl>
 </Window>
