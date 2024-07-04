@@ -15,7 +15,7 @@ namespace AssociationForProtectionOfAnimals.Controller
         private readonly IAnimalRepo _animals;
         private readonly IAccountRepo _accounts;
         private readonly IPlaceRepo _places;
-        private readonly PostController _posts;
+        private readonly IPostRepository _posts;
 
         public VolunteerController()
         {
@@ -25,7 +25,7 @@ namespace AssociationForProtectionOfAnimals.Controller
             _animals = Injector.CreateInstance<IAnimalRepo>();
             _accounts = Injector.CreateInstance<IAccountRepo>();
             _places = Injector.CreateInstance<IPlaceRepo>();
-            _posts = Injector.CreateInstance<PostController>();
+            _posts = Injector.CreateInstance<IPostRepository>();
         }
 
         public RegisteredUser? GetById(int id)
@@ -63,15 +63,23 @@ namespace AssociationForProtectionOfAnimals.Controller
             return user;
         }
 
-        // Napravljena je funkcija samo za kreiranje posta ako zivotinja nema vlasnika
-        public bool AddAnimal(Animal animal, string publisherEmail)
+        public Post? AddAnimal(Animal animal, int userId)
         {
-            Post post = new Post(DateTime.Now,DateTime.Now,PostStatus.ForAdoption,false,animal.Id,publisherEmail,null);
-            post = _posts.Add(post);
-            if (post == null)
-                return false;
+            Animal newAnimal = _animals.AddAnimal(animal);
+            if (newAnimal == null) return null;
 
-            return true;
+            Volunteer user = _admin.GetById(userId);
+            Post post = new Post(DateTime.Now, DateTime.Now, PostStatus.ForAdoption, false, newAnimal.Id, user.Account.Username, null);
+            return _posts.Add(post);
+        }
+        public Post? AcceptPostRequest(Post post)
+        {
+            post.PostStatus = PostStatus.ForAdoption;
+            return _posts.Update(post);
+        }
+        public bool RejectPostRequest(Post post)
+        {
+            return _posts.Remove(post.Id) != null && _animals.RemoveAnimal(post.AnimalId) != null;
         }
 
         public Animal? UpdateAnimal(Animal animal)

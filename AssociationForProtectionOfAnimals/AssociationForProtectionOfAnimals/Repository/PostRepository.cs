@@ -50,6 +50,14 @@ namespace AssociationForProtectionOfAnimals.Repository
             NotifyObservers();
             return oldPost;
         }
+        public Post? Remove(int id)
+        {
+            Post? post = GetById(id);
+            if (post == null) return null;
+
+            _posts.Remove(post);
+            return post;
+        }
 
         public Post? GetById(int id)
         {

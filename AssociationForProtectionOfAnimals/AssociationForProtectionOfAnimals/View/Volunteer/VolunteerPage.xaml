@@ -121,6 +121,32 @@
                 </Grid>
             </DockPanel>
         </TabItem>
+        <TabItem Header="Adoption requests">
+            <DockPanel Height="auto">
+                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" DockPanel.Dock="Top" Margin="0,5,0,60">
+                    <TabControl VerticalAlignment="Center" Height="auto">
+                        <DataGrid   Height="330"
+                                AutoGenerateColumns="False"
+                                x:Name="RequetsDataGrid"
+                                ItemsSource="{Binding TableViewModel.Requests, UpdateSourceTrigger=PropertyChanged}"
+                                SelectedItem="{Binding SelectedRequest, UpdateSourceTrigger=PropertyChanged}"
+                                SelectionMode="Single" IsReadOnly="True">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width="*" Header="User" Binding="{Binding RegisteredUser.Account.Username}" />
+                                <DataGridTextColumn Width="*" Header="Last name" Binding="{Binding LastName}" />
+                                <DataGridTextColumn Width="*" Header="Gender" Binding="{Binding Gender}" />
+                                <DataGridTextColumn Width="*" Header="Date of birth" Binding="{Binding DateOfBirth, StringFormat={}{0:yyyy-MM-dd}}" />
+                                <DataGridTextColumn Width="*" Header="Phone number" Binding="{Binding PhoneNumber}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabControl>
 
+                </Grid>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-50,0,7">
+                    <Button Content="Accept request" Click="AcceptRequest_Click" Margin="0,0,5,0" Foreground="White" Background="#399142" Width="100" Height="30"/>
+                    <Button Content="Reject request" Click="RejectRequest_Click" Margin="5,0,0,0" Foreground="White" Background="#ba3e38" Width="100" Height="30"/>
+                </StackPanel>
+            </DockPanel>
+        </TabItem>
     </TabControl>
 </Window>

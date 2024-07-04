@@ -8,6 +8,7 @@ namespace AssociationForProtectionOfAnimals.Domain.IRepository
     {
         Post Add(Post post);
         Post? Update(Post post);
+        Post? Remove(int id);
         Post? GetById(int id);
         List<Post>? GetPostByPersonPosted(string personPostedEmail);
         List<Post> GetAllPosts();

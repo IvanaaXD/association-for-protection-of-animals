@@ -21,6 +21,7 @@ namespace AssociationForProtectionOfAnimals.View.Volunteer
         public class ViewModel
         {
             public ObservableCollection<RegisteredUserDTO> Users { get; set; }
+            public ObservableCollection<AdoptionRequestDTO> Requests { get; set; }
 
             public ViewModel()
             {
@@ -28,11 +29,12 @@ namespace AssociationForProtectionOfAnimals.View.Volunteer
             }
         }
 
-        private readonly int UserId;
+        private readonly int userId;
         private readonly VolunteerController _volunteerController;
         private readonly IPlaceRepo _placeRepo;
 
         public RegisteredUserDTO? SelectedUser { get; set; }
+        public AdoptionRequestDTO? SelectedRequest { get; set; }
         public ViewModel TableViewModel { get; set; }
 
         private bool isSearchButtonClicked = false;
@@ -43,7 +45,7 @@ namespace AssociationForProtectionOfAnimals.View.Volunteer
         public VolunteerPage(int UserId)
         {
             InitializeComponent();
-            this.UserId = UserId;
+            this.userId = UserId;
             _volunteerController = Injector.CreateInstance<VolunteerController>();
             _placeRepo = Injector.CreateInstance<IPlaceRepo>();
 
@@ -217,22 +219,10 @@ namespace AssociationForProtectionOfAnimals.View.Volunteer
                 string selectedContent = selectedItem.Content.ToString();
                 switch (selectedContent)
                 {
-                    /*case "FirstName":
-                        UsersortCriteria = "FirstName";
-                        sortStrategy = new SortByFirstName();
-                        break;
-                    case "LastName":
-                        UsersortCriteria = "LastName";
-                        sortStrategy = new SortByLastName();
-                        break;*/
                     case "DateOfBirth":
                         UsersortCriteria = "DateOfBirth";
                         sortStrategy = new SortByDatetime();
                         break;
-                    /*case "IsBlackListed":
-                        UsersortCriteria = "IsBlackListed";
-                        sortStrategy = new SortByDatetime();
-                        break;*/
                 }
                 UpdatePagination();
             }
@@ -242,5 +232,15 @@ namespace AssociationForProtectionOfAnimals.View.Volunteer
         {
            
         }
+
+        private void AcceptRequest_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+        private void RejectRequest_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
     }
 }

@@ -1,6 +1,7 @@
 ﻿using AssociationForProtectionOfAnimals.Observer;
 using AssociationForProtectionOfAnimals.Domain.Model;
 using AssociationForProtectionOfAnimals.Domain.IRepository;
+using AssociationForProtectionOfAnimals.Domain.Model.Enums;
 
 namespace AssociationForProtectionOfAnimals.Controller
 {
@@ -11,6 +12,7 @@ namespace AssociationForProtectionOfAnimals.Controller
         private readonly IAccountRepo _account;
         private readonly IPlaceRepo _place;
         private readonly IRequestRepo _request;
+        private readonly IPostRepository _posts;
 
         public RegisteredUserController()
         {
@@ -19,6 +21,7 @@ namespace AssociationForProtectionOfAnimals.Controller
             _place = Injector.CreateInstance<IPlaceRepo>();
             _animals = Injector.CreateInstance<IAnimalRepo>();
             _request = Injector.CreateInstance<IRequestRepo>();
+            _posts = Injector.CreateInstance<IPostRepository>();
         }
 
         public void Add(RegisteredUser user)
@@ -75,14 +78,14 @@ namespace AssociationForProtectionOfAnimals.Controller
 
             return true;
         }
-        public Animal AddAnimal(Animal animal, int userId)
+        public Post? AddAnimal(Animal animal, int userId)
         {
             Animal newAnimal = _animals.AddAnimal(animal);
-            if (newAnimal == null)
-                return null;
-            Request adoptionRequest = new Request(userId, 0, Domain.Model.Enums.RequestStatus.WaitingForResponse, DateTime.Now);
-            _request.AddRequest(adoptionRequest);
-            return newAnimal;
+            if (newAnimal == null) return null;
+
+            RegisteredUser user = _users.GetRegisteredUserById(userId);
+            Post post = new Post(DateTime.Now, DateTime.Now, PostStatus.Unpublished, false, newAnimal.Id, user.Account.Username, null);
+            return _posts.Add(post);
         }
         public Animal? UpdateAnimal(Animal animal)
         {
