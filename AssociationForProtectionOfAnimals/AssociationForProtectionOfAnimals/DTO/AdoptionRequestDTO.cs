@@ -24,8 +24,6 @@ namespace AssociationForProtectionOfAnimals.DTO
             set { registeredUserId = value; }
         }
 
-        //public DateTime AdoptionDate { get; set; }
-        //public int RegisteredUserId { get; set; }
         public AdoptionRequestDTO() { }
 
         public AdoptionRequest ToAdoptionRequest()
@@ -38,7 +36,7 @@ namespace AssociationForProtectionOfAnimals.DTO
             volunteerId = request.VolunteerId;
             requestStatus = request.RequestStatus;
             requestSubmissionDate = request.RequestSubmissionDate;
-            adoptionDate = request.adoptionDate;
+            adoptionDate = request.AdoptionDate;
 
             registeredUserId = request.RegisteredUserId;
             Account account = userController.GetAccountById(registeredUserId);

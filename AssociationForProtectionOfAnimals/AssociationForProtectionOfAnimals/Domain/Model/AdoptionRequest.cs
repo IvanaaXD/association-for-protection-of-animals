@@ -11,9 +11,13 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
 {
     public class AdoptionRequest : Request, ISerializable
     {
-        public DateTime adoptionDate;
-        public DateTime AdoptionDate { get; set; }
-
+        private DateTime adoptionDate;
+        //public DateTime AdoptionDate { get; set; }
+        public DateTime AdoptionDate
+        {
+            get { return adoptionDate; }
+            set { adoptionDate = value; }
+        }
         public AdoptionRequest() { }
         public AdoptionRequest(int id,int registeredUserId, int volunteerId, int postId, RequestStatus status, DateTime requestSubmissionDate, DateTime adoptionDate)
             : base(id, registeredUserId, volunteerId,postId, status, requestSubmissionDate)

@@ -33,9 +33,7 @@ namespace AssociationForProtectionOfAnimals.DTO
             get { return registeredUserId; }
             set { registeredUserId = value; }
         }
-        //public int RegisteredUserId { get; set; }
-        //public DateTime AccommodationDate { get; set; }
-        //public DateTime ReturnDate { get; set; }
+
         public TemporaryShelterRequest ToTemporaryShelterRequest()
         {
             return new TemporaryShelterRequest(Id, RegisteredUserId, VolunteerId,RequestStatus,RequestSubmissionDate,AccommodationDate,ReturnDate);
@@ -53,8 +51,9 @@ namespace AssociationForProtectionOfAnimals.DTO
             requestStatus = request.RequestStatus;
             requestSubmissionDate = request.RequestSubmissionDate;
             accommodationDate = request.AccommodationDate;
+            
             returnDate = request.ReturnDate;
-
+            
             registeredUserId = request.RegisteredUserId;
             Account account = userController.GetAccountById(registeredUserId);
             username = account.Username;    

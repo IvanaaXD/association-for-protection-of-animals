@@ -11,10 +11,19 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
 {
     public class TemporaryShelterRequest : Request, ISerializable
     {
-        public DateTime accommodationDate;
-        public DateTime returnDate;
-        public DateTime AccommodationDate { get; set; }
-        public DateTime ReturnDate { get; set; }
+        private DateTime accommodationDate;
+        private DateTime returnDate;
+        public DateTime AccommodationDate
+        {
+            get { return accommodationDate; }
+            set { accommodationDate = value; }
+        }
+        public DateTime ReturnDate
+        {
+            get { return returnDate; }
+            set { returnDate = value; }
+        }
+        //public DateTime ReturnDate { get; set; }
         public TemporaryShelterRequest() { }
         public TemporaryShelterRequest(int id,int registeredUserId, int volunteerId, int postId, RequestStatus status, DateTime requestSubmissionDate, DateTime accommodationDate, DateTime returnDate)
             : base(id, registeredUserId, volunteerId,postId, status, requestSubmissionDate)
