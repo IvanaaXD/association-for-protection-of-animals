@@ -15,6 +15,8 @@ namespace AssociationForProtectionOfAnimals.DTO
     {
         protected int id;
         protected int volunteerId;
+        protected int postId;
+        protected string username;
         protected RegisteredUser regUser;
         protected RequestStatus requestStatus;
         protected DateTime requestSubmissionDate;
@@ -27,6 +29,11 @@ namespace AssociationForProtectionOfAnimals.DTO
         {
             get { return volunteerId; }
             set { volunteerId = value; }
+        }
+        public int PostId
+        {
+            get { return postId; }
+            set { postId = value; }
         }
 
         public RegisteredUser RegUser
