@@ -14,12 +14,28 @@ namespace AssociationForProtectionOfAnimals.DTO
     {
         Controller.RegisteredUserController userController = Injector.CreateInstance<Controller.RegisteredUserController>();
         
-        public DateTime accommodationDate;
-        public DateTime returnDate;
-        public int registeredUserId;
-        public int RegisteredUserId { get; set; }
-        public DateTime AccommodationDate { get; set; }
-        public DateTime ReturnDate { get; set; }
+        private DateTime accommodationDate;
+        private DateTime returnDate;
+        private int registeredUserId;
+
+        public DateTime AccommodationDate
+        {
+            get { return accommodationDate; }
+            set { SetProperty(ref accommodationDate, value); }
+        }
+        public DateTime ReturnDate
+        {
+            get { return returnDate; }
+            set { SetProperty(ref returnDate, value); }
+        }
+        public int RegisteredUserId
+        {
+            get { return registeredUserId; }
+            set { registeredUserId = value; }
+        }
+        //public int RegisteredUserId { get; set; }
+        //public DateTime AccommodationDate { get; set; }
+        //public DateTime ReturnDate { get; set; }
         public TemporaryShelterRequest ToTemporaryShelterRequest()
         {
             return new TemporaryShelterRequest(Id, RegisteredUserId, VolunteerId,RequestStatus,RequestSubmissionDate,AccommodationDate,ReturnDate);

@@ -253,9 +253,9 @@
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="ID" Width="*" Binding="{Binding Id}"/>
                         <DataGridTextColumn Header="Registered User" Width="*" Binding="{Binding Username}"/>
-                        <DataGridTextColumn Header="Submission Date" Width="*" Binding="{Binding RequestSubmissionDate, StringFormat={}{0:yyyy-MM-dd HH:mm}}"/>
+                        <DataGridTextColumn Header="Submission Date" Width="*" Binding="{Binding RequestSubmissionDate,StringFormat={}{0:yyyy-MM-dd }}"/>
                         <DataGridTextColumn Header="Status" Width="*" Binding="{Binding RequestStatus}"/>
-                        <DataGridTextColumn Header="Adoption Date" Width="*" Binding="{Binding AdoptionDate, StringFormat={}{0:yyyy-MM-dd HH:mm}}"/>
+                        <DataGridTextColumn Header="Adoption Date" Width="*" Binding="{Binding AdoptionDate, StringFormat={}{0:yyyy-MM-dd }}"/>
                     </DataGrid.Columns>
                 </DataGrid>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="15">
@@ -277,9 +277,9 @@
                         <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
                         <DataGridTextColumn Header="Registered User" Binding="{Binding Username}"/>
                         <DataGridTextColumn Header="Status" Binding="{Binding RequestStatus}"/>
-                        <DataGridTextColumn Header="Submission Date" Binding="{Binding RequestSubmissionDate, StringFormat={}{0:yyyy-MM-dd HH:mm}}"/>
-                        <DataGridTextColumn Header="Accommodation Date" Binding="{Binding AccommodationDate, StringFormat={}{0:yyyy-MM-dd HH:mm}}"/>
-                        <DataGridTextColumn Header="Return Date" Binding="{Binding ReturnDate, StringFormat={}{0:yyyy-MM-dd HH:mm}}"/>
+                        <DataGridTextColumn Header="Submission Date" Binding="{Binding RequestSubmissionDate, StringFormat={}{0:yyyy-MM-dd }}"/>
+                        <DataGridTextColumn Header="Accommodation Date" Binding="{Binding AccommodationDate, StringFormat={}{0:yyyy-MM-dd }}"/>
+                        <DataGridTextColumn Header="Return Date" Binding="{Binding ReturnDate, StringFormat={}{0:yyyy-MM-dd }}"/>
                     </DataGrid.Columns>
                 </DataGrid>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="15">

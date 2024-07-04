@@ -57,6 +57,7 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
             requestSubmissionDate = DateTime.ParseExact(csvValues[5], "yyyy-MM-dd", null);
             accommodationDate = DateTime.ParseExact(csvValues[6], "yyyy-MM-dd", null);
             returnDate = DateTime.ParseExact(csvValues[7], "yyyy-MM-dd", null);
+
             
         }
     }

@@ -11,10 +11,21 @@ namespace AssociationForProtectionOfAnimals.DTO
     {
         Controller.RegisteredUserController userController = Injector.CreateInstance<Controller.RegisteredUserController>();
 
-        public DateTime adoptionDate;
-        public int registeredUserId;
-        public DateTime AdoptionDate { get; set; }
-        public int RegisteredUserId { get; set; }
+        private DateTime adoptionDate;
+        private int registeredUserId;
+        public DateTime AdoptionDate
+        {
+            get { return adoptionDate; }
+            set { SetProperty(ref adoptionDate, value); }
+        }
+        public int RegisteredUserId
+        {
+            get { return registeredUserId; }
+            set { registeredUserId = value; }
+        }
+
+        //public DateTime AdoptionDate { get; set; }
+        //public int RegisteredUserId { get; set; }
         public AdoptionRequestDTO() { }
 
         public AdoptionRequest ToAdoptionRequest()

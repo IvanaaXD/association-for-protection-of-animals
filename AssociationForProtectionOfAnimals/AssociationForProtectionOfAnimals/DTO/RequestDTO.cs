@@ -23,41 +23,42 @@ namespace AssociationForProtectionOfAnimals.DTO
         public int Id
         {
             get { return id; }
-            set { id = value; }
+            set { SetProperty(ref id, value); }
         }
         public int VolunteerId
         {
             get { return volunteerId; }
-            set { volunteerId = value; }
+            set { SetProperty(ref volunteerId, value); }
         }
+
         public int PostId
         {
             get { return postId; }
-            set { postId = value; }
+            set { SetProperty(ref postId, value); }
         }
         public string Username
         {
             get { return username; }
-            set { username = value; }
+            set { SetProperty(ref username, value); }
         }
 
         public RegisteredUser RegUser
         {
             get { return regUser; }
-            set { regUser = value; }
+            set { SetProperty(ref regUser, value); }
         }
         public DateTime RequestSubmissionDate
         {
             get { return requestSubmissionDate; }
-            set { requestSubmissionDate = value; }
+            set { SetProperty(ref requestSubmissionDate, value); }
         }
 
-        public RequestStatus RequestStatus
+        public RequestStatus RequestStatus 
         {
             get { return requestStatus; }
-            set { requestStatus = value; }
+            set { SetProperty(ref requestStatus, value); }
         }
-     
+        
         public event PropertyChangedEventHandler? PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
