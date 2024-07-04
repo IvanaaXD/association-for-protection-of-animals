@@ -42,13 +42,16 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
 
         public void FromCSV(string[] csvValues)
         {
-            int id = int.Parse(csvValues[0]);
-            int volunteerId = int.Parse(csvValues[1]);
-            int registeredUserId = int.Parse(csvValues[2]);
-            int postId = int.Parse(csvValues[3]);
-            RequestStatus requestStatus = (RequestStatus)Enum.Parse(typeof(RequestStatus), csvValues[4]);
-            DateTime requestSubmissionDate = DateTime.ParseExact(csvValues[5], "yyyy-MM-dd", CultureInfo.InvariantCulture);
-            DateTime adoptionDate = DateTime.ParseExact(csvValues[6], "yyyy-MM-dd", CultureInfo.InvariantCulture);
+            if (csvValues.Length != 7)
+                throw new ArgumentException("Invalid number of requests values in CSV");
+
+            id = int.Parse(csvValues[0]);
+            volunteerId = int.Parse(csvValues[1]);
+            registeredUserId = int.Parse(csvValues[2]);
+            postId = int.Parse(csvValues[3]);
+            requestStatus = (RequestStatus)Enum.Parse(typeof(RequestStatus), csvValues[4]);
+            requestSubmissionDate = DateTime.ParseExact(csvValues[5], "yyyy-MM-dd", null);
+            adoptionDate = DateTime.ParseExact(csvValues[6], "yyyy-MM-dd", null);
         }
     }
 

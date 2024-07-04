@@ -35,6 +35,11 @@ namespace AssociationForProtectionOfAnimals.DTO
             get { return postId; }
             set { postId = value; }
         }
+        public string Username
+        {
+            get { return username; }
+            set { username = value; }
+        }
 
         public RegisteredUser RegUser
         {

@@ -92,7 +92,7 @@ namespace AssociationForProtectionOfAnimals.View.Adoption
                 MessageBox.Show($"An error occurred: {ex.Message}");
             }
         }
-
+        ////////////////////////////////////////
         private List<Domain.Model.TemporaryShelterRequest> GetFilteredTempShelterRequests()
         {
 
