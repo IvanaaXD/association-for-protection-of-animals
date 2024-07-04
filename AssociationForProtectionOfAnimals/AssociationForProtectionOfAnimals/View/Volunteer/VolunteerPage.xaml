@@ -333,17 +333,17 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="4*" />
-                    <RowDefinition Height="Auto" MinHeight="284" />
-                    <RowDefinition />
+                    <RowDefinition Height="Auto" MinHeight="50" />
+                    <RowDefinition Height="Auto" MinHeight="34" />
                 </Grid.RowDefinitions>
 
                 <DataGrid
-                  AutoGenerateColumns="False"
-                  x:Name="DonationsDataGrid"
-                  ItemsSource="{Binding Donations, UpdateSourceTrigger=PropertyChanged}"
-                  SelectedItem="{Binding SelectedDonation, UpdateSourceTrigger=PropertyChanged}"
-                  SelectionMode="Single" IsReadOnly="True"
-                  Grid.Row="0" Margin="0,0,0,12" Grid.RowSpan="2">
+          AutoGenerateColumns="False"
+          x:Name="DonationsDataGrid"
+          ItemsSource="{Binding TableViewModel.Donations, UpdateSourceTrigger=PropertyChanged}"
+          SelectedItem="{Binding SelectedDonation, UpdateSourceTrigger=PropertyChanged}"
+          SelectionMode="Single" IsReadOnly="True"
+          Grid.Row="0" Margin="0,0,0,12" Grid.RowSpan="2">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Date of Donation" Width="*" Binding="{Binding DateOfDonation, StringFormat={}{0:yyyy-MM-dd}}" />
                         <DataGridTextColumn Header="Author's First Name" Width="*" Binding="{Binding AuthorFirstName}" />
@@ -359,13 +359,14 @@
                     </DataGrid.Columns>
                 </DataGrid>
 
-                <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="150">
+                <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="Auto" Margin="0,10,0,0">
                     <Button x:Name="createDonationButton" Content="Create Donation" Width="150" FontSize="16" Click="CreateDonationButton_Click"/>
                 </StackPanel>
 
-                <WebBrowser x:Name="pdfWebBrowser" Grid.Row="2" Height="34" VerticalAlignment="Top" Margin="0,170,0,0" />
+                <WebBrowser x:Name="pdfWebBrowser" Grid.Row="2" Height="20" VerticalAlignment="Top" Margin="0,10,0,0" />
             </Grid>
         </TabItem>
+
 
     </TabControl>
 </Window>
