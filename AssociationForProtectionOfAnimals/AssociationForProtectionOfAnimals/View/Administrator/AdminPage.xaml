@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AssociationForProtectionOfAnimals.View.Volunteer"
         mc:Ignorable="d"
-        Title="VolunteerPage" Height="620" Width="1100">
+        WindowStartupLocation = "CenterScreen"
+        Title="AdministratorPage" Height="620" Width="1100">
     
     <TabControl>
 
