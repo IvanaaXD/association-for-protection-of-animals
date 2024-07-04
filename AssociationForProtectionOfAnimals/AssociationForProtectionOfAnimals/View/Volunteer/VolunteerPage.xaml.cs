@@ -370,6 +370,7 @@ namespace AssociationForProtectionOfAnimals.View.Volunteer
 
         private void AcceptRequest_Click(object sender, RoutedEventArgs e)
         {
+<<<<<<< Updated upstream
             if (SelectedUnpublishedPost == null)
                 MessageBox.Show("Please choose a post to update!");
             else
@@ -377,10 +378,13 @@ namespace AssociationForProtectionOfAnimals.View.Volunteer
                 _volunteerController.AcceptPostRequest(SelectedUnpublishedPost.ToPost());
                 Update();
             }
+=======
+            _volunteerController.AcceptPostRequest(SelectedUnpublishedPost.ToPost());
+>>>>>>> Stashed changes
         }
-
         private void RejectRequest_Click(object sender, RoutedEventArgs e)
         {
+<<<<<<< Updated upstream
             if (SelectedUnpublishedPost == null)
                 MessageBox.Show("Please choose a post to update!");
             else
@@ -388,6 +392,9 @@ namespace AssociationForProtectionOfAnimals.View.Volunteer
                 _volunteerController.RejectPostRequest(SelectedUnpublishedPost.ToPost());
                 Update();
             }
+=======
+            _volunteerController.RejectPostRequest(SelectedUnpublishedPost.ToPost());
+>>>>>>> Stashed changes
         }
 
         public void UpdatePostPagination()
