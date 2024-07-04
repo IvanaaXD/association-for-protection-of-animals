@@ -27,6 +27,8 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
             { typeof(IAdoptionRequestRepo), new Lazy<object>(() => new AdoptionRequestRepo()) },
             { typeof(ITemporaryShelterRequestRepo), new Lazy<object>(() => new TemporaryShelterRequestRepo()) },
             { typeof(RequestController), new Lazy<object>(() => new RequestController()) },
+            { typeof(IDonationRepository), new Lazy<object>(() => new DonationRepository()) },
+            { typeof(DonationController), new Lazy<object>(() => new DonationController()) },
 
         };
 

@@ -1,5 +1,4 @@
-﻿using System;
-using AssociationForProtectionOfAnimals.Storage.Serialization;
+﻿using AssociationForProtectionOfAnimals.Storage.Serialization;
 
 namespace AssociationForProtectionOfAnimals.Domain.Model
 {

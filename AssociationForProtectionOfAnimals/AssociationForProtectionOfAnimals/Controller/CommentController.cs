@@ -5,7 +5,7 @@ using AssociationForProtectionOfAnimals.Observer;
 
 namespace AssociationForProtectionOfAnimals.Controller
 {
-    internal class CommentController
+    public class CommentController
     {
         private readonly ICommentRepository _comments;
         private readonly IAnimalRepo _animalRepository;
