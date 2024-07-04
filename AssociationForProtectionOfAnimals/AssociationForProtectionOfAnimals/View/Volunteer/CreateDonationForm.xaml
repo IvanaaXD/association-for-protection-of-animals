@@ -41,13 +41,20 @@
 
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                 <TextBlock Text="Value:" Width="100" FontSize="16"/>
-                <TextBox x:Name="valueTextBlock" Width="150" FontSize="16" Text="{Binding Donation.Value, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                 Validation.ErrorTemplate="{StaticResource ValidationTemplate}"/>
+                <TextBox x:Name="valueTextBox" Width="150" FontSize="16" 
+                         Text="{Binding Donation.Value, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                         Validation.ErrorTemplate="{StaticResource ValidationTemplate}" 
+                         PreviewTextInput="ValueTextBox_PreviewTextInput"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                 <TextBlock Text="Date:" Width="100" FontSize="16"/>
                 <DatePicker x:Name="dateOfDonationPicker" Width="150" SelectedDate="{Binding Donation.DateOfDonation, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <TextBlock Text="Type:" Width="100" FontSize="16"/>
+                <ComboBox x:Name="typeOfDonationComboBox" Width="150" FontSize="16" ItemsSource="{Binding TypeOfDonations}" SelectedItem="{Binding Donation.TypeOfDonation, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}"/>
             </StackPanel>
 
             <StackPanel Margin="0,0,0,10">

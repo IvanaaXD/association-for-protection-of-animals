@@ -1,4 +1,5 @@
-﻿using AssociationForProtectionOfAnimals.Storage.Serialization;
+﻿using AssociationForProtectionOfAnimals.Domain.Model.Enums;
+using AssociationForProtectionOfAnimals.Storage.Serialization;
 
 namespace AssociationForProtectionOfAnimals.Domain.Model
 {
@@ -10,6 +11,7 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
         private string authorFirstName;
         private string authorLastName;
         private string pdfFilePath;
+        private TypeOfDonation typeOfDonation; 
 
         public int Id
         {
@@ -47,9 +49,15 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
             set { pdfFilePath = value; }
         }
 
+        public TypeOfDonation TypeOfDonation
+        {
+            get { return typeOfDonation; }  
+            set { typeOfDonation = value; }
+        }
+
         public Donation() { }
 
-        public Donation(int id, int value, string authorFirstName, string authorLastName, DateTime dateOfDonation, string pdfFilePath)
+        public Donation(int id, int value, string authorFirstName, string authorLastName, DateTime dateOfDonation, string pdfFilePath, TypeOfDonation typeOfDonation)
         {
             this.id = id;
             this.value = value;
@@ -57,6 +65,7 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
             this.authorLastName = authorLastName;
             this.dateOfDonation = dateOfDonation;
             this.pdfFilePath = pdfFilePath;
+            this.typeOfDonation = typeOfDonation;
         }
 
         public string[] ToCSV()
@@ -69,13 +78,14 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
                 AuthorLastName,
                 Value.ToString(),
                 PdfFilePath,
+                TypeOfDonation.ToString()
             };
             return csvValues;
         }
 
         public void FromCSV(string[] values)
         {
-            if (values.Length != 6)
+            if (values.Length != 7)  
                 throw new ArgumentException("Invalid number of donation values in CSV");
 
             Id = int.Parse(values[0]);
@@ -84,6 +94,7 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
             AuthorLastName = values[3];
             Value = int.Parse(values[4]);
             PdfFilePath = values[5];
+            TypeOfDonation = Enum.Parse<TypeOfDonation>(values[6]);
         }
     }
 }

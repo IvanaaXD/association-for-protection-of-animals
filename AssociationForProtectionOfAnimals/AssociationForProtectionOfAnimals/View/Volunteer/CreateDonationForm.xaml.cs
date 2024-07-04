@@ -1,7 +1,9 @@
 ﻿using AssociationForProtectionOfAnimals.Controller;
 using AssociationForProtectionOfAnimals.Domain.Model;
+using AssociationForProtectionOfAnimals.Domain.Model.Enums;
 using AssociationForProtectionOfAnimals.DTO;
 using Microsoft.Win32;
+using System.Text.RegularExpressions;
 using System.Windows;
 
 namespace AssociationForProtectionOfAnimals.View.Volunteer
@@ -14,9 +16,16 @@ namespace AssociationForProtectionOfAnimals.View.Volunteer
         public CreateDonationForm()
         {
             InitializeComponent();
-            Donation = new DonationDTO();
+            Donation = new DonationDTO
+            {
+                DateOfDonation = DateTime.Today,
+                TypeOfDonation = TypeOfDonation.Individual  
+            };
             _donationController = Injector.CreateInstance<DonationController>();
             DataContext = this;
+
+            typeOfDonationComboBox.ItemsSource = Enum.GetValues(typeof(TypeOfDonation));
+            typeOfDonationComboBox.SelectedItem = Donation.TypeOfDonation; 
         }
 
         private void BrowsePdfFile_Click(object sender, RoutedEventArgs e)
@@ -33,18 +42,40 @@ namespace AssociationForProtectionOfAnimals.View.Volunteer
 
         private void SaveDonation_Click(object sender, RoutedEventArgs e)
         {
-            Donation donation = new()
+            if (int.TryParse(valueTextBox.Text, out int value))
             {
-                DateOfDonation = Donation.DateOfDonation,
-                AuthorFirstName = Donation.AuthorFirstName,
-                AuthorLastName = Donation.AuthorLastName,
-                Value = Donation.Value,
-                PdfFilePath = Donation.PdfFilePath
-            };
+                Donation.Value = value;
+                Donation.AuthorFirstName = firstNameTextBox.Text;
+                Donation.AuthorLastName = lastNameTextBox.Text;
+                Donation.DateOfDonation = dateOfDonationPicker.SelectedDate.GetValueOrDefault();
+                Donation.PdfFilePath = pdfFilePathTextBox.Text;
+                Donation.TypeOfDonation = (TypeOfDonation)typeOfDonationComboBox.SelectedItem;
 
-            _donationController.Add(donation);
-            DialogResult = true;
-            Close();
+                Donation donation = new()
+                {
+                    DateOfDonation = Donation.DateOfDonation,
+                    AuthorFirstName = Donation.AuthorFirstName,
+                    AuthorLastName = Donation.AuthorLastName,
+                    Value = Donation.Value,
+                    PdfFilePath = Donation.PdfFilePath,
+                    TypeOfDonation = Donation.TypeOfDonation
+                };
+
+                _donationController.Add(donation);
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Please enter a valid number for Value.");
+            }
+        }
+
+
+
+        private void ValueTextBox_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex(@"^[0-9]+$"); // Allow only numbers
+            e.Handled = !regex.IsMatch(e.Text);
         }
     }
 }

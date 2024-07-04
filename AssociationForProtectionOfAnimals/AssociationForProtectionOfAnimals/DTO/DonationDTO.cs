@@ -1,7 +1,7 @@
-﻿using AssociationForProtectionOfAnimals.Controller;
-using AssociationForProtectionOfAnimals.Domain.Model;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using AssociationForProtectionOfAnimals.Domain.Model;
+using AssociationForProtectionOfAnimals.Domain.Model.Enums;
 
 namespace AssociationForProtectionOfAnimals.DTO
 {
@@ -12,8 +12,8 @@ namespace AssociationForProtectionOfAnimals.DTO
         private int value;
         private string authorFirstName;
         private string pdfFilePath;
-
         private string authorLastName;
+        private TypeOfDonation typeOfDonation;
 
         public int Id
         {
@@ -30,7 +30,7 @@ namespace AssociationForProtectionOfAnimals.DTO
         public int Value
         {
             get { return value; }
-            set { SetProperty(ref value, value); }
+            set { SetProperty(ref this.value, value); }
         }
 
         public string AuthorFirstName
@@ -49,6 +49,12 @@ namespace AssociationForProtectionOfAnimals.DTO
         {
             get { return authorLastName; }
             set { SetProperty(ref authorLastName, value); }
+        }
+
+        public TypeOfDonation TypeOfDonation
+        {
+            get { return typeOfDonation; }
+            set { SetProperty(ref typeOfDonation, value); }
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -78,14 +84,14 @@ namespace AssociationForProtectionOfAnimals.DTO
             {
                 switch (columnName)
                 {
-                    // Example validation
-                    // case "Value":
-                    //     if (value <= 0)
-                    //         return "Donation value must be greater than 0";
-                    //     break;
+                    case nameof(Value):
+                        if (Value < 0)
+                            return "Value cannot be negative";
+                        break;
                     default:
-                        return null;
+                        break;
                 }
+                return null;
             }
         }
 
@@ -99,6 +105,7 @@ namespace AssociationForProtectionOfAnimals.DTO
                 AuthorFirstName = authorFirstName,
                 AuthorLastName = authorLastName,
                 PdfFilePath = pdfFilePath,
+                TypeOfDonation = typeOfDonation
             };
         }
 
@@ -112,6 +119,7 @@ namespace AssociationForProtectionOfAnimals.DTO
             authorFirstName = donation.AuthorFirstName;
             authorLastName = donation.AuthorLastName;
             pdfFilePath = donation.PdfFilePath;
+            typeOfDonation = donation.TypeOfDonation;
         }
     }
 }

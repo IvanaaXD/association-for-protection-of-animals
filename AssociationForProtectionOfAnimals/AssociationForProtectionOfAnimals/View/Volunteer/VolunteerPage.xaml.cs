@@ -702,6 +702,7 @@ namespace AssociationForProtectionOfAnimals.View.Volunteer
         private void CreateDonationButton_Click(object sender, RoutedEventArgs e)
         {
             CreateDonationForm createDonationForm = new CreateDonationForm();
+            createDonationForm.Closed += RefreshPage;
             createDonationForm.Show();
         }
     }
