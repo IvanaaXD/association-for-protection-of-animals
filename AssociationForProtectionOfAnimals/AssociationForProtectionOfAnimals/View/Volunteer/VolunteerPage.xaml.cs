@@ -116,7 +116,7 @@ namespace AssociationForProtectionOfAnimals.View.Volunteer
             TableViewModel.UnpublishedPosts.Clear();
             TableViewModel.PublishedPosts.Clear();
             var publishedPosts = _postController.GetAllPublishedPosts();
-            var unpublishedPosts = _postController.GetAllPublishedPosts();
+            var unpublishedPosts = _postController.GetAllUnpublishedPosts();
 
             if (publishedPosts != null)
                 foreach (Post post in publishedPosts)
