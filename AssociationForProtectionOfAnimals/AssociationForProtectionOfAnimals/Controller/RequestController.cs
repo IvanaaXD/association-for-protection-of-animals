@@ -41,6 +41,14 @@ namespace AssociationForProtectionOfAnimals.Controller
         {
             _requests.UpdateRequest(request);
         }
+        public void Update(AdoptionRequest request)
+        {
+            _adoptionRequests.UpdateRequest(request);
+        }
+        public void Update(TemporaryShelterRequest request)
+        {
+            _temporaryShelterRequests.UpdateRequest(request);
+        }
 
         public void Subscribe(IObserver observer)
         {

@@ -36,7 +36,7 @@ namespace AssociationForProtectionOfAnimals.DTO
 
         public TemporaryShelterRequest ToTemporaryShelterRequest()
         {
-            return new TemporaryShelterRequest(Id, RegisteredUserId, VolunteerId,RequestStatus,RequestSubmissionDate,AccommodationDate,ReturnDate);
+            return new TemporaryShelterRequest(Id, RegisteredUserId, VolunteerId,PostId, RequestStatus,RequestSubmissionDate,AccommodationDate,ReturnDate);
         }
         public TemporaryShelterRequestDTO()
         {
@@ -47,7 +47,7 @@ namespace AssociationForProtectionOfAnimals.DTO
         {
             id = request.Id;
             volunteerId = request.VolunteerId;
-            
+            postId = request.PostId;    
             requestStatus = request.RequestStatus;
             requestSubmissionDate = request.RequestSubmissionDate;
             accommodationDate = request.AccommodationDate;

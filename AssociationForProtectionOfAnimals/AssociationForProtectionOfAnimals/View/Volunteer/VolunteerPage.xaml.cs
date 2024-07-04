@@ -601,12 +601,14 @@ namespace AssociationForProtectionOfAnimals.View.Volunteer
                     post.PostStatus = PostStatus.Adopted;
                     _postController.Update(post);
                     SelectedAdoptionRequest.RequestStatus = RequestStatus.Accepted;
+                    SelectedAdoptionRequest.VolunteerId = user.Id;
                     _requestController.Update(SelectedAdoptionRequest.ToAdoptionRequest());
                     MessageBox.Show("Request accepted!");
+                    Update();
                 }
             }
 
-            Close();
+            //Close();
         }
 
         private void denyAdoptionRequest_Click(object sender, RoutedEventArgs e)
@@ -619,12 +621,14 @@ namespace AssociationForProtectionOfAnimals.View.Volunteer
             {
 
                 SelectedAdoptionRequest.RequestStatus = RequestStatus.Denied;
+                SelectedAdoptionRequest.VolunteerId = user.Id;
                 _requestController.Update(SelectedAdoptionRequest.ToAdoptionRequest());
                 MessageBox.Show("Request rejected!");
+                Update();
 
             }
 
-            Close();
+            //Close();
         }
 
         private void acceptTempRequest_Click(object sender, RoutedEventArgs e)
@@ -646,13 +650,15 @@ namespace AssociationForProtectionOfAnimals.View.Volunteer
                 {
                     post.PostStatus = PostStatus.TemporarilyAdopted;
                     _postController.Update(post);
-                    SelectedAdoptionRequest.RequestStatus = RequestStatus.Accepted;
+                    SelectedTempRequest.RequestStatus = RequestStatus.Accepted;
+                    SelectedTempRequest.VolunteerId = user.Id;
                     _requestController.Update(SelectedTempRequest.ToTemporaryShelterRequest());
                     MessageBox.Show("Request accepted!");
+                    Update();
                 }
             }
 
-            Close();
+            //Close();
         }
 
         private void denyTempRequest_Click(object sender, RoutedEventArgs e)
@@ -665,12 +671,14 @@ namespace AssociationForProtectionOfAnimals.View.Volunteer
             {
 
                 SelectedTempRequest.RequestStatus = RequestStatus.Denied;
+                SelectedTempRequest.VolunteerId = user.Id;
                 _requestController.Update(SelectedTempRequest.ToTemporaryShelterRequest());
                 MessageBox.Show("Request rejected!");
+                Update();
 
             }
 
-            Close();
+            //Close();
         }
 
     }

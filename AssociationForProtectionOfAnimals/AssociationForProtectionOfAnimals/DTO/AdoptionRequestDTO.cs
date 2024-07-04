@@ -28,12 +28,13 @@ namespace AssociationForProtectionOfAnimals.DTO
 
         public AdoptionRequest ToAdoptionRequest()
         {
-            return new AdoptionRequest(Id, RegisteredUserId, VolunteerId, RequestStatus, RequestSubmissionDate, AdoptionDate);
+            return new AdoptionRequest(Id, RegisteredUserId, VolunteerId,PostId, RequestStatus, RequestSubmissionDate, AdoptionDate);
         }
         public AdoptionRequestDTO(AdoptionRequest request)
         {
             id = request.Id;
             volunteerId = request.VolunteerId;
+            postId = request.PostId;    
             requestStatus = request.RequestStatus;
             requestSubmissionDate = request.RequestSubmissionDate;
             adoptionDate = request.AdoptionDate;
