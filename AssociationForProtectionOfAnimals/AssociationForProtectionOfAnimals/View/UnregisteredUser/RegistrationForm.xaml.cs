@@ -33,6 +33,7 @@ namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
                 if (registeredUserController.IsUsernameUnique(user.Username))
                 {
                     registeredUserController.Add(user.ToRegisteredUser());
+                    MessageBox.Show("Registration request sent.");
                     Close();
                 }
                 else

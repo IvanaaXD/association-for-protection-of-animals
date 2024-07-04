@@ -39,25 +39,24 @@ namespace AssociationForProtectionOfAnimals
 
         private bool HasUserLoggedIn(string username, string password)
         {
-            foreach (RegisteredUser user in registeredUserController.GetAllRegisteredUsers())
+            foreach (RegisteredUser user in registeredUserController.GetEveryUser())
             {
                 if (user.Account.Username == username && user.Account.Password == password)
                 {
-                    RegisteredUserPage welcomePage = new RegisteredUserPage(user);
-                    welcomePage.Show();
-
-                    // IF USER IS DELETED FROM THE APP (KICKED OUT)
-                    /*if (user.ActiveCourseId != -10)
+                    if (user.Account.Status== Domain.Model.Enums.AccountStatus.Active)
                     {
-                        registeredUserController.ProcessPenaltyPoints();
-                        RegisteredUserForm welcomePage = new RegisteredUserForm(user.Id);
+                        RegisteredUserPage welcomePage = new RegisteredUserPage(user);
                         welcomePage.Show();
                     }
-                    else
+                    else if(user.Account.Status== Domain.Model.Enums.AccountStatus.WaitingForActivation)
                     {
-                        MessageBox.Show("Your account has been deactivated.");
-                    }*/
+                        MessageBox.Show("Account registration request sent, waiting for volunteer's response");
 
+                    }
+                    else if (user.Account.Status == Domain.Model.Enums.AccountStatus.Denied)
+                    {
+                        MessageBox.Show("Your registration request has been denied. Please try sending another one.");
+                    }
                     return true;
                 }
             }

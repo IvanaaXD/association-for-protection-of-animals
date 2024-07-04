@@ -1,5 +1,4 @@
-﻿
-namespace AssociationForProtectionOfAnimals.Domain.Model.Enums
+﻿namespace AssociationForProtectionOfAnimals.Domain.Model.Enums
 {
     public enum Gender
     {
@@ -47,5 +46,13 @@ namespace AssociationForProtectionOfAnimals.Domain.Model.Enums
         Individual,
         Group,
         General,
+    }
+
+    public enum AccountStatus
+    {
+        WaitingForActivation,
+        Active,
+        Denied,
+        BlackListed,
     }
 }

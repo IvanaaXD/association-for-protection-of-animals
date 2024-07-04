@@ -3,6 +3,7 @@ using AssociationForProtectionOfAnimals.Domain.IRepository;
 using AssociationForProtectionOfAnimals.Observer;
 using AssociationForProtectionOfAnimals.Storage;
 using AssociationForProtectionOfAnimals.Domain.IUtility;
+using AssociationForProtectionOfAnimals.Domain.Model.Enums;
 
 namespace AssociationForProtectionOfAnimals.Repository
 {
@@ -17,7 +18,7 @@ namespace AssociationForProtectionOfAnimals.Repository
 
         public VolunteerRepo()
         {
-            _usersStorage = new Storage<RegisteredUser>("volunteers.csv");
+            _usersStorage = new Storage<RegisteredUser>("registeredUsers.csv");
             _users = _usersStorage.Load();
         }
         public RegisteredUser? GetById(int id)
@@ -26,7 +27,24 @@ namespace AssociationForProtectionOfAnimals.Repository
         }
         public List<RegisteredUser> GetAllRegisteredUsers()
         {
-            return _users;
+            return _users.Where(user => user.Account.Status == AccountStatus.Active).ToList();
+        }
+
+        public List<RegisteredUser> GetAllRegistrationRequests()
+        {
+            return _users.Where(user => user.Account.Status == AccountStatus.WaitingForActivation).ToList();
+        }
+
+        public RegisteredUser? AcceptRegistration(RegisteredUser user)
+        {
+            user.Account.Status = AccountStatus.Active;
+            return UpdateUser(user);
+        }
+
+        public RegisteredUser? DenyRegistration(RegisteredUser user)
+        {
+            user.Account.Status = AccountStatus.Denied;
+            return UpdateUser(user);
         }
 
         public int GenerateId()

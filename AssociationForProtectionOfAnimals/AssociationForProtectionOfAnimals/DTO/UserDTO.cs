@@ -202,13 +202,13 @@ namespace AssociationForProtectionOfAnimals.DTO
 
         public RegisteredUser ToRegisteredUser()
         {
-            Account userAccount = new(username, password, AccountType.RegisteredUser);
+            Account userAccount = new(username, password, AccountType.RegisteredUser, AccountStatus.WaitingForActivation);
             Place userPlace = new(placeName, int.Parse(placeZipCode));
             return new RegisteredUser(firstName, lastName, gender, dateOfBirth, phoneNumber, homeAddress, userPlace, idNumber, userAccount, false);
         }
         public Volunteer ToVolunteer()
         {
-            Account userAccount = new(username, password, AccountType.Volunteer);
+            Account userAccount = new(username, password, AccountType.Volunteer, AccountStatus.Active);
             Place userPlace = new(placeName, int.Parse(placeZipCode));
             return new Volunteer(firstName, lastName, gender, dateOfBirth, phoneNumber, homeAddress, userPlace, idNumber, userAccount);
         }

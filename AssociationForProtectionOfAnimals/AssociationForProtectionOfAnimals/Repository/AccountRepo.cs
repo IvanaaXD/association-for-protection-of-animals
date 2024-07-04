@@ -34,5 +34,19 @@ namespace AssociationForProtectionOfAnimals.Repository
             NotifyObservers();
             return account;
         }
+        public Account? Update(Account? account)
+        {
+            Account? oldAccount = GetAccountById(account.Id);
+            if (oldAccount == null) return null;
+
+            oldAccount.Username = account.Username;
+            oldAccount.Password = account.Password;
+            oldAccount.Type = account.Type;
+            oldAccount.Status = account.Status;
+
+            _storage.Save(_accounts);
+            NotifyObservers();
+            return oldAccount;
+        }
     }
 }

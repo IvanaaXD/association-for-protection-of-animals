@@ -21,12 +21,16 @@ namespace AssociationForProtectionOfAnimals.View.Volunteer
         public ObservableCollection<PostDTO>? UnpublishedPosts { get; set; }
         public ObservableCollection<DonationDTO> Donations { get; set; }
         public ObservableCollection<RegisteredUserDTO>? Users { get; set; }
+        public ObservableCollection<RegisteredUserDTO>? ReqUsers { get; set; }
+
 
         public class ViewModel
         {
             public ObservableCollection<PostDTO>? PublishedPosts { get; set; }
             public ObservableCollection<PostDTO>? UnpublishedPosts { get; set; }
             public ObservableCollection<RegisteredUserDTO> Users { get; set; }
+            public ObservableCollection<RegisteredUserDTO>? ReqUsers { get; set; }
+
             public ObservableCollection<AdoptionRequestDTO> Requests { get; set; }
             public ObservableCollection<AdoptionRequestDTO> AdoptionRequestDTOs { get; set; }
             public ObservableCollection<TemporaryShelterRequestDTO> TempShelterRequestDTOs { get; set; }
@@ -34,6 +38,7 @@ namespace AssociationForProtectionOfAnimals.View.Volunteer
             public ViewModel()
             {
                 Users = new ObservableCollection<RegisteredUserDTO>();
+                ReqUsers = new ObservableCollection<RegisteredUserDTO>();
                 UnpublishedPosts = new ObservableCollection<PostDTO>();
                 PublishedPosts = new ObservableCollection<PostDTO>();
                 AdoptionRequestDTOs = new ObservableCollection<AdoptionRequestDTO>();
@@ -52,6 +57,8 @@ namespace AssociationForProtectionOfAnimals.View.Volunteer
         private readonly IPlaceRepo _placeRepo;
 
         public RegisteredUserDTO? SelectedUser { get; set; }
+        public RegisteredUserDTO? ReqSelectedUser { get; set; }
+
         public PostDTO? SelectedPublishedPost { get; set; }
         public PostDTO? SelectedUnpublishedPost { get; set; }
         public AdoptionRequestDTO SelectedAdoptionRequest { get; set; }
@@ -84,6 +91,7 @@ namespace AssociationForProtectionOfAnimals.View.Volunteer
             TableViewModel = new ViewModel();
             DataContext = this;
             _volunteerController.Subscribe(this);
+            _regUserController.Subscribe(this);
 
             firstAndLastName.Text = user.FirstName + " " + user.LastName;
 
@@ -101,6 +109,7 @@ namespace AssociationForProtectionOfAnimals.View.Volunteer
             try
             {
                 SetUsers();
+                SetReqUsers();
                 SetPosts();
                 SetRequests();
                 SetDonations();
@@ -148,6 +157,19 @@ namespace AssociationForProtectionOfAnimals.View.Volunteer
                 foreach (Domain.Model.RegisteredUser user in users)
                 {
                     TableViewModel.Users.Add(new RegisteredUserDTO(user));
+                }
+            }
+        }
+        private void SetReqUsers()
+        {
+            TableViewModel.ReqUsers.Clear();
+            var users = _volunteerController.GetAllRegistrationRequests();
+
+            if (users != null)
+            {
+                foreach (Domain.Model.RegisteredUser user in users)
+                {
+                    TableViewModel.ReqUsers.Add(new RegisteredUserDTO(user));
                 }
             }
         }
@@ -703,6 +725,20 @@ namespace AssociationForProtectionOfAnimals.View.Volunteer
         {
             CreateDonationForm createDonationForm = new CreateDonationForm();
             createDonationForm.Show();
+        }
+
+        // -------------------------- REGISTRATION REQUESTS ------------------------
+
+        private void AcceptRegistrationRequest_Click(object sender, RoutedEventArgs e)
+        {
+            _volunteerController.AcceptRegistration(ReqSelectedUser.ToRegisteredUser());
+            Update();
+        }
+
+        private void RejectRegistrationRequest_Click(object sender, RoutedEventArgs e)
+        {
+            _volunteerController.DenyRegistration(ReqSelectedUser.ToRegisteredUser());
+            Update();
         }
     }
 }

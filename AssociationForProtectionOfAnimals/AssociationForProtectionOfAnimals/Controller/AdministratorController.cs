@@ -163,5 +163,19 @@ namespace AssociationForProtectionOfAnimals.Controller
 
             return filteredVolunteers;
         }
+        public List<RegisteredUser> GetAllRegistrationRequests()
+        {
+            return _volunteers.GetAllRegistrationRequests();
+        }
+
+        public RegisteredUser? AcceptRegistration(RegisteredUser user)
+        {
+            return _volunteers.AcceptRegistration(user);
+        }
+
+        public RegisteredUser? DenyRegistration(RegisteredUser user)
+        {
+            return _volunteers.DenyRegistration(user);
+        }
     }
 }

@@ -122,6 +122,46 @@
                 </Grid>
             </DockPanel>
         </TabItem>
+        <TabItem Header="Registration requests" Margin="-2,0,-2,-2">
+            <DockPanel Height="auto">
+               
+
+                <Grid>
+                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" DockPanel.Dock="Top" Margin="0,5,0,100">
+                        <TabControl VerticalAlignment="Center" Height="auto">
+                            <DataGrid Height="470"
+          AutoGenerateColumns="False"
+          x:Name="reqUsersDataGrid"
+          ItemsSource="{Binding TableViewModel.ReqUsers, UpdateSourceTrigger=PropertyChanged}"
+          SelectedItem="{Binding ReqSelectedUser, UpdateSourceTrigger=PropertyChanged}"
+          SelectionMode="Single" IsReadOnly="True">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Width="*" Header="First name" Binding="{Binding FirstName}" />
+                                    <DataGridTextColumn Width="*" Header="Last name" Binding="{Binding LastName}" />
+                                    <DataGridTextColumn Width="*" Header="Gender" Binding="{Binding Gender}" />
+                                    <DataGridTextColumn Width="*" Header="Date of birth" Binding="{Binding DateOfBirth, StringFormat={}{0:yyyy-MM-dd}}" />
+                                    <DataGridTextColumn Width="*" Header="Phone number" Binding="{Binding PhoneNumber}" />
+                                    <DataGridTextColumn Width="*" Header="IdNumber" Binding="{Binding IdNumber}" />
+                                    <DataGridTextColumn Width="*" Header="Email" Binding="{Binding Account.Username}"/>
+                                    <DataGridTextColumn Width="*" Header="Home Address" Binding="{Binding HomeAddress}" />
+                                    <DataGridTextColumn Width="*" Header="Place" Binding="{Binding Place.Name}" />
+                                    <DataGridTextColumn Width="*" Header="IsBlackListed" Binding="{Binding IsBlackListed}" />
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </TabControl>
+                    </Grid>
+
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,0" Height="90">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,10,0,7">
+                            <Button Content="Accept request" Click="AcceptRegistrationRequest_Click" Margin="0,0,5,0" Foreground="White" Background="#399142" Width="100" Height="30"/>
+                            <Button Content="Reject request" Click="RejectRegistrationRequest_Click" Margin="5,0,0,0" Foreground="White" Background="#ba3e38" Width="100" Height="30"/>
+
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </DockPanel>
+        </TabItem>
 
         <TabItem Header="Published posts" Margin="-2,0,-2,0" Height="22" VerticalAlignment="Top">
             <DockPanel Height="auto">

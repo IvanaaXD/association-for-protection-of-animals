@@ -53,7 +53,17 @@ namespace AssociationForProtectionOfAnimals.Controller
 
         public RegisteredUser? UpdateUser(RegisteredUser? user)
         {
-            return _volunteers.UpdateUser(user);
+            Place place = _places.GetPlaceByNameAndPostalCode(user.Place);
+            int placeId;
+            if (place == null)
+                placeId = _places.AddPlace(user.Place).Id;
+            else
+                placeId = place.Id;
+            user.Place.Id = placeId;
+            Account acc = _accounts.Update(user.Account);
+            user.Account = acc;
+            RegisteredUser ret = _volunteers.UpdateUser(user);
+            return ret;
         }
 
         public RegisteredUser? RemoveUser(int id)
@@ -135,6 +145,25 @@ namespace AssociationForProtectionOfAnimals.Controller
             ).ToList();
 
             return filteredRegisteredUsers;
+        }
+
+        public List<RegisteredUser> GetAllRegistrationRequests()
+        {
+            return _volunteers.GetAllRegistrationRequests();
+        }
+
+        public RegisteredUser? AcceptRegistration(RegisteredUser user)
+        {
+            user.Account.Status = AccountStatus.Active;
+            _accounts.Update(user.Account);
+            return _volunteers.AcceptRegistration(user);
+        }
+
+        public RegisteredUser? DenyRegistration(RegisteredUser user)
+        {
+            user.Account.Status = AccountStatus.Denied;
+            _accounts.Update(user.Account);
+            return _volunteers.DenyRegistration(user);
         }
     }
 }

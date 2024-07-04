@@ -200,10 +200,10 @@ namespace AssociationForProtectionOfAnimals.DTO
         public Person GetAdopter(string email)
         {
             RegisteredUserController registeredUserController = Injector.CreateInstance<RegisteredUserController>();
-            VolunteerController volunteerController = Injector.CreateInstance<VolunteerController>();
+            AdministratorController administratorController = Injector.CreateInstance<AdministratorController>();
             Person person = registeredUserController.GetRegisteredUserByEmail(email);
             if (person == null)
-                person = volunteerController.GetVolunteerByEmail(email);
+                person = administratorController.GetVolunteerByUsername(email);
 
             return person;
         }

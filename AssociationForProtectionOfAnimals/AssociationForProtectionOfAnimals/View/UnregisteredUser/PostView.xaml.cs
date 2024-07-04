@@ -127,10 +127,10 @@ namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
         public string GetName(string email)
         {
             RegisteredUserController registeredUserController = Injector.CreateInstance<RegisteredUserController>();
-            VolunteerController volunteerController = Injector.CreateInstance<VolunteerController>();
+            AdministratorController administratorController = Injector.CreateInstance<AdministratorController>();
             Person person = registeredUserController.GetRegisteredUserByEmail(post.Adopter);
             if (person == null)
-                person = volunteerController.GetVolunteerByEmail(post.Adopter);
+                person = administratorController.GetVolunteerByUsername(post.Adopter);
 
             if (person == null)
                 return "";

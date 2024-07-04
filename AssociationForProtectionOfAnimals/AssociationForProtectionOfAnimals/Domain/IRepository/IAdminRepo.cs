@@ -1,7 +1,6 @@
 using AssociationForProtectionOfAnimals.Observer;
 using System.Collections.Generic;
 using AssociationForProtectionOfAnimals.Domain.Model;
-using AssociationForProtectionOfAnimals.Domain.Model;
 using AssociationForProtectionOfAnimals.Domain.IUtility;
 
 namespace AssociationForProtectionOfAnimals.Domain.IRepository

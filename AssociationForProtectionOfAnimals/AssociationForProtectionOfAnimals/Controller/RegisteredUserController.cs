@@ -26,7 +26,6 @@ namespace AssociationForProtectionOfAnimals.Controller
 
         public void Add(RegisteredUser user)
         {
-            /* SEND REQUEST FOR REGISTRATION */
             Place place = _place.GetPlaceByNameAndPostalCode(user.Place);
             int placeId;
             if (place == null)
@@ -34,6 +33,7 @@ namespace AssociationForProtectionOfAnimals.Controller
             else
                 placeId = place.Id;
             user.Place.Id = placeId;
+            user.Account.Status = AccountStatus.WaitingForActivation;
             Account acc = _account.AddAccount(user.Account);
             user.Account = acc;
             _users.AddRegisteredUser(user);
@@ -46,7 +46,6 @@ namespace AssociationForProtectionOfAnimals.Controller
         }
         public void Update(RegisteredUser user)
         {
-            /* SEND REQUEST FOR ACCOUNT UPDATE */
             _users.UpdateRegisteredUser(user);
         }
         public void Subscribe(IObserver observer)
@@ -62,6 +61,11 @@ namespace AssociationForProtectionOfAnimals.Controller
         {
             return _users.GetAllRegisteredUsers();
         }
+        public List<RegisteredUser> GetEveryUser()
+        {
+            return _users.GetEveryRegisteredUser();
+        }
+
         public Account GetAccountById(int id)
         {
             return _account.GetAccountById(id);

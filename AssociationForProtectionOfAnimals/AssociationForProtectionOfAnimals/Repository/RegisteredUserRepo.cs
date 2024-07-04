@@ -2,6 +2,7 @@
 using AssociationForProtectionOfAnimals.Storage;
 using AssociationForProtectionOfAnimals.Observer;
 using AssociationForProtectionOfAnimals.Domain.IRepository;
+using AssociationForProtectionOfAnimals.Domain.Model.Enums;
 
 namespace AssociationForProtectionOfAnimals.Repository
 {
@@ -68,6 +69,10 @@ namespace AssociationForProtectionOfAnimals.Repository
         }
 
         public List<RegisteredUser> GetAllRegisteredUsers()
+        {
+            return _users.Where(user => user.Account.Status == AccountStatus.Active).ToList();
+        }
+        public List<RegisteredUser> GetEveryRegisteredUser()
         {
             return _users;
         }

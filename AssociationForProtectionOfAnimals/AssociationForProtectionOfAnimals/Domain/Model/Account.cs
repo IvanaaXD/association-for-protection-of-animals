@@ -9,6 +9,7 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
         protected string username;
         protected string password;
         protected AccountType type;
+        protected AccountStatus status;
 
         public int Id
         {
@@ -34,20 +35,28 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
             set { type = value; }
         }
 
+        public AccountStatus Status
+        {
+            get { return status; }
+            set { status = value; }
+        }
+
         public Account() { }
 
-        public Account(int id, string username, string password, AccountType type)
+        public Account(int id, string username, string password, AccountType type, AccountStatus status)
         {
             this.id = id;
             this.username = username;
             this.password = password;
             this.type = type;
+            this.status = status;
         }
-        public Account(string username, string password, AccountType type)
+        public Account(string username, string password, AccountType type, AccountStatus status)
         {
             this.username = username;
             this.password = password;
             this.type = type;
+            this.status = status;
         }
 
         public string[] ToCSV()
@@ -57,13 +66,14 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
                 id.ToString(),
                 username,
                 password,
-                type.ToString()
+                type.ToString(),
+                status.ToString()
             };
         }
 
         public void FromCSV(string[] values)
         {
-            if (values.Length != 4)
+            if (values.Length != 5)
             {
                 throw new ArgumentException("Invalid number of values for CSV deserialization.");
             }
@@ -72,6 +82,7 @@ namespace AssociationForProtectionOfAnimals.Domain.Model
             username = values[1];
             password = values[2];
             type = (AccountType)Enum.Parse(typeof(AccountType), values[3]);
+            status = (AccountStatus)Enum.Parse(typeof(AccountStatus), values[4]);
         }
     }
 }

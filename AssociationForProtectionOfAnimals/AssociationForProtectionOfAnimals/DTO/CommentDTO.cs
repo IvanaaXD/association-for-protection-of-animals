@@ -112,10 +112,10 @@ namespace AssociationForProtectionOfAnimals.DTO
             dateOfComment = comment.DateOfComment;
 
             RegisteredUserController registeredUserController = Injector.CreateInstance<RegisteredUserController>();
-            VolunteerController volunteerController = Injector.CreateInstance<VolunteerController>();
+            AdministratorController administratorController = Injector.CreateInstance<AdministratorController>();
             Person person = registeredUserController.GetRegisteredUserByEmail(personEmail);
             if (person == null) 
-                person = volunteerController.GetVolunteerByEmail(personEmail);
+                person = administratorController.GetVolunteerByUsername(personEmail);
 
             personName = person.FirstName + " " + person.LastName;
 

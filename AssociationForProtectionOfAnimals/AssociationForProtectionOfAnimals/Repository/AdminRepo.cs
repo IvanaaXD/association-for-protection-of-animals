@@ -3,6 +3,7 @@ using AssociationForProtectionOfAnimals.Storage;
 using AssociationForProtectionOfAnimals.Domain.Model;
 using AssociationForProtectionOfAnimals.Domain.IRepository;
 using AssociationForProtectionOfAnimals.Domain.IUtility;
+using AssociationForProtectionOfAnimals.Domain.Model.Enums;
 
 namespace AssociationForProtectionOfAnimals.Repository
 {
