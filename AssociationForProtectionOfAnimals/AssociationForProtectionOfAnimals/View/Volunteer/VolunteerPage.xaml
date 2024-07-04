@@ -267,7 +267,7 @@
 
         <TabItem Header="Temporary Shelter requests">
             <StackPanel>
-                <DataGrid Height="350"
+                <DataGrid Height="523"
                   AutoGenerateColumns="False"
                   x:Name="s"
                   ItemsSource="{Binding TableViewModel.TempShelterRequestDTOs, UpdateSourceTrigger=PropertyChanged}"
@@ -287,6 +287,44 @@
                     <Button Content="Deny this request" Click="denyTempRequest_Click" Width="100"/>
                 </StackPanel>
             </StackPanel>
+        </TabItem>
+
+        <TabItem Header="Donations">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="4*" />
+                    <RowDefinition Height="Auto" MinHeight="284" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <DataGrid
+                  AutoGenerateColumns="False"
+                  x:Name="DonationsDataGrid"
+                  ItemsSource="{Binding Donations, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding SelectedDonation, UpdateSourceTrigger=PropertyChanged}"
+                  SelectionMode="Single" IsReadOnly="True"
+                  Grid.Row="0" Margin="0,0,0,12" Grid.RowSpan="2">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Date of Donation" Width="*" Binding="{Binding DateOfDonation, StringFormat={}{0:yyyy-MM-dd}}" />
+                        <DataGridTextColumn Header="Author's First Name" Width="*" Binding="{Binding AuthorFirstName}" />
+                        <DataGridTextColumn Header="Author's Last Name" Width="*" Binding="{Binding AuthorLastName}" />
+                        <DataGridTextColumn Header="Value" Width="*" Binding="{Binding Value}" />
+                        <DataGridTemplateColumn Header="PDF">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="View PDF" Command="{Binding DataContext.ViewPdfCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding PdfFilePath}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="150">
+                    <Button x:Name="createDonationButton" Content="Create Donation" Width="150" FontSize="16" Click="CreateDonationButton_Click"/>
+                </StackPanel>
+
+                <WebBrowser x:Name="pdfWebBrowser" Grid.Row="2" Height="34" VerticalAlignment="Top" Margin="0,170,0,0" />
+            </Grid>
         </TabItem>
 
     </TabControl>
