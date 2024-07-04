@@ -14,10 +14,14 @@ namespace AssociationForProtectionOfAnimals.Controller
     public class RequestController
     {
         private readonly IRequestRepo _requests;
-
+        private readonly IAdoptionRequestRepo _adoptionRequests;
+        private readonly ITemporaryShelterRequestRepo _temporaryShelterRequests;
+      
         public RequestController()
         {
             _requests = Injector.CreateInstance<IRequestRepo>();
+            _adoptionRequests = Injector.CreateInstance<IAdoptionRequestRepo>();    
+            _temporaryShelterRequests = Injector.CreateInstance<ITemporaryShelterRequestRepo>();
         }
 
         public void Send(Request request)
@@ -25,6 +29,14 @@ namespace AssociationForProtectionOfAnimals.Controller
             _requests.AddRequest(request);
         }
 
+        public void SendAdoptionRequest(AdoptionRequest request)
+        {
+            _adoptionRequests.AddRequest(request);
+        }
+        public void SendTemporaryShelterRequest(TemporaryShelterRequest request)
+        {
+            _temporaryShelterRequests.AddRequest(request);
+        }
         public void Update(Request request)
         {
             _requests.UpdateRequest(request);
@@ -33,197 +45,37 @@ namespace AssociationForProtectionOfAnimals.Controller
         public void Subscribe(IObserver observer)
         {
             _requests.Subscribe(observer);
+            _adoptionRequests.Subscribe(observer);
+            _temporaryShelterRequests.Subscribe(observer);
         }
 
         public Request? GetRequestById(int id)
         {
             return _requests.GetRequestById(id);
         }
+        public AdoptionRequest? GetAdoptionRequestById(int id)
+        {
+            return _adoptionRequests.GetRequestById(id);
+        }
+        public Request? GetTemporaryShelterRequestById(int id)
+        {
+            return _temporaryShelterRequests.GetRequestById(id);
+        }
 
         public List<Request> GetAllRequests()
         {
             return _requests.GetAllRequests();
         }
-        /*
-        public void SetMailToAnswered(Mail mail)
+        public List<AdoptionRequest> GetAllAdoptionRequests()
         {
-            mail.Answered = true;
-            Update(mail);
+            return _adoptionRequests.GetAllRequests();
         }
-        
-        public void GenerateMail(Director sender, Student receiver, Course course, ExamTerm examTerm, TypeOfMessage messageType)
+        public List<TemporaryShelterRequest> GetAllTemporaryShelterRequests()
         {
-            IMailStrategy mailStrategy = MailStrategyFactory.GetStrategy(messageType);
-            MailMessageGenerator context = new MailMessageGenerator(mailStrategy);
-            string emailBody = context.GenerateMailMessage(receiver, course, sender);
-            ConstructMail(sender, receiver, course, examTerm, messageType, emailBody);
+            return _temporaryShelterRequests.GetAllRequests();
         }
 
-        public void GenerateMail(ExamTermGrade examTermGrade, Director sender, Student receiver, Course course, ExamTerm examTerm, TypeOfMessage messageType)
-        {
-            IMailStrategy mailStrategy = MailStrategyFactory.GetStrategy(messageType);
-            MailMessageGenerator context = new MailMessageGenerator(mailStrategy);
-            string emailBody = context.GenerateMailMessage(examTermGrade, examTerm);
-            ConstructMail(sender, receiver, course, examTerm, messageType, emailBody);
-        }
 
-        public void GenerateMail(int messageId, Teacher sender, Student receiver, Course course, ExamTerm examTerm, TypeOfMessage messageType)
-        {
-            IMailStrategy mailStrategy = MailStrategyFactory.GetStrategy(messageType);
-            MailMessageGenerator context = new MailMessageGenerator(mailStrategy);
-            string emailBody = context.GenerateMailMessage(messageId, receiver, course, sender);
-            ConstructMail(sender, receiver, course, examTerm, messageType, emailBody);
-        }
 
-        public void GenerateMail(string rejectReason, Teacher sender, Student receiver, Course course, ExamTerm examTerm, TypeOfMessage messageType)
-        {
-            IMailStrategy mailStrategy = MailStrategyFactory.GetStrategy(messageType);
-            MailMessageGenerator context = new MailMessageGenerator(mailStrategy);
-            string emailBody = context.GenerateMailMessage(rejectReason, receiver, course, sender);
-            ConstructMail(sender, receiver, course, examTerm, messageType, emailBody);
-        }
-
-        public void GenerateMail(CourseGradeDTO studentCourseGrade, Teacher sender, Student receiver, Course course, ExamTerm examTerm, TypeOfMessage messageType)
-        {
-            IMailStrategy mailStrategy = MailStrategyFactory.GetStrategy(messageType);
-            MailMessageGenerator context = new MailMessageGenerator(mailStrategy);
-            string emailBody = context.GenerateMailMessage(studentCourseGrade, course);
-            ConstructMail(sender, receiver, course, examTerm, messageType, emailBody);
-        }
-
-        public void GenerateMail(Teacher sender, Student receiver, Course course, ExamTerm examTerm, TypeOfMessage messageType)
-        {
-            IMailStrategy mailStrategy = MailStrategyFactory.GetStrategy(messageType);
-            MailMessageGenerator context = new MailMessageGenerator(mailStrategy);
-            string emailBody = context.GenerateMailMessage(course);
-            ConstructMail(sender, receiver, course, examTerm, messageType, emailBody);
-        }
-
-        public void ConstructMail(Person sender, Person receiver, Course course, ExamTerm examTerm, TypeOfMessage type, string body)
-        {
-            Send(new Mail
-            {
-                Sender = sender.Email,
-                Receiver = receiver.Email,
-                CourseId = course.Id,
-                ExamTermId = examTerm.ExamID,
-                TypeOfMessage = type,
-                DateOfMessage = DateTime.Now,
-                Message = body,
-                Answered = false
-            });
-        }
-
-        public List<Mail> GetSentMails(Student student)
-        {
-            List<Mail> filteredMails = new List<Mail>();
-
-            foreach (Mail mail in _mails.GetAllMails())
-            {
-                if (mail.Sender == student.Email)
-                {
-                    filteredMails.Add(mail);
-                }
-            }
-            return filteredMails;
-        }
-
-        public List<Mail> GetReceivedMails(Student student)
-        {
-            List<Mail> filteredMails = new List<Mail>();
-
-            foreach (Mail mail in _mails.GetAllMails())
-            {
-                if (mail.Receiver == student.Email)
-                {
-                    filteredMails.Add(mail);
-                }
-            }
-            return filteredMails;
-        }
-        public List<Mail> GetUnreadReceivedMails(Student student)
-        {
-            List<Mail> filteredMails = new List<Mail>();
-
-            foreach (Mail mail in _mails.GetAllMails())
-            {
-                if (mail.Receiver == student.Email && mail.Answered == false)
-                {
-                    filteredMails.Add(mail);
-                }
-            }
-            return filteredMails;
-        }
-        public Mail PrepareQuitCourseMail(string senderEmail, string receiverEmail, int courseId, int examTermId)
-        {
-            Mail mail = new Mail();
-            mail.Sender = senderEmail;
-            mail.Receiver = receiverEmail;
-            mail.TypeOfMessage = TypeOfMessage.QuitCourseRequest;
-            mail.DateOfMessage = DateTime.Now;
-            mail.CourseId = courseId;
-            mail.ExamTermId = examTermId;
-            mail.Answered = false;
-            mail.Message = "";
-
-            return mail;
-        }
-
-        public bool IsQuitCourseMailSent(string studentEmail, int courseId)
-        {
-            foreach (Mail mail in _mails.GetAllMails())
-                if (mail.Sender == studentEmail && mail.CourseId == courseId && mail.TypeOfMessage == TypeOfMessage.QuitCourseRequest)
-                    return true;
-            return false;
-        }
-
-        public bool IsTopStudentsMailSent(int courseId)
-        {
-            foreach (Mail mail in _mails.GetAllMails())
-                if (mail.CourseId == courseId && mail.TypeOfMessage == TypeOfMessage.TopStudentsMessage)
-                    return true;
-            return false;
-        }
-
-        public List<Mail> GetSentCourseMail(Teacher teacher, int courseId)
-        {
-            List<Mail> filteredMails = new List<Mail>();
-
-            foreach (Mail mail in _mails.GetAllMails())
-            {
-                if (mail.Sender == teacher.Email && mail.CourseId == courseId)
-                {
-                    filteredMails.Add(mail);
-                }
-            }
-            return filteredMails;
-        }
-
-        public List<Mail> GetReceivedCourseMails(Teacher teacher, int courseId)
-        {
-            List<Mail> filteredMails = new List<Mail>();
-
-            foreach (Mail mail in _mails.GetAllMails())
-            {
-                if (mail.Receiver == teacher.Email && mail.CourseId == courseId)
-                {
-                    filteredMails.Add(mail);
-                }
-            }
-            return filteredMails;
-        }
-
-        public bool IsStudentAccepted(Student student, int courseId)
-        {
-            List<Mail> sentMail = GetAllMail();
-            foreach (Mail mail in sentMail)
-            {
-                if (mail.Receiver == student.Email && mail.CourseId == courseId && mail.TypeOfMessage == TypeOfMessage.AcceptEnterCourseRequestMessage)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }*/
     }
 }

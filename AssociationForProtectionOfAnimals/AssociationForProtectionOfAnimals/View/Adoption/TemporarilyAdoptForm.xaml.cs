@@ -47,7 +47,7 @@ namespace AssociationForProtectionOfAnimals.View.Adoption
                 {
 
                     TemporaryShelterRequest request = new TemporaryShelterRequest(user.Id, -1, post.Id, RequestStatus.WaitingForResponse, DateTime.Now, acommodationDate, returnDate);
-                    _requestController.SendTempShelterRequest(request);
+                    _requestController.SendTemporaryShelterRequest(request);
                     MessageBox.Show("Request sent!");
 
                 }
