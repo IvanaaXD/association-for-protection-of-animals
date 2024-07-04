@@ -12,13 +12,17 @@ namespace AssociationForProtectionOfAnimals.DTO
 {
     public class TemporaryShelterRequestDTO : RequestDTO
     {
+        Controller.RegisteredUserController userController = Injector.CreateInstance<Controller.RegisteredUserController>();
+        
         public DateTime accommodationDate;
         public DateTime returnDate;
+        public int registeredUserId;
+        public int RegisteredUserId { get; set; }
         public DateTime AccommodationDate { get; set; }
         public DateTime ReturnDate { get; set; }
         public TemporaryShelterRequest ToTemporaryShelterRequest()
         {
-            return new TemporaryShelterRequest(Id, regUser.Id, VolunteerId,RequestStatus,RequestSubmissionDate,AccommodationDate,ReturnDate);
+            return new TemporaryShelterRequest(Id, RegisteredUserId, VolunteerId,RequestStatus,RequestSubmissionDate,AccommodationDate,ReturnDate);
         }
         public TemporaryShelterRequestDTO()
         {
@@ -29,11 +33,15 @@ namespace AssociationForProtectionOfAnimals.DTO
         {
             id = request.Id;
             volunteerId = request.VolunteerId;
-            //regUser = //request.RegisteredUserId;
+            
             requestStatus = request.RequestStatus;
             requestSubmissionDate = request.RequestSubmissionDate;
             accommodationDate = request.AccommodationDate;
-            returnDate = request.ReturnDate;    
+            returnDate = request.ReturnDate;
+
+            registeredUserId = request.RegisteredUserId;
+            Account account = userController.GetAccountById(registeredUserId);
+            username = account.Username;    
         }
     }
 }

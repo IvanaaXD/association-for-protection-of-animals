@@ -34,7 +34,8 @@ namespace AssociationForProtectionOfAnimals.View.Adoption
         }
 
         public ViewModel TableViewModel { get; set; }
-        public AnimalDTO SelectedAnimal { get; set; }
+        public AdoptionRequestDTO SelectedAdoptionRequest { get; set; }
+        public TemporaryShelterRequestDTO SelectedTempRequest { get; set; }
         private RegisteredUserController regUserController { get; set; }
         private VolunteerController volunteerController { get; set; }
         private PostController postController { get; set; }
@@ -92,54 +93,128 @@ namespace AssociationForProtectionOfAnimals.View.Adoption
             }
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private List<Domain.Model.TemporaryShelterRequest> GetFilteredTempShelterRequests()
         {
-            Close();
-        }
-        private void btnAccept_Click(object sender, EventArgs e)
-        {
-            //private void UpdateExam_Click(object sender, RoutedEventArgs e)
 
-            if (SelectedAnimal == null)
+            List<TemporaryShelterRequest> finalRequests = new List<TemporaryShelterRequest>();
+            List<TemporaryShelterRequest> temporaryShelterRequests = requestController.GetAllTemporaryShelterRequests();
+
+            foreach(TemporaryShelterRequest temp in temporaryShelterRequests)
             {
-                MessageBox.Show("Please choose animal to adopt!");
+                if (temp.RequestStatus == RequestStatus.WaitingForResponse)
+                {
+                    finalRequests.Add(temp);    
+                }
+            }
+            return finalRequests;
+        }
+        private List<AdoptionRequest> GetFilteredAdoptionRequests()
+        {
+
+            List<AdoptionRequest> finalRequests = new List<Domain.Model.AdoptionRequest>();
+            List<AdoptionRequest> adoptionRequests = requestController.GetAllAdoptionRequests();
+
+            foreach (AdoptionRequest req in adoptionRequests)
+            {
+                if (req.RequestStatus == RequestStatus.WaitingForResponse)
+                {
+                    finalRequests.Add(req);
+                }
+            }
+            return finalRequests;
+            return finalRequests;
+        }
+
+        private void acceptAdoptionRequest_Click(object sender, RoutedEventArgs e)
+        {
+            if (SelectedAdoptionRequest == null)
+            {
+                MessageBox.Show("Please choose request to accept!");
             }
             else
             {
-                int animalId = SelectedAnimal.Id;
-                Post animalPost = null;
-                List<Post> posts = postController.GetAllPosts();
-                foreach (Post post in posts)
-                {
-                    if (post.AnimalId == animalId)
-                        animalPost = post;
-                }
-                if (animalPost.PostStatus == PostStatus.Adopted || animalPost.PostStatus == PostStatus.TemporarilyAdopted || animalPost.PostStatus == PostStatus.UnderTreatment)
+                int postId = SelectedAdoptionRequest.PostId;
+                Post post = postController.GetById(postId);
+               
+                if (post.PostStatus == PostStatus.Adopted || post.PostStatus == PostStatus.TemporarilyAdopted || post.PostStatus == PostStatus.UnderTreatment)
                 {
                     MessageBox.Show("Animal cannot be adopted!");
                 }
                 else
                 {
-                    MessageBox.Show("Request sent to volunteers!");
+                    post.PostStatus = PostStatus.Adopted;
+                    postController.Update(post);
+                    SelectedAdoptionRequest.RequestStatus=RequestStatus.Accepted;
+                    requestController.Update(SelectedAdoptionRequest.ToAdoptionRequest());
+                    MessageBox.Show("Request accepted!");
                 }
             }
 
             Close();
         }
-       
-        private List<Domain.Model.TemporaryShelterRequest> GetFilteredTempShelterRequests()
+
+        private void denyAdoptionRequest_Click(object sender, RoutedEventArgs e)
         {
+            if (SelectedAdoptionRequest == null)
+            {
+                MessageBox.Show("Please choose request to deny!");
+            }
+            else
+            {
+                
+                SelectedAdoptionRequest.RequestStatus = RequestStatus.Denied;
+                requestController.Update(SelectedAdoptionRequest.ToAdoptionRequest());
+                MessageBox.Show("Request rejected!");
+                
+            }
 
-            List<Domain.Model.TemporaryShelterRequest> finalRequests = new List<Domain.Model.TemporaryShelterRequest>();
-
-            return finalRequests;
+            Close();
         }
-        private List<Domain.Model.AdoptionRequest> GetFilteredAdoptionRequests()
+
+        private void acceptTempRequest_Click(object sender, RoutedEventArgs e)
         {
+            if (SelectedTempRequest == null)
+            {
+                MessageBox.Show("Please choose request to accept!");
+            }
+            else
+            {
+                int postId = SelectedTempRequest.PostId;
+                Post post = postController.GetById(postId);
 
-            List<Domain.Model.AdoptionRequest> finalRequests = new List<Domain.Model.AdoptionRequest>();
+                if (post.PostStatus == PostStatus.Adopted || post.PostStatus == PostStatus.TemporarilyAdopted || post.PostStatus == PostStatus.UnderTreatment)
+                {
+                    MessageBox.Show("Animal cannot be adopted!");
+                }
+                else
+                {
+                    post.PostStatus = PostStatus.TemporarilyAdopted;
+                    postController.Update(post);
+                    SelectedAdoptionRequest.RequestStatus = RequestStatus.Accepted;
+                    requestController.Update(SelectedTempRequest.ToTemporaryShelterRequest());
+                    MessageBox.Show("Request accepted!");
+                }
+            }
 
-            return finalRequests;
+            Close();
+        }
+
+        private void denyTempRequest_Click(object sender, RoutedEventArgs e)
+        {
+            if (SelectedTempRequest == null)
+            {
+                MessageBox.Show("Please choose request to deny!");
+            }
+            else
+            {
+
+                SelectedTempRequest.RequestStatus = RequestStatus.Denied;
+                requestController.Update(SelectedTempRequest.ToTemporaryShelterRequest());
+                MessageBox.Show("Request rejected!");
+
+            }
+
+            Close();
         }
     }
 }
