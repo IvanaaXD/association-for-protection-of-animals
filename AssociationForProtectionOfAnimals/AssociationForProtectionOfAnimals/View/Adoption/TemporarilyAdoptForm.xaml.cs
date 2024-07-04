@@ -25,12 +25,14 @@ namespace AssociationForProtectionOfAnimals.View.Adoption
         private readonly RequestController _requestController;
         private readonly Domain.Model.RegisteredUser user;
         private readonly Domain.Model.Post post;
-        public TemporarilyAdoptForm(Domain.Model.RegisteredUser user, Post post)
+        private bool isVolunteer;
+        public TemporarilyAdoptForm(Domain.Model.RegisteredUser user, Post post, bool isVolunteer)
         {
             InitializeComponent();
             _requestController = Injector.CreateInstance<RequestController>();
             this.user = user;   
             this.post = post;   
+            this.isVolunteer = isVolunteer;
         }
 
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
@@ -45,10 +47,19 @@ namespace AssociationForProtectionOfAnimals.View.Adoption
 
                 if (acommodationDate > DateTime.Now && returnDate> DateTime.Now && returnDate > acommodationDate)
                 {
-
-                    TemporaryShelterRequest request = new TemporaryShelterRequest(user.Id, -1, post.Id, RequestStatus.WaitingForResponse, DateTime.Now, acommodationDate, returnDate);
-                    _requestController.SendTemporaryShelterRequest(request);
-                    MessageBox.Show("Request sent!");
+                    if(isVolunteer)
+                    {
+                        TemporaryShelterRequest request = new TemporaryShelterRequest(user.Id, -1, post.Id, RequestStatus.Accepted, DateTime.Now, acommodationDate, returnDate);
+                        _requestController.SendTemporaryShelterRequest(request);
+                        MessageBox.Show("Animal temporarily adopted!");
+                    }
+                    else
+                    {
+                        TemporaryShelterRequest request = new TemporaryShelterRequest(user.Id, -1, post.Id, RequestStatus.WaitingForResponse, DateTime.Now, acommodationDate, returnDate);
+                        _requestController.SendTemporaryShelterRequest(request);
+                        MessageBox.Show("Request sent!");
+                    }
+                    
 
                 }
                 else

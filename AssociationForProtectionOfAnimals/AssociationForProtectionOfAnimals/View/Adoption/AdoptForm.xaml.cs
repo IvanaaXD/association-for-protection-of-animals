@@ -20,11 +20,13 @@ namespace AssociationForProtectionOfAnimals.View.Adoption
         private readonly RequestController _requestController;
         private readonly Domain.Model.RegisteredUser user;
         private readonly Domain.Model.Post post;
-        public AdoptForm(Domain.Model.RegisteredUser user, Post post)
+        private bool isVolunteer;
+        public AdoptForm(Domain.Model.RegisteredUser user, Post post, bool isVolunteer)
         {
             InitializeComponent();
             this.user = user;
             this.post = post;
+            this.isVolunteer = isVolunteer; 
             _requestController = Injector.CreateInstance<RequestController>();
         }
 
@@ -38,10 +40,19 @@ namespace AssociationForProtectionOfAnimals.View.Adoption
 
                 if (adoptionDate > DateTime.Now)
                 {
+                    if (isVolunteer)
+                    {
+                        AdoptionRequest request = new AdoptionRequest(user.Id, -1, post.Id, RequestStatus.Accepted, DateTime.Now, adoptionDate);
+                        _requestController.SendAdoptionRequest(request);
+                        MessageBox.Show("Animal adopted!");
+                    }
+                    else
+                    {
+                        AdoptionRequest request = new AdoptionRequest(user.Id, -1, post.Id, RequestStatus.WaitingForResponse, DateTime.Now, adoptionDate);
+                        _requestController.SendAdoptionRequest(request);
+                        MessageBox.Show("Request sent!");
+                    }
                     
-                    AdoptionRequest request = new AdoptionRequest(user.Id, -1, post.Id, RequestStatus.WaitingForResponse, DateTime.Now, adoptionDate);
-                    _requestController.SendAdoptionRequest(request);
-                    MessageBox.Show("Request sent!");
                     
                 }
                 else
