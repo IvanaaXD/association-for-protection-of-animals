@@ -219,11 +219,17 @@ namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
 
         private void AdoptVolunteer_Click(object sender, RoutedEventArgs e)
         {
-            AdoptForm adoptForm = new AdoptForm(user, post,true);
-            adoptForm.Show();
-            post.PostStatus = Domain.Model.Enums.PostStatus.Adopted;
-            _postController.Update(post);   
-            
+            if (post.PostStatus == Domain.Model.Enums.PostStatus.Adopted)
+            {
+                MessageBox.Show("Animal already adopted!");
+            }
+            else
+            {
+                AdoptForm adoptForm = new AdoptForm(user, post, true);
+                adoptForm.Show();
+                post.PostStatus = Domain.Model.Enums.PostStatus.Adopted;
+                _postController.Update(post);
+            }
         }
 
 
@@ -235,10 +241,18 @@ namespace AssociationForProtectionOfAnimals.View.UnregisteredUser
 
         private void TemporarilyAdoptVolunteer_Click(object sender, RoutedEventArgs e)
         {
-            TemporarilyAdoptForm tempAdoptForm = new TemporarilyAdoptForm(user, post,true);
-            tempAdoptForm.Show();
-            post.PostStatus = Domain.Model.Enums.PostStatus.TemporarilyAdopted;
-            _postController.Update(post);
+            if(post.PostStatus == Domain.Model.Enums.PostStatus.Adopted)
+            {
+                MessageBox.Show("Animal already adopted!");
+            }
+            else
+            {
+                TemporarilyAdoptForm tempAdoptForm = new TemporarilyAdoptForm(user, post, true);
+                tempAdoptForm.Show();
+                post.PostStatus = Domain.Model.Enums.PostStatus.TemporarilyAdopted;
+                _postController.Update(post);
+            }
+            
         }
 
         private void CommentPost_Click(object sender, RoutedEventArgs e)
